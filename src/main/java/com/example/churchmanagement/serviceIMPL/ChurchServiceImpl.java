@@ -41,7 +41,7 @@ private final EmailService emailService;
         tool.passwordValidator(churchBranch.getPassword());
         String token = churchTokenService.createTokenForChurchBranch(churchBranch);
         churchBranch.setToken(token);
-      emailService.sendEmail();
+    //  emailService.sendEmail();
 
 
    // churchTempoRepo.save(churchBranch);
