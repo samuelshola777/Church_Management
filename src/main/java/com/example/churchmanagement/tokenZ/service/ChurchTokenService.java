@@ -27,19 +27,10 @@ private SecureRandom secureRandom = new SecureRandom();
        tokenZ.setToken(token);
        tokenZ.setCreateAt(LocalDateTime.now());
         tokenZ.setTokenState(TokenState.VALID);
+        tokenZ.setChurchBranch(churchBranch1);
 //        tokenZ.getChurchBranch().add(churchBranch1);
         tokenZ.setExpiredAt(tokenZ.getCreateAt().plusMinutes(5));
         churchTokenRepository.save(tokenZ);
-
-       if (tokenZ.getCreateAt() == tokenZ.getCreateAt().plusMinutes(5)) {
-           Optional<ChurchTokenZ> foundToken = churchTokenRepository.findById(tokenZ.getId());
-           if (foundToken.isEmpty()) {
-               throw new TokenException("invalid token ID: " + tokenZ.getId());
-           }
-           ChurchTokenZ tokenZ1 = foundToken.get();
-           tokenZ1.setTokenState(TokenState.EXPIRED);
-           churchTokenRepository.save(tokenZ1);
-       }
 
         return tokenZ.getToken();
     }
