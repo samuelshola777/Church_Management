@@ -18,7 +18,7 @@ public class ChurchTokenService {
     @Autowired
     private ChurchTokenRepository churchTokenRepository;
 private SecureRandom secureRandom = new SecureRandom();
-    public String createTokenForChurchBranch(ChurchBranch churchBranch1) throws TokenException {
+    public ChurchTokenZ createTokenForChurchBranch(ChurchBranch churchBranch1) throws TokenException {
   int intToken =  secureRandom.nextInt(700000000,799999999);
     StringBuilder build = new StringBuilder(churchBranch1.getChurchBranchName());
     String first2 = build.substring(0,3);
@@ -28,11 +28,9 @@ private SecureRandom secureRandom = new SecureRandom();
        tokenZ.setCreateAt(LocalDateTime.now());
         tokenZ.setTokenState(TokenState.VALID);
         tokenZ.setChurchBranch(churchBranch1);
-//        tokenZ.getChurchBranch().add(churchBranch1);
         tokenZ.setExpiredAt(tokenZ.getCreateAt().plusMinutes(5));
         churchTokenRepository.save(tokenZ);
-
-        return tokenZ.getToken();
+        return tokenZ;
     }
 
     public long countChurchToken() {

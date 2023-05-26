@@ -1,7 +1,9 @@
 package com.example.churchmanagement.serviceIMPL;
 
 import com.example.churchmanagement.ToolZ;
-import com.example.churchmanagement.data.model.ChurchBranch;
+
+
+
 import com.example.churchmanagement.data.temRepository.ChurchTempoRepo;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
@@ -11,6 +13,7 @@ import com.example.churchmanagement.exception.PhoneNumberException;
 import com.example.churchmanagement.exception.RegistrationException;
 import com.example.churchmanagement.service.ChurchService;
 import com.example.churchmanagement.data.repository.ChurchRepository;
+import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.service.ChurchTokenService;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import lombok.AllArgsConstructor;
@@ -39,8 +42,9 @@ private final EmailService emailService;
         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
-        String token = churchTokenService.createTokenForChurchBranch(churchBranch);
-        churchBranch.setToken(token);
+        ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch);
+        churchBranch.setToken(token.getToken());
+        churchBranch.getListOfToken().add(token);
     //  emailService.sendEmail();
 
 
