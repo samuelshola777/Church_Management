@@ -5,4 +5,5 @@ public class Body {
     private String phoneNumber;
     private String dateOfBirth;
     private int age;
+    private int height;
 }
