@@ -6,4 +6,5 @@ public class Body {
     private String dateOfBirth;
     private int age;
     private int height;
+    private int height;
 }
