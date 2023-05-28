@@ -27,6 +27,6 @@ private  final MailConfig mailConfig;
 
         var response = restTemplate.postForEntity(mailConfig.getUrl(), requestEntity, String.class);
 
-        //return response.getBody();
+        //return response.getBody(); with no parameter
     }
 }
