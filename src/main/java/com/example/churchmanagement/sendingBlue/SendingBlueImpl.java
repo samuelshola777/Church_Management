@@ -22,7 +22,7 @@ private  final MailConfig mailConfig;
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("api-key123", mailConfig.getApiKey());
+        headers.set("api-key", mailConfig.getApiKey());
         HttpEntity<SendingBlueMailRequest> requestEntity = new HttpEntity<>(sendingRequest, headers);
 
         var response = restTemplate.postForEntity(mailConfig.getUrl(), requestEntity, String.class);
