@@ -26,7 +26,7 @@ private  final MailConfig mailConfig;
         HttpEntity<SendingBlueMailRequest> requestEntity = new HttpEntity<>(sendingRequest, headers);
 
         var response = restTemplate.postForEntity(mailConfig.getUrl(), requestEntity, String.class);
-
+String boneshaker= " my name is samuel shola";
         //return response.getBody(); with no parameterfpiffifhiff
     }
 }
