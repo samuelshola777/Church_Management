@@ -28,9 +28,9 @@ public class ChurchTokenService {
        tokenZ.setToken(token);
        tokenZ.setCreateAt(LocalDateTime.now());
         tokenZ.setTokenState(TokenState.VALID);
-       tokenZ.setChurchBranch(churchBranch1);
+//      tokenZ.setChurchBranch(churchBranch1);
         tokenZ.setExpiredAt(tokenZ.getCreateAt().plusMinutes(5));
-        churchTokenRepository.save(tokenZ);
+       // churchTokenRepository.save(tokenZ);
         return tokenZ;
     }
 

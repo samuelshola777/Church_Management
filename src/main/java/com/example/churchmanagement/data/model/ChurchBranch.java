@@ -2,20 +2,25 @@ package com.example.churchmanagement.data.model;
 
 
 import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
 
 import lombok.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Data
+
 public class ChurchBranch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -34,6 +39,7 @@ public class ChurchBranch {
      private Address address;
 
     @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "church_branch_id")
     private List<ChurchTokenZ> listOfToken = new ArrayList<>();
 
     private String password;

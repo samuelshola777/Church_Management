@@ -43,8 +43,8 @@ private final EmailService emailService;
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
        ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch);
-        churchBranch.setToken(token.getToken());
-
+       // churchBranch.setToken(token.getToken());
+        churchBranch.getListOfToken().add(token);
      // emailService.sendEmail();
     churchTempoRepo.save(churchBranch);
 
