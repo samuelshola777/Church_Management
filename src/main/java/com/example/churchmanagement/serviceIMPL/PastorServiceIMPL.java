@@ -39,7 +39,7 @@ public class PastorServiceIMPL implements PastorService {
         pastorTemRepository.save(buildPastor);
         return new PastorResponse("registration completed successfully please log on to your confirmation site to verify your account");
     }
-
+String boneshaker = "gold";
     @Override
     public long countChurchMenber() {
         return pastorRepository.count();
