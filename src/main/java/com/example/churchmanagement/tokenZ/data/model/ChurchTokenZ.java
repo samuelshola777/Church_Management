@@ -16,7 +16,6 @@ public class ChurchTokenZ  {
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="church_id")
     private ChurchBranch churchBranch;
 
     private LocalDateTime createAt;
