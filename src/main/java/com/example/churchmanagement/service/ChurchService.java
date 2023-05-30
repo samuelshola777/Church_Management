@@ -11,7 +11,7 @@ import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 public interface ChurchService {
 
 
-   ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException;
+   void registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException;
    ChurchBranch findChurchByName(String churchName) throws RegistrationException;
 
    void deleteAllChurchBranch();

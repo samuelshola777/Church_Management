@@ -5,8 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Data
@@ -17,9 +16,14 @@ public class ChurchTokenZ  {
 
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private ChurchBranch churchBranch;
+
     private LocalDateTime createAt;
+
     private LocalDateTime expiredAt;
+
     private String token;
+
     @Enumerated(EnumType.STRING)
+
     private TokenState tokenState;
 }

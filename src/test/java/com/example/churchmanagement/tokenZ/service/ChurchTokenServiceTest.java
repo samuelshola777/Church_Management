@@ -68,6 +68,6 @@ private Address address2;
     @Test
     void testThatWeCanDeleteAllToken(){
         churchTokenService.deleteAllToken();
-        assertEquals(0, churchTokenService.countChurchToken());
+   assertEquals(0, churchTokenService.countChurchToken());
     }
 }

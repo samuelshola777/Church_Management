@@ -37,17 +37,17 @@ private final EmailService emailService;
 
 
     @Override
-    public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
+    public void registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
         ChurchBranch churchBranch = mapToRequest(churchRequest2);
         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
-      // ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch);
-       // churchBranch.setToken(token.getToken());
-    //   churchBranch.getListOfToken().add(token);
-    //  emailService.sendEmail();
-  //  churchTempoRepo.save(churchBranch);
-        return null;
+       ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch);
+        churchBranch.setToken(token.getToken());
+
+     // emailService.sendEmail();
+    churchTempoRepo.save(churchBranch);
+
     }
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2){
     return    ChurchBranch.builder()
