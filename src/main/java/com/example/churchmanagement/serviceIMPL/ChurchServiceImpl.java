@@ -42,11 +42,11 @@ private final EmailService emailService;
         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
-       ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch);
-        churchBranch.setToken(token.getToken());
-       churchBranch.getListOfToken().add(token);
+      // ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch);
+       // churchBranch.setToken(token.getToken());
+    //   churchBranch.getListOfToken().add(token);
     //  emailService.sendEmail();
-    churchTempoRepo.save(churchBranch);
+  //  churchTempoRepo.save(churchBranch);
         return null;
     }
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2){
