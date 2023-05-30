@@ -44,9 +44,9 @@ private final EmailService emailService;
         tool.passwordValidator(churchBranch.getPassword());
        ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch);
         churchBranch.setToken(token.getToken());
-        churchBranch.getListOfToken().add(token);
+       churchBranch.getListOfToken().add(token);
     //  emailService.sendEmail();
-    churchTempoRepo.save(churchBranch);
+  //  churchTempoRepo.save(churchBranch);
         return null;
     }
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2){
