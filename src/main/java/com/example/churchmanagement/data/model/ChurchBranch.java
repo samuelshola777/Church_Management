@@ -25,13 +25,12 @@ public class ChurchBranch {
     private LocalDateTime createdAt;
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
      private Address address;
-   // @OneToMany(mappedBy = "token_id", cascade = CascadeType.ALL, orphanRemoval = true)
     @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ChurchTokenZ> listOfToken = new HashSet<>();
     private String password;
     private String phoneNumber;
     private String token;
-private int number;
+
 
    
 
