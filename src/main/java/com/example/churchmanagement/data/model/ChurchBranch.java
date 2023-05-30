@@ -40,15 +40,21 @@ public class ChurchBranch {
 
     @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "church_branch_id")
-    private List<ChurchTokenZ> listOfToken = new ArrayList<>();
+ public     List<ChurchTokenZ> listOfToken ;
 
     private String password;
 
     private String phoneNumber;
 
     private String token;
-
-
-   
-
+    @PostConstruct
+    public void initializisation(List<ChurchTokenZ> listOfToken ){
+    this.listOfToken = new ArrayList<>();
+}
+    public List<ChurchTokenZ> getListOfToken() {
+        return listOfToken;
+    }
+    public void addToken(ChurchTokenZ token) {
+        listOfToken.add(token);
+    }
       }
