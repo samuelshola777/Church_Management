@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 @Configuration
 public class AppConfig {
 
-    @Value("${sending_blue_api_key }")
+    @Value("${sending_blue_api_key}")
     private String apiKey;
 
     @Value("${sendinblue_mail}")
