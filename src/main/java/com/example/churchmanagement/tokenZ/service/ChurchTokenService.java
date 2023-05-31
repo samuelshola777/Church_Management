@@ -36,11 +36,7 @@ public class ChurchTokenService {
         return tokenZ;
     }
 
-    public static void main(String[] args) throws TokenException {
 
-        ChurchTokenService churchService = new  ChurchTokenService();
-        churchService.createTokenForChurchBranch("samuel");
-    }
 
     public long countChurchToken() {
         return churchTokenRepository.count();
