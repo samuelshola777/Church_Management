@@ -21,6 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @Service
 public class ChurchServiceImpl implements ChurchService {
@@ -42,10 +45,11 @@ private final EmailService emailService;
         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
-       ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch);
+       ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
+       churchBranch.setCreatedAt(LocalDateTime.now());
         churchBranch.setToken(token.getToken());
+        churchBranch.initializisation();
         churchBranch.addToken(token);
-//       churchBranch.getListOfToken().add(token);
      // emailService.sendEmail();
     churchTempoRepo.save(churchBranch);
 
