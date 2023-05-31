@@ -1,8 +1,9 @@
 package com.example.churchmanagement.serviceIMPL;
 
+//import com.example.churchmanagement.ToolZ;
+
+
 import com.example.churchmanagement.ToolZ;
-
-
 import com.example.churchmanagement.data.model.ChurchBranch;
 import com.example.churchmanagement.data.temRepository.ChurchTempoRepo;
 import com.example.churchmanagement.dto.request.ChurchRequest;
@@ -42,7 +43,7 @@ private final EmailService emailService;
     @Override
     public void registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
         ChurchBranch churchBranch = mapToRequest(churchRequest2);
-    //    registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
+      registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
        ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
@@ -50,7 +51,7 @@ private final EmailService emailService;
         churchBranch.setToken(token.getToken());
         churchBranch.initializisation();
         churchBranch.addToken(token);
-     emailService.sendEmail();
+    // emailService.sendEmail();
  //  churchTempoRepo.save(churchBranch);
 
     }

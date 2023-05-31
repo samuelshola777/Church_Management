@@ -22,10 +22,12 @@ public class ChurchTokenService {
 
     public ChurchTokenZ createTokenForChurchBranch(String name) throws TokenException {
      SecureRandom secureRandom = new SecureRandom();
-  int intToken =  secureRandom.nextInt(700000000,799999999);
+  int intToken =  secureRandom.nextInt(777000,799999);
     StringBuilder build = new StringBuilder(name);
     String first2 = build.substring(0,3);
-    String token = String.valueOf(secureRandom)+build;
+//   String first2k = first2.toString();
+
+    String token = String.valueOf(intToken)+first2;
        ChurchTokenZ tokenZ = new ChurchTokenZ();
         System.out.println(token);
        tokenZ.setToken(token);
@@ -36,7 +38,11 @@ public class ChurchTokenService {
         return tokenZ;
     }
 
+    public static void main(String[] args) throws TokenException {
 
+        ChurchTokenService churchService = new  ChurchTokenService();
+        churchService.createTokenForChurchBranch("samuel");
+    }
 
     public long countChurchToken() {
         return churchTokenRepository.count();
