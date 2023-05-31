@@ -59,8 +59,8 @@ private Address address2;
     @Test
     void testThatWeCanCreateToken() throws TokenException {
 
-        churchTokenService.createTokenForChurchBranch(churchBranch1);
-        churchTokenService.createTokenForChurchBranch(churchBranch2);
+        churchTokenService.createTokenForChurchBranch(churchBranch1.getChurchBranchName());
+        churchTokenService.createTokenForChurchBranch(churchBranch2.getChurchBranchName());
        assertEquals(2, churchTokenService.countChurchToken());
 
 

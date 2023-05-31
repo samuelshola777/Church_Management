@@ -51,7 +51,7 @@ private final EmailService emailService;
         churchBranch.initializisation();
         churchBranch.addToken(token);
      // emailService.sendEmail();
-    churchTempoRepo.save(churchBranch);
+ //  churchTempoRepo.save(churchBranch);
 
     }
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2){
@@ -83,13 +83,13 @@ private final EmailService emailService;
 
     private String registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
         ChurchBranch churchBranch = churchTempoRepo.findByPhoneNumber(phoneNumber);
-//        try {
-//        if (churchBranch != null) {
-//            throw new RegistrationException("account already exists");
-//            }
-//        }catch (RegistrationException kue) {
-//            throw new RegistrationException("account already exists");
-//        }
+        try {
+        if (churchBranch != null) {
+            throw new RegistrationException("account already exists");
+            }
+        }catch (RegistrationException kue) {
+            throw new RegistrationException("account already exists");
+        }
         return "successful";
 }
 
