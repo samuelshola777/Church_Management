@@ -79,6 +79,11 @@ private final EmailService emailService;
     }
 
     @Override
+    public ChurchBranch findChurchBranchByEmail(String email) {
+        return null;
+    }
+
+    @Override
     public long tempoRepoCountChurchBranch() {
         return churchTempoRepo.count();
     }
