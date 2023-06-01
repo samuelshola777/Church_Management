@@ -78,10 +78,7 @@ private final EmailService emailService;
         churchTempoRepo.deleteAll();
     }
 
-    @Override
-    public ChurchBranch findChurchBranchByEmail(String email) {
-        return churchRepository.findChurchBranchByEmail(email);
-    }
+
 
     @Override
     public long tempoRepoCountChurchBranch() {
