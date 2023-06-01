@@ -43,7 +43,7 @@ private final EmailService emailService;
     @Override
     public void registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
         ChurchBranch churchBranch = mapToRequest(churchRequest2);
-      registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
+      //registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
        ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
