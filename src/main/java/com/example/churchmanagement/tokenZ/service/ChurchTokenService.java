@@ -29,7 +29,7 @@ public class ChurchTokenService {
 
     String token = String.valueOf(intToken)+first2;
        ChurchTokenZ tokenZ = new ChurchTokenZ();
-        System.out.println(token);
+
        tokenZ.setToken(token);
        tokenZ.setCreateAt(LocalDateTime.now());
         tokenZ.setTokenState(TokenState.VALID);
@@ -38,11 +38,7 @@ public class ChurchTokenService {
         return tokenZ;
     }
 
-    public static void main(String[] args) throws TokenException {
 
-        ChurchTokenService churchService = new  ChurchTokenService();
-        churchService.createTokenForChurchBranch("samuel");
-    }
 
     public long countChurchToken() {
         return churchTokenRepository.count();
