@@ -79,6 +79,11 @@ private final EmailService emailService;
     }
 
     @Override
+    public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
+      ChurchBranch foundChurchBranch = churchRepository.findChurchBranchByEmailAddress(emailAddress);
+    }
+
+    @Override
     public ChurchBranch findChurchBranchByEmail(String email) {
         return churchRepository.findChurchBranchByEmailAddress(email);
     }
