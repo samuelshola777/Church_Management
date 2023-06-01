@@ -80,7 +80,7 @@ private final EmailService emailService;
 
     @Override
     public ChurchBranch findChurchBranchByEmail(String email) {
-        return null;
+        return churchRepository.findChurchBranchByEmail(email);
     }
 
     @Override
