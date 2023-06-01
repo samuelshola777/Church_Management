@@ -16,6 +16,8 @@ public interface ChurchService {
 
    void deleteAllChurchBranch();
 
+   ChurchBranch findChurchBranchByEmailAddress(String emailAddress);
+
    ChurchBranch findChurchBranchByEmail(String email);
 
    long tempoRepoCountChurchBranch();

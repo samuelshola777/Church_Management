@@ -72,5 +72,9 @@ class ChurchServiceTest {
     assertEquals(0, churchService.tempoRepoCountChurchBranch());
 
     }
+    @Test
+    void testThatWeCanFindChurchBranchByEmailAddress(){
+    assertEquals("09099332737", churchService.f);
 
+    }
 }
