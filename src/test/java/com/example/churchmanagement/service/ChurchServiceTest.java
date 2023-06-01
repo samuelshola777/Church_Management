@@ -3,6 +3,7 @@ package com.example.churchmanagement.service;
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchType;
 import com.example.churchmanagement.dto.request.ChurchRequest;
+import com.example.churchmanagement.exception.FindingExection;
 import com.example.churchmanagement.exception.PasswordException;
 import com.example.churchmanagement.exception.PhoneNumberException;
 import com.example.churchmanagement.exception.RegistrationException;
@@ -73,8 +74,8 @@ class ChurchServiceTest {
 
     }
     @Test
-    void testThatWeCanFindChurchBranchByEmailAddress(){
-    assertEquals("09099332737", churchService.f);
+    void testThatWeCanFindChurchBranchByEmailAddress() throws FindingExection {
+    assertEquals("09099332737", churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com"));
 
     }
 }

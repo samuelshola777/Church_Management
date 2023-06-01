@@ -9,6 +9,7 @@ import com.example.churchmanagement.data.temRepository.ChurchTempoRepo;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
 import com.example.churchmanagement.emailEngine.service.EmailService;
+import com.example.churchmanagement.exception.FindingExection;
 import com.example.churchmanagement.exception.PasswordException;
 import com.example.churchmanagement.exception.PhoneNumberException;
 import com.example.churchmanagement.exception.RegistrationException;
@@ -79,8 +80,10 @@ private final EmailService emailService;
     }
 
     @Override
-    public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
+    public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) throws FindingExection {
       ChurchBranch foundChurchBranch = churchRepository.findChurchBranchByEmailAddress(emailAddress);
+   if (foundChurchBranch == null) throw new FindingExection("church branch does not exist");
+   return foundChurchBranch;
     }
 
     @Override
