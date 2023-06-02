@@ -41,13 +41,14 @@ private final ToolZ tool;
 private final ChurchTokenService churchTokenService;
 
 private final EmailService emailService ;
-//private final EmailService emailService = new FakeEmailService();
+
 
 
     @Override
     public void registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
         ChurchBranch churchBranch = mapToRequest(churchRequest2);
-      //registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
+
+         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
        ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
@@ -55,7 +56,7 @@ private final EmailService emailService ;
         churchBranch.setToken(token.getToken());
         churchBranch.initializisation();
         churchBranch.addToken(token);
-     emailService.sendEmail();
+       emailService.sendEmail();
  //  churchTempoRepo.save(churchBranch);
 
     }
@@ -73,7 +74,7 @@ private final EmailService emailService ;
 
  public ChurchBranch findChurchByName(String churchName) throws RegistrationException {
         ChurchBranch foundChurch = churchTempoRepo.findByChurchBranchName(churchName);
-        if (foundChurch == null) throw new RegistrationException("account not found");
+        if (foundChurch != null) throw new RegistrationException("account not found");
         return foundChurch;
  }
 
@@ -89,9 +90,15 @@ private final EmailService emailService ;
    return foundChurchBranch;
     }
 
-    @Override
-    public ChurchBranch findChurchBranchByEmail(String email) {
-        return churchRepository.findChurchBranchByEmailAddress(email);
+
+    public void registrationFindChurchBranchByEmail(String email) {
+        try {
+            ChurchBranch foundChurch = churchRepository.findChurchBranchByEmailAddress(email);
+            if (foundChurch != null)
+                throw new RegistrationException("church with email address " + email + " already exists");
+        }catch (RegistrationException k){
+            throw new RuntimeException("church with email address " + email + " already exists");
+        }
     }
 
 
@@ -121,8 +128,8 @@ private final EmailService emailService ;
     }
 
     @Override
-    public ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1) {
-        ChurchBranch foundChurchBranch = findChurchBranchByEmail(changeChurchAddress1.getChurchBranchEmailAddress());
+    public ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1) throws FindingExection {
+        ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(changeChurchAddress1.getChurchBranchEmailAddress());
         Address address = new Address();
     address.setHouseNumber(changeChurchAddress1.getHouseNumber());
     address.setState(changeChurchAddress1.getState());
@@ -145,7 +152,7 @@ private final EmailService emailService ;
         return null;
     }
 
-    private String registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
+    private void registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
         ChurchBranch churchBranch = churchTempoRepo.findByPhoneNumber(phoneNumber);
         try {
         if (churchBranch != null) {
@@ -154,7 +161,6 @@ private final EmailService emailService ;
         }catch (RegistrationException kue) {
             throw new RegistrationException("account already exists");
         }
-        return "successful";
 }
 
 

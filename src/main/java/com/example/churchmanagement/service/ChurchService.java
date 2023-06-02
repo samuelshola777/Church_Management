@@ -20,13 +20,12 @@ public interface ChurchService {
 
    ChurchBranch findChurchBranchByEmailAddress(String emailAddress) throws FindingExection;
 
-   ChurchBranch findChurchBranchByEmail(String email);
 
    long tempoRepoCountChurchBranch();
 
    ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection;
 
-  ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1);
+  ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1) throws FindingExection;
 
    ChurchResponse changeChurchPassword(String glassPANEL);
 

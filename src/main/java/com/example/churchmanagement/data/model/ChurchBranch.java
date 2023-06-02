@@ -26,6 +26,8 @@ public class ChurchBranch {
     @Id
     private long id;
 
+    private boolean verified;
+
     private String emailAddress;
 
     private  String churchBranchName;
