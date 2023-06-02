@@ -98,15 +98,18 @@ private final EmailService emailService;
     }
 
     @Override
-    public String changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection {
+    public ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection {
       // TODO there most be an email verification
       //emailService.sendEmail();
         // TODO after the verification is complete then the system proceed
         ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(mail);
         foundChurchBranch.setChurchBranchName(strongTowerMinistry);
-
-
-        return null;
+        churchRepository.save(foundChurchBranch);
+        ChurchResponse churchResponse = new ChurchResponse();
+        churchResponse.setChurchType(foundChurchBranch.getChurchType());
+        churchResponse.setEmailAddress(foundChurchBranch.getEmailAddress());
+        churchResponse.setAddress(foundChurchBranch.getAddress());
+        return churchResponse;
     }
 
     private String registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
