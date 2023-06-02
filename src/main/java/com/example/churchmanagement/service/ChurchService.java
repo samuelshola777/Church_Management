@@ -1,6 +1,7 @@
 package com.example.churchmanagement.service;
 
 import com.example.churchmanagement.data.model.ChurchBranch;
+import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
 import com.example.churchmanagement.exception.FindingExection;
@@ -24,4 +25,10 @@ public interface ChurchService {
    long tempoRepoCountChurchBranch();
 
    ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection;
+
+  ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1);
+
+   ChurchResponse changeChurchPassword(String glassPANEL);
+
+   String deleteByEmail(String mail) throws FindingExection;
 }

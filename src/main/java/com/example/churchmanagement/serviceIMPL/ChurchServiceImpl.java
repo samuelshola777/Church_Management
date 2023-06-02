@@ -4,8 +4,10 @@ package com.example.churchmanagement.serviceIMPL;
 
 
 import com.example.churchmanagement.ToolZ;
+import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchBranch;
 import com.example.churchmanagement.data.temRepository.ChurchTempoRepo;
+import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
 import com.example.churchmanagement.emailEngine.service.EmailService;
@@ -38,7 +40,8 @@ private final ToolZ tool;
 
 private final ChurchTokenService churchTokenService;
 
-private final EmailService emailService;
+private final EmailService emailService ;
+//private final EmailService emailService = new FakeEmailService();
 
 
     @Override
@@ -97,6 +100,14 @@ private final EmailService emailService;
         return churchTempoRepo.count();
     }
 
+    public ChurchResponse mapToResponse(ChurchBranch foundChurchBranch ){
+        ChurchResponse churchResponse = new ChurchResponse();
+        churchResponse.setChurchBranchName(foundChurchBranch.getChurchBranchName());
+        churchResponse.setChurchType(foundChurchBranch.getChurchType());
+        churchResponse.setEmailAddress(foundChurchBranch.getEmailAddress());
+        churchResponse.setAddress(foundChurchBranch.getAddress());
+        return churchResponse;
+    }
     @Override
     public ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection {
       // TODO there most be an email verification
@@ -105,12 +116,33 @@ private final EmailService emailService;
         ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(mail);
         foundChurchBranch.setChurchBranchName(strongTowerMinistry);
         churchRepository.save(foundChurchBranch);
-        ChurchResponse churchResponse = new ChurchResponse();
-        churchResponse.setChurchBranchName(foundChurchBranch.getChurchBranchName());
-        churchResponse.setChurchType(foundChurchBranch.getChurchType());
-        churchResponse.setEmailAddress(foundChurchBranch.getEmailAddress());
-        churchResponse.setAddress(foundChurchBranch.getAddress());
-        return churchResponse;
+        // TODO a notification mail will be sent that the churchBranchName has been changed
+     return mapToResponse(foundChurchBranch);
+    }
+
+    @Override
+    public ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1) {
+        ChurchBranch foundChurchBranch = findChurchBranchByEmail(changeChurchAddress1.getChurchBranchEmailAddress());
+        Address address = new Address();
+    address.setHouseNumber(changeChurchAddress1.getHouseNumber());
+    address.setState(changeChurchAddress1.getState());
+    address.setStreetName(changeChurchAddress1.getStreetName());
+    address.setLocalGovernment(changeChurchAddress1.getLocalGovernment());
+    foundChurchBranch.setAddress(address);
+    return mapToResponse(foundChurchBranch);
+    }
+
+    @Override
+    public ChurchResponse changeChurchPassword(String glassPANEL) {
+        return null;
+    }
+
+    @Override
+    public String deleteByEmail(String mail) throws FindingExection {
+        ChurchBranch foundChurch = findChurchBranchByEmailAddress(mail);
+    //TODO a verification code will be sent to confirm deletion of church branch
+    // TODO if the verification code is confirmed the deletion will take place
+        return null;
     }
 
     private String registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
@@ -124,5 +156,7 @@ private final EmailService emailService;
         }
         return "successful";
 }
+
+
 
 }

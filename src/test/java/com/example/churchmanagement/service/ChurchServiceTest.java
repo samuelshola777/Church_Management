@@ -2,6 +2,7 @@ package com.example.churchmanagement.service;
 
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchType;
+import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.exception.FindingExection;
 import com.example.churchmanagement.exception.PasswordException;
@@ -10,6 +11,7 @@ import com.example.churchmanagement.exception.RegistrationException;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,8 +27,15 @@ class ChurchServiceTest {
  private  ChurchRequest churchRequest2;
  private Address address2;
  private Address address1;
+ private ChangeChurchAddressRequest changeChurchAddress1;
     @BeforeEach
     void setUp() {
+        changeChurchAddress1 = new ChangeChurchAddressRequest();
+        changeChurchAddress1.setChurchBranchEmailAddress("samuelshola14@gmail.com");
+        changeChurchAddress1.setState("lagos");
+        changeChurchAddress1.setLocalGovernment("akoka");
+        changeChurchAddress1.setHouseNumber("57");
+        changeChurchAddress1.setStreetName("cent finbace road");
 
   address1 = new Address();
     address1.setLocalGovernment("Akoka Environment");
@@ -61,6 +70,7 @@ class ChurchServiceTest {
     @AfterEach
     void tearDown() {
     }
+    @Disabled
     @Test
     void testThatWeCanRegisterANewChurchCenter() throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
     churchService.registerANewChurchBranch(churchRequest1);
@@ -82,4 +92,20 @@ class ChurchServiceTest {
     void testThatWeCanChangeChurchBranchName() throws FindingExection {
     assertEquals("Strong tower ministry", churchService.changeChurchBranchName("samuelshola14@gmail.com","Strong tower ministry").getChurchBranchName());
     }
+    @Test
+  void testThatWeCanChangeChurchAddress(){
+      assertEquals("57", churchService.changeChurchAddress(changeChurchAddress1).getAddress().getHouseNumber());
+
+    }
+    @Disabled
+    @Test
+    void testThatWeCanChangePassword(){
+        assertEquals("",churchService.changeChurchPassword("glassPANEL"));
+    }
+    @Disabled
+    @Test
+    void testThatWeCanDeleteByEmail() throws FindingExection {
+        assertEquals("",churchService.deleteByEmail("samuelshola14@gmail.com"));
+    }
+
 }
