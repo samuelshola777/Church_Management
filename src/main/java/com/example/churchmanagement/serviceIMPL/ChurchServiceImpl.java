@@ -97,6 +97,17 @@ private final EmailService emailService;
         return churchTempoRepo.count();
     }
 
+    @Override
+    public String changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection {
+      // TODO there most be an email verification
+      //emailService.sendEmail();
+        ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(mail);
+
+    // TODO after the verification is complete then the system proceed
+
+        return null;
+    }
+
     private String registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
         ChurchBranch churchBranch = churchTempoRepo.findByPhoneNumber(phoneNumber);
         try {

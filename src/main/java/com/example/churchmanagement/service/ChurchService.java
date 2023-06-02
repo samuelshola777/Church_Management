@@ -23,5 +23,5 @@ public interface ChurchService {
 
    long tempoRepoCountChurchBranch();
 
-   String changeChurchBranchName(String mail, String strongTowerMinistry);
+   String changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection;
 }
