@@ -101,9 +101,10 @@ private final EmailService emailService;
     public String changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection {
       // TODO there most be an email verification
       //emailService.sendEmail();
+        // TODO after the verification is complete then the system proceed
         ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(mail);
+        foundChurchBranch.setChurchBranchName(strongTowerMinistry);
 
-    // TODO after the verification is complete then the system proceed
 
         return null;
     }
