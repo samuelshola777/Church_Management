@@ -78,4 +78,8 @@ class ChurchServiceTest {
     assertEquals("09099332737", churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com").getPhoneNumber());
 
     }
+    @Test
+    void testThatWeCanChangeChurchBranchName(){
+
+    }
 }
