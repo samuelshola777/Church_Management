@@ -22,4 +22,6 @@ public interface ChurchService {
    ChurchBranch findChurchBranchByEmail(String email);
 
    long tempoRepoCountChurchBranch();
+
+   String changeChurchBranchName(String mail, String strongTowerMinistry);
 }
