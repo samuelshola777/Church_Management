@@ -80,6 +80,6 @@ class ChurchServiceTest {
     }
     @Test
     void testThatWeCanChangeChurchBranchName() throws FindingExection {
-    assertEquals("Strong tower ministry", churchService.changeChurchBranchName("samuelshola14@gmail.com","strong tower ministry").getChurchBranchName());
+    assertEquals("Strong tower ministry", churchService.changeChurchBranchName("samuelshola14@gmail.com","Strong tower ministry").getChurchBranchName());
     }
 }

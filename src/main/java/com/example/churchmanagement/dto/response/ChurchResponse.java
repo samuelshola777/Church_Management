@@ -9,9 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Data
-@AllArgsConstructor
 public class ChurchResponse {
 
     private String message;

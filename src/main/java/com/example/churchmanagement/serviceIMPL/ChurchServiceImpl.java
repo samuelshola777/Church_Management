@@ -106,6 +106,7 @@ private final EmailService emailService;
         foundChurchBranch.setChurchBranchName(strongTowerMinistry);
         churchRepository.save(foundChurchBranch);
         ChurchResponse churchResponse = new ChurchResponse();
+        churchResponse.setChurchBranchName(foundChurchBranch.getChurchBranchName());
         churchResponse.setChurchType(foundChurchBranch.getChurchType());
         churchResponse.setEmailAddress(foundChurchBranch.getEmailAddress());
         churchResponse.setAddress(foundChurchBranch.getAddress());
