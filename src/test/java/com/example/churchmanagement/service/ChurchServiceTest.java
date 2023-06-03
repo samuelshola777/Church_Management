@@ -25,7 +25,9 @@ class ChurchServiceTest {
 
  private  ChurchRequest churchRequest1;
  private  ChurchRequest churchRequest2;
+ private  ChurchRequest churchRequest3;
  private Address address2;
+ private Address address3;
  private Address address1;
  private ChangeChurchAddressRequest changeChurchAddress1;
     @BeforeEach
@@ -37,13 +39,19 @@ class ChurchServiceTest {
         changeChurchAddress1.setHouseNumber("57");
         changeChurchAddress1.setStreetName("cent finbace road");
 
-  address1 = new Address();
+    address1 = new Address();
     address1.setLocalGovernment("Akoka Environment");
     address1.setStreetName("cent finbas road");
     address1.setState("lagos state");
     address1.setHouseNumber("67");
 
 
+
+    address3 = new Address();
+    address3.setLocalGovernment("Bariga_ilaje");
+    address3.setStreetName("oremeji_junction");
+    address3.setState("lagos state");
+    address3.setHouseNumber("87");
 
     address2 = new Address();
     address2.setLocalGovernment("pedro road");
@@ -56,7 +64,8 @@ class ChurchServiceTest {
     churchRequest1.setChurchBranchName("StrongTower");
     churchRequest1.setAddress(address1);
     churchRequest1.setPhoneNumber("09062666877");
-    churchRequest1.setPassword("cowubuubbub123");
+    churchRequest1.setPassword("cloudinary127");
+    churchRequest1.setEmailAddress("itsezebruce19@gmail.com");
 
     churchRequest2 = new ChurchRequest();
     churchRequest2.setChurchType(ChurchType.BRANCH);
@@ -65,6 +74,16 @@ class ChurchServiceTest {
     churchRequest2.setPhoneNumber("09099332737");
     churchRequest2.setPassword("goatojjbujbu123");
     churchRequest2.setEmailAddress("samuelshola14@gmail.com");
+
+    churchRequest3 = new ChurchRequest();
+    churchRequest3.setChurchType(ChurchType.HEADQUARTER);
+    churchRequest3.setChurchBranchName("PICC");
+    churchRequest3.setAddress(address3);
+    churchRequest3.setPhoneNumber("08095279090");
+    churchRequest3.setPassword("THUNDER123");
+    churchRequest3.setEmailAddress("jojololamartins686@gmail.com");
+
+
     }
 
     @AfterEach
@@ -75,12 +94,14 @@ class ChurchServiceTest {
     void testThatWeCanRegisterANewChurchCenter() throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
     churchService.registerANewChurchBranch(churchRequest1);
     churchService.registerANewChurchBranch(churchRequest2);
+    churchService.registerANewChurchBranch(churchRequest3);
+    assertEquals(4,churchService.countAllChurchBranch());
 
     }
     @Test
     void testThatWeCanDeleteAllChurchBranchFromTempoRepo(){
         churchService.deleteAllChurchBranch();
-    assertEquals(0, churchService.tempoRepoCountChurchBranch());
+    assertEquals(0, churchService.countAllChurchBranch());
 
     }
     @Test
@@ -93,7 +114,7 @@ class ChurchServiceTest {
     assertEquals("Strong tower ministry", churchService.changeChurchBranchName("samuelshola14@gmail.com","Strong tower ministry").getChurchBranchName());
     }
     @Test
-  void testThatWeCanChangeChurchAddress(){
+  void testThatWeCanChangeChurchAddress() throws FindingExection {
       assertEquals("57", churchService.changeChurchAddress(changeChurchAddress1).getAddress().getHouseNumber());
 
     }

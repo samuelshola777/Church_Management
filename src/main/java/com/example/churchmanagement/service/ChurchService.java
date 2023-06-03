@@ -21,7 +21,7 @@ public interface ChurchService {
    ChurchBranch findChurchBranchByEmailAddress(String emailAddress) throws FindingExection;
 
 
-   long tempoRepoCountChurchBranch();
+
 
    ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection;
 
@@ -30,4 +30,6 @@ public interface ChurchService {
    ChurchResponse changeChurchPassword(String glassPANEL);
 
    String deleteByEmail(String mail) throws FindingExection;
+
+    long countAllChurchBranch();
 }

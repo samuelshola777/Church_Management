@@ -26,7 +26,7 @@ public class ChurchBranch {
     @Id
     private long id;
 
-    private boolean verified;
+   private ValidationState validationState = ValidationState.PENDING;
 
     private String emailAddress;
 

@@ -1,8 +1,8 @@
 package com.example.churchmanagement.serviceIMPL;
 
+import ch.qos.logback.core.model.Model;
 import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.data.repository.PastorRepository;
-import com.example.churchmanagement.data.temRepository.PastorTemRepository;
 import com.example.churchmanagement.dto.request.PastorRequest;
 import com.example.churchmanagement.dto.request.PastorVerificationRequest;
 import com.example.churchmanagement.dto.response.PastorResponse;
@@ -24,8 +24,7 @@ public class PastorServiceIMPL implements PastorService {
 //   ToolZ toolZ;
    @Autowired
      PastorRepository pastorRepository;
-   @Autowired
-  PastorTemRepository pastorTemRepository;
+
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1) throws PhoneNumberException, PasswordException, RegistrationException {
         Pastor buildPastor = mapFromRequestToPastor(pastorRequest1);
@@ -36,7 +35,7 @@ public class PastorServiceIMPL implements PastorService {
         String token = tokenCreator(buildPastor);
        //toolZ.registrationEmailSender(buildPastor,token);
      //  buildPastor.setToken(token);
-        pastorTemRepository.save(buildPastor);
+
         return new PastorResponse("registration completed successfully please log on to your confirmation site to verify your account");
     }
 String boneshaker = "gold";
@@ -45,7 +44,8 @@ String boneshaker = "gold";
         return pastorRepository.count();
     }
     private Pastor temDataBaseFindByEmailAddress(String emailAddress) {
-        return pastorTemRepository.findByEmailAddress(emailAddress);
+
+        return null;
     }
 
     @Override

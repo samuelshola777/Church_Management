@@ -1,12 +1,8 @@
 package com.example.churchmanagement.serviceIMPL;
 
-//import com.example.churchmanagement.ToolZ;
-
-
 import com.example.churchmanagement.ToolZ;
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchBranch;
-import com.example.churchmanagement.data.temRepository.ChurchTempoRepo;
 import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
@@ -21,9 +17,6 @@ import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.service.ChurchTokenService;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -33,8 +26,6 @@ import java.time.LocalDateTime;
 public class ChurchServiceImpl implements ChurchService {
 
 private final ChurchRepository churchRepository;
-
-private final ChurchTempoRepo churchTempoRepo;
 
 private final ToolZ tool;
 
@@ -47,7 +38,7 @@ private final EmailService emailService ;
     @Override
     public void registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
         ChurchBranch churchBranch = mapToRequest(churchRequest2);
-
+        registrationFindChurchBranchByEmail(churchBranch.getEmailAddress());
          registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
@@ -73,14 +64,14 @@ private final EmailService emailService ;
 
 
  public ChurchBranch findChurchByName(String churchName) throws RegistrationException {
-        ChurchBranch foundChurch = churchTempoRepo.findByChurchBranchName(churchName);
+        ChurchBranch foundChurch = churchRepository.findByChurchBranchName(churchName);
         if (foundChurch != null) throw new RegistrationException("account not found");
         return foundChurch;
  }
 
     @Override
     public void deleteAllChurchBranch() {
-        churchTempoRepo.deleteAll();
+        churchRepository.deleteAll();
     }
 
     @Override
@@ -102,10 +93,7 @@ private final EmailService emailService ;
     }
 
 
-    @Override
-    public long tempoRepoCountChurchBranch() {
-        return churchTempoRepo.count();
-    }
+
 
     public ChurchResponse mapToResponse(ChurchBranch foundChurchBranch ){
         ChurchResponse churchResponse = new ChurchResponse();
@@ -128,14 +116,19 @@ private final EmailService emailService ;
     }
 
     @Override
-    public ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1) throws FindingExection {
-        ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(changeChurchAddress1.getChurchBranchEmailAddress());
-        Address address = new Address();
-    address.setHouseNumber(changeChurchAddress1.getHouseNumber());
-    address.setState(changeChurchAddress1.getState());
-    address.setStreetName(changeChurchAddress1.getStreetName());
-    address.setLocalGovernment(changeChurchAddress1.getLocalGovernment());
-    foundChurchBranch.setAddress(address);
+    public ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1)  {
+        ChurchBranch foundChurchBranch;
+        try {
+            foundChurchBranch = findChurchBranchByEmailAddress(changeChurchAddress1.getChurchBranchEmailAddress());
+            Address address = new Address();
+            address.setHouseNumber(changeChurchAddress1.getHouseNumber());
+            address.setState(changeChurchAddress1.getState());
+            address.setStreetName(changeChurchAddress1.getStreetName());
+            address.setLocalGovernment(changeChurchAddress1.getLocalGovernment());
+            foundChurchBranch.setAddress(address);
+        }catch (FindingExection k){
+            throw new IllegalStateException("account can't be found");
+        }
     return mapToResponse(foundChurchBranch);
     }
 
@@ -152,8 +145,13 @@ private final EmailService emailService ;
         return null;
     }
 
+    @Override
+    public long countAllChurchBranch() {
+        return churchRepository.count();
+    }
+
     private void registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
-        ChurchBranch churchBranch = churchTempoRepo.findByPhoneNumber(phoneNumber);
+        ChurchBranch churchBranch = churchRepository.findByPhoneNumber(phoneNumber);
         try {
         if (churchBranch != null) {
             throw new RegistrationException("account already exists");
