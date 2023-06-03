@@ -2,20 +2,19 @@ package com.example.churchmanagement.emailEngine.service.EmailRequest;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
+@Builder
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChurchRegistrationEmailRequest {
 
     private String registrasionTopic = "Welcome to the Church Management Services Platform";
-    @NonNull
     @NotBlank
     @NotEmpty
     private String verificationToken;
-    @NonNull
+
     @NotBlank
     @NotEmpty
     private String emailAddress;

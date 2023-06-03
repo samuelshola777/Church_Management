@@ -4,7 +4,6 @@ import com.example.churchmanagement.sendingBlue.MailConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
@@ -19,8 +18,6 @@ public class AppConfig {
     @Value("${sendinblue_mail}")
     private String sendingBlueUrl;
 
-    @Value("${spring.mail.password}")
-    private String emailPassword;
     @Bean
     public JavaMailSender javaMailSender() {
         JavaMailSenderImpl sender = new JavaMailSenderImpl();
@@ -29,7 +26,7 @@ public class AppConfig {
         sender.setPort(587);
         sender.setProtocol("smtp");
         sender.setUsername("samuelshola14@gmail.com");
-        sender.setPassword(emailPassword);
+        sender.setPassword("uiavvfoxrjkgwmsr");
 
         Properties mailProperties = new Properties();
         mailProperties.put("mail.smtp.auth", true);
@@ -39,9 +36,8 @@ public class AppConfig {
         mailProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         sender.setJavaMailProperties(mailProperties);
 
-     return sender;
+        return sender;
     }
-
     @Bean
     public MailConfig mailConfig(){
         return new MailConfig(apiKey,sendingBlueUrl);

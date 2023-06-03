@@ -49,15 +49,16 @@ public class EmailServiceImpl implements EmailService{
         mailSender.send(message);
     }
 
-    @Override
-    public void churchRegistrationMailSender(String receiverEmail, String token) {
-        ChurchRegistrationEmailRequest request = new ChurchRegistrationEmailRequest(token, receiverEmail);
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("samuelshola14@gmail.com");
-        message.setTo(request.getEmailAddress());
-        message.setSubject(request.getRegistrasionTopic());
-        message.setText(request.getMessage());
-    }
+//    @Override
+//    public void churchRegistrationMailSender( String token, String receiverEmail) {
+//        ChurchRegistrationEmailRequest request =  ChurchRegistrationEmailRequest.
+//        builder().emailAddress(receiverEmail).verificationToken(token).build();
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setFrom("samuelshola14@gmail.com");
+//        message.setTo("samuelshola14@gmail.com");
+//        message.setSubject(request.getRegistrasionTopic());
+//        message.setText(request.getMessage());
+//    }
 
 
 }

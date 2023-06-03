@@ -4,5 +4,5 @@ import com.example.churchmanagement.emailEngine.service.EmailRequest.ChurchRegis
 
 public interface EmailService {
     void sendEmail();
-    void churchRegistrationMailSender(String receiverEmail, String token);
+  //  void churchRegistrationMailSender(String receiverEmail, String token);
 }
