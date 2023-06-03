@@ -8,13 +8,16 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class ChurchRegistrationRequest {
+public class ChurchRegistrationEmailRequest {
 
     private String registrasionTopic = "Welcome to the Church Management Services Platform";
     @NonNull
     @NotBlank
     @NotEmpty
     private String verificationToken;
+    @NonNull
+    @NotBlank
+    @NotEmpty
     private String emailAddress;
 
     private String message = "Good Day. \n" +

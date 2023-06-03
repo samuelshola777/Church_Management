@@ -1,5 +1,6 @@
 package com.example.churchmanagement.emailEngine.service;
 
+import com.example.churchmanagement.emailEngine.service.EmailRequest.ChurchRegistrationEmailRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -48,7 +49,15 @@ public class EmailServiceImpl implements EmailService{
         mailSender.send(message);
     }
 
-
+    @Override
+    public void churchRegistrationMailSender(String receiverEmail, String token) {
+        ChurchRegistrationEmailRequest request = new ChurchRegistrationEmailRequest(token, receiverEmail);
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("samuelshola14@gmail.com");
+        message.setTo(request.getEmailAddress());
+        message.setSubject(request.getRegistrasionTopic());
+        message.setText(request.getMessage());
+    }
 
 
 }
