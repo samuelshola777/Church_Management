@@ -1,6 +1,7 @@
 package com.example.churchmanagement.service;
 
 import com.example.churchmanagement.data.model.ChurchBranch;
+import com.example.churchmanagement.data.model.ValidationState;
 import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
@@ -32,4 +33,6 @@ public interface ChurchService {
    String deleteByEmail(String mail) throws FindingExection;
 
     long countAllChurchBranch();
+
+    ChurchResponse verifyChurchAccount(String mail, String password);
 }

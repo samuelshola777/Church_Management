@@ -81,7 +81,7 @@ class ChurchServiceTest {
     churchRequest3.setChurchBranchName("PICC");
     churchRequest3.setAddress(address3);
     churchRequest3.setPhoneNumber("08095279090");
-    churchRequest3.setPassword("THUNDER123");
+    churchRequest3.setPassword("GodOfTHUNDER123");
     churchRequest3.setEmailAddress("jojololamartins686@gmail.com");
 
 

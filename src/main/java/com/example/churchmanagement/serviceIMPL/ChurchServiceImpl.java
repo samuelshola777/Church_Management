@@ -49,7 +49,7 @@ private final EmailService emailService ;
         churchBranch.addToken(token);
         System.out.println("this is registration token  ()---->   " + token.getToken());
       // emailService.churchRegistrationMailSender(churchBranch.getToken(), churchBranch.getEmailAddress());
-       // churchRepository.save(churchBranch);
+        churchRepository.save(churchBranch);
 
     }
 
@@ -149,6 +149,11 @@ private final EmailService emailService ;
     @Override
     public long countAllChurchBranch() {
         return churchRepository.count();
+    }
+
+    @Override
+    public ChurchResponse verifyChurchAccount(String mail, String password) {
+        return null;
     }
 
     private void registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
