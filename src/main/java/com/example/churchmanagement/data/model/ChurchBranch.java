@@ -25,7 +25,7 @@ public class ChurchBranch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private long id;
-
+    @Enumerated(EnumType.STRING)
    private ValidationState validationState = ValidationState.PENDING;
 
     private String emailAddress;

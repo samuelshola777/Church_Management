@@ -60,6 +60,7 @@ private final EmailService emailService ;
                 .password(churchRequest2.getPassword())
                 .phoneNumber(churchRequest2.getPhoneNumber())
                  .address(churchRequest2.getAddress())
+            .validationState(churchRequest2.getValidationState())
                 .emailAddress(churchRequest2.getEmailAddress()).build();
     }
 
