@@ -3,6 +3,7 @@ package com.example.churchmanagement.serviceIMPL;
 import com.example.churchmanagement.ToolZ;
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchBranch;
+import com.example.churchmanagement.data.model.ValidationState;
 import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
@@ -157,7 +158,7 @@ private final EmailService emailService ;
     public ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException {
    ChurchBranch   foundChurchAccount   = findChurchBranchByEmailAddress(mail);
    if (! foundChurchAccount.getPassword().equalsIgnoreCase(password)) throw new PasswordException("incorrect password");
-       
+     churchRepository.save( churchRepository.findChurchBranchByEmailAddress(mail));
         return null;
     }
 
