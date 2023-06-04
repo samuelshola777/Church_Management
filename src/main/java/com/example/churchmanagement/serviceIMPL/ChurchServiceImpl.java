@@ -47,6 +47,7 @@ private final EmailService emailService ;
         churchBranch.setToken(token.getToken());
         churchBranch.initializisation();
         churchBranch.addToken(token);
+        System.out.println("this is registration token  ()---->   " + token.getToken());
       // emailService.churchRegistrationMailSender(churchBranch.getToken(), churchBranch.getEmailAddress());
        // churchRepository.save(churchBranch);
 
