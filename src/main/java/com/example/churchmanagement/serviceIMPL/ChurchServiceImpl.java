@@ -159,7 +159,8 @@ private final EmailService emailService ;
    ChurchBranch   foundChurchAccount   = findChurchBranchByEmailAddress(mail);
    if (! foundChurchAccount.getPassword().equalsIgnoreCase(password)) throw new PasswordException("incorrect password");
      foundChurchAccount.setValidationState(ValidationState.VALIDATED);
-        return null;
+     churchRepository.save(foundChurchAccount);
+        return mapToResponse(foundChurchAccount);
     }
 
     private void registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
