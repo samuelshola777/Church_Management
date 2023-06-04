@@ -2,6 +2,7 @@ package com.example.churchmanagement.service;
 
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchType;
+import com.example.churchmanagement.data.model.ValidationState;
 import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.exception.FindingExection;
@@ -98,6 +99,12 @@ class ChurchServiceTest {
     //assertEquals(4,churchService.countAllChurchBranch());
 
     }
+    @Test
+    void testThatWeCanVerifyAccount(){
+        assertEquals(ValidationState.VALIDATED, churchService.verifyChurchAccount("itsezebruce19@gmail.com","goat345");
+        );
+
+    }
     @Disabled
     @Test
     void testThatWeCanDeleteAllChurchBranchFromTempoRepo(){
@@ -105,6 +112,7 @@ class ChurchServiceTest {
     assertEquals(0, churchService.countAllChurchBranch());
 
     }
+
     @Disabled
     @Test
     void testThatWeCanFindChurchBranchByEmailAddress() throws FindingExection {
