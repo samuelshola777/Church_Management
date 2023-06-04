@@ -93,16 +93,16 @@ class ChurchServiceTest {
     @Disabled
     @Test
     void testThatWeCanRegisterANewChurchCenter() throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
-  //  churchService.registerANewChurchBranch(churchRequest1);
+  churchService.registerANewChurchBranch(churchRequest1);
   churchService.registerANewChurchBranch(churchRequest2);
-//    churchService.registerANewChurchBranch(churchRequest3);
-    //assertEquals(4,churchService.countAllChurchBranch());
+   churchService.registerANewChurchBranch(churchRequest3);
+    assertEquals(3,churchService.countAllChurchBranch());
 
     }
     @Test
     void testThatWeCanVerifyAccount(){
-        assertEquals(ValidationState.VALIDATED, churchService.verifyChurchAccount("itsezebruce19@gmail.com","goat345");
-        );
+        assertEquals(ValidationState.VALIDATED, churchService.verifyChurchAccount("itsezebruce19@gmail.com","goat345"));
+
 
     }
     @Disabled
