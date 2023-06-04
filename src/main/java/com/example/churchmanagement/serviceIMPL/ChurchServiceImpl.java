@@ -103,6 +103,7 @@ private final EmailService emailService ;
         churchResponse.setChurchType(foundChurchBranch.getChurchType());
         churchResponse.setEmailAddress(foundChurchBranch.getEmailAddress());
         churchResponse.setAddress(foundChurchBranch.getAddress());
+        churchResponse.setValidationState(foundChurchBranch.getValidationState());
         return churchResponse;
     }
     @Override
@@ -153,7 +154,10 @@ private final EmailService emailService ;
     }
 
     @Override
-    public ChurchResponse verifyChurchAccount(String mail, String password) {
+    public ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException {
+   ChurchBranch   foundChurchAccount   = findChurchBranchByEmailAddress(mail);
+   if (! foundChurchAccount.getPassword().equalsIgnoreCase(password)) throw new PasswordException("incorrect password");
+       
         return null;
     }
 

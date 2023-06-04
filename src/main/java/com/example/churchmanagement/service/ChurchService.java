@@ -34,5 +34,5 @@ public interface ChurchService {
 
     long countAllChurchBranch();
 
-    ChurchResponse verifyChurchAccount(String mail, String password);
+    ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException;
 }
