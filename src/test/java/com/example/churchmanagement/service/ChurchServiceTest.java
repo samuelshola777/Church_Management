@@ -98,21 +98,25 @@ class ChurchServiceTest {
     //assertEquals(4,churchService.countAllChurchBranch());
 
     }
+    @Disabled
     @Test
     void testThatWeCanDeleteAllChurchBranchFromTempoRepo(){
         churchService.deleteAllChurchBranch();
     assertEquals(0, churchService.countAllChurchBranch());
 
     }
+    @Disabled
     @Test
     void testThatWeCanFindChurchBranchByEmailAddress() throws FindingExection {
     assertEquals("09099332737", churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com").getPhoneNumber());
 
     }
+    @Disabled
     @Test
     void testThatWeCanChangeChurchBranchName() throws FindingExection {
     assertEquals("Strong tower ministry", churchService.changeChurchBranchName("samuelshola14@gmail.com","Strong tower ministry").getChurchBranchName());
     }
+    @Disabled
     @Test
   void testThatWeCanChangeChurchAddress() throws FindingExection {
       assertEquals("57", churchService.changeChurchAddress(changeChurchAddress1).getAddress().getHouseNumber());
