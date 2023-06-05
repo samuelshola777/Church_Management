@@ -153,8 +153,9 @@ private final EmailService emailService ;
     foundChurch.setValidationState(ValidationState.INVALID);
     foundChurch.setEmailAddress(addToGmail);
     churchRepository.save(foundChurch);
+    return "church account delete successfully";
     }
-        return null;
+        return "invalid token";
     }
 
     @Override
