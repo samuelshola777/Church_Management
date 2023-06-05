@@ -32,6 +32,8 @@ public interface ChurchService {
 
    String deleteByEmail(String mail) throws FindingExection, TokenException;
 
+    String deleteByEmail(String mail, String token) throws FindingExection, TokenException;
+
     long countAllChurchBranch();
 
     ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException;

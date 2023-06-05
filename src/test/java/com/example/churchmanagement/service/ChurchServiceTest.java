@@ -137,8 +137,8 @@ class ChurchServiceTest {
     }
     @Disabled
     @Test
-    void testThatWeCanDeleteByEmail() throws FindingExection {
-        assertEquals("",churchService.deleteByEmail("samuelshola14@gmail.com"));
+    void testThatWeCanDeleteByEmail() throws FindingExection, TokenException {
+        assertEquals("",churchService.deleteByEmail("samuelshola14@gmail.com"," 34233sa"));
     }
 
 }
