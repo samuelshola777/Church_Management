@@ -100,8 +100,8 @@ class ChurchServiceTest {
 
     }
     @Test
-    void testThatWeCanVerifyAccount(){
-        assertEquals(ValidationState.VALIDATED, churchService.verifyChurchAccount("itsezebruce19@gmail.com","goat345"));
+    void testThatWeCanVerifyAccount() throws PasswordException, FindingExection {
+        assertEquals(ValidationState.VALIDATED, churchService.verifyChurchAccount("itsezebruce19@gmail.com","cloudinary127").getValidationState());
 
 
     }

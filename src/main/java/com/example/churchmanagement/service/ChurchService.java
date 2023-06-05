@@ -30,7 +30,7 @@ public interface ChurchService {
 
    ChurchResponse changeChurchPassword(String glassPANEL);
 
-   String deleteByEmail(String mail) throws FindingExection;
+   String deleteByEmail(String mail) throws FindingExection, TokenException;
 
     long countAllChurchBranch();
 

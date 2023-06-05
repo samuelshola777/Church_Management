@@ -142,10 +142,11 @@ private final EmailService emailService ;
     }
 
     @Override
-    public String deleteByEmail(String mail) throws FindingExection {
+    public String deleteByEmail(String mail) throws FindingExection, TokenException {
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(mail);
     //TODO a verification code will be sent to confirm deletion of church branch
     // TODO if the verification code is confirmed the deletion will take place
+        churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
         return null;
     }
 
