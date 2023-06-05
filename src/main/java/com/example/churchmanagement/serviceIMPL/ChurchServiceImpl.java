@@ -50,9 +50,9 @@ private final EmailService emailService ;
         churchBranch.initializisation();
         churchBranch.addToken(token);
         System.out.println("this is registration token  ()---->   " + token.getToken());
-      emailService.sendEmail();
+   //   emailService.sendEmail();
         // emailService.churchRegistrationMailSender(churchBranch.getToken(), churchBranch.getEmailAddress());
-       // churchRepository.save(churchBranch);
+        churchRepository.save(churchBranch);
 
     }
 
@@ -148,12 +148,9 @@ private final EmailService emailService ;
     @Override
     public String deleteByEmail(String mail, String token) throws FindingExection, TokenException {
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(mail);
-    //TODO a verification code will be sent to confirm deletion of church branch
-    // TODO if the verification code is confirmed the deletion will take place
-   String addToGmail = "***** "+foundChurch.getEmailAddress();
     if (token.equals(foundChurch.getToken())) {
     foundChurch.setValidationState(ValidationState.INVALID);
-    foundChurch.setEmailAddress(addToGmail);
+    foundChurch.setEmailAddress("samuelshola14@gmail.com");
     churchRepository.save(foundChurch);
     return "church account delete successfully";
     }
@@ -168,8 +165,10 @@ private final EmailService emailService ;
     @Override
     public ChurchTokenZ tokenGenerator(String email) throws FindingExection, TokenException {
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(email);
-        ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
-       foundChurch.addToken(foundToken);
+      ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch("boneshaker");
+    foundToken.setChurchBranch(foundChurch);
+    foundChurch.initializisation();
+      foundChurch.addToken(foundToken);
         foundChurch.setToken(foundToken.getToken());
         churchRepository.save(foundChurch);
         return foundToken;
