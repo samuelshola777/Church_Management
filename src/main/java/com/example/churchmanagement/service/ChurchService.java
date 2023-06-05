@@ -9,6 +9,7 @@ import com.example.churchmanagement.exception.FindingExection;
 import com.example.churchmanagement.exception.PasswordException;
 import com.example.churchmanagement.exception.PhoneNumberException;
 import com.example.churchmanagement.exception.RegistrationException;
+import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 
 public interface ChurchService {
@@ -30,11 +31,13 @@ public interface ChurchService {
 
    ChurchResponse changeChurchPassword(String glassPANEL);
 
-   String deleteByEmail(String mail) throws FindingExection, TokenException;
+
 
     String deleteByEmail(String mail, String token) throws FindingExection, TokenException;
 
     long countAllChurchBranch();
+
+    ChurchTokenZ tokenGenerator(String email, String tokenName) throws FindingExection, TokenException;
 
     ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException;
 }
