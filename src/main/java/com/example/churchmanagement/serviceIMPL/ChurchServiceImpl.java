@@ -147,7 +147,9 @@ private final EmailService emailService ;
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(mail);
     //TODO a verification code will be sent to confirm deletion of church branch
     // TODO if the verification code is confirmed the deletion will take place
+    if (token.equals(foundChurch.getToken())) {
 
+    }
         return null;
     }
 
@@ -161,7 +163,8 @@ private final EmailService emailService ;
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(email);
         ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
         foundChurch.setToken(foundToken.getToken());
-        return null;
+        churchRepository.save(foundChurch);
+        return foundToken;
     }
 
     @Override
