@@ -1,7 +1,7 @@
 package com.example.churchmanagement.service;
 
-//import com.example.churchmanagement.data.model.ChurchBranch;
-import com.example.churchmanagement.data.model.ChurchBranch;
+
+
 import com.example.churchmanagement.data.model.ValidationState;
 import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
@@ -12,7 +12,7 @@ import com.example.churchmanagement.exception.PhoneNumberException;
 import com.example.churchmanagement.exception.RegistrationException;
 import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
-
+import com.example.churchmanagement.data.model.ChurchBranch;
 public interface ChurchService {
 
 

@@ -34,11 +34,11 @@
 <!--			<artifactId>javax.mail</artifactId>-->
 <!--			<version>1.6.2</version>-->
 <!--		</dependency>-->
-		<dependency>
-			<groupId>com.cloudinary</groupId>
-			<artifactId>cloudinary</artifactId>
-			<version>1.0.14</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.cloudinary</groupId>-->
+<!--			<artifactId>cloudinary</artifactId>-->
+<!--			<version>1.0.14</version>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -80,15 +80,15 @@
 		</dependency>
 <!--		// Integration-->
 
-		<dependency>
+<!--		<dependency>-->
 
-			<groupId>com.cloudinary</groupId>
+<!--			<groupId>com.cloudinary</groupId>-->
 
-			<artifactId>cloudinary-http44</artifactId>
+<!--			<artifactId>cloudinary-http44</artifactId>-->
 
-			<version>1.33.0</version>
+<!--			<version>1.33.0</version>-->
 
-		</dependency>
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
