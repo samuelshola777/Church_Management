@@ -104,6 +104,7 @@ private final EmailService emailService ;
         ChurchResponse churchResponse = new ChurchResponse();
         churchResponse.setChurchBranchName(foundChurchBranch.getChurchBranchName());
         churchResponse.setChurchType(foundChurchBranch.getChurchType());
+       churchResponse.setToken(foundChurchBranch.getToken());
         churchResponse.setEmailAddress(foundChurchBranch.getEmailAddress());
         churchResponse.setAddress(foundChurchBranch.getAddress());
         churchResponse.setValidationState(foundChurchBranch.getValidationState());
@@ -168,6 +169,7 @@ private final EmailService emailService ;
     public ChurchTokenZ tokenGenerator(String email) throws FindingExection, TokenException {
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(email);
         ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
+       foundChurch.addToken(foundToken);
         foundChurch.setToken(foundToken.getToken());
         churchRepository.save(foundChurch);
         return foundToken;
