@@ -38,7 +38,7 @@ public interface ChurchService {
 
     long countAllChurchBranch();
 
-    ChurchTokenZ tokenGenerator(String email, String tokenName) throws FindingExection, TokenException;
+    ChurchTokenZ tokenGenerator(String email) throws FindingExection, TokenException;
 
     ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException;
 }

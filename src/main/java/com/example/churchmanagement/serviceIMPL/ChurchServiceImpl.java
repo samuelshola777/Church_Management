@@ -1,6 +1,7 @@
 package com.example.churchmanagement.serviceIMPL;
 
 import com.example.churchmanagement.ToolZ;
+import com.example.churchmanagement.ToolZ;
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchBranch;
 import com.example.churchmanagement.data.model.ValidationState;
@@ -164,7 +165,7 @@ private final EmailService emailService ;
     }
 
     @Override
-    public ChurchTokenZ tokenGenerator(String email, String tokenName) throws FindingExection, TokenException {
+    public ChurchTokenZ tokenGenerator(String email) throws FindingExection, TokenException {
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(email);
         ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
         foundChurch.setToken(foundToken.getToken());

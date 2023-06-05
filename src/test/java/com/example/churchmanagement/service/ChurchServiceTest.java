@@ -137,8 +137,10 @@ class ChurchServiceTest {
     }
     @Disabled
     @Test
-    void testThatWeCanDeleteByEmail() throws FindingExection, TokenException {
-        assertEquals("",churchService.deleteByEmail("samuelshola14@gmail.com"," 34233sa"));
+    void testThatWeCanDeleteByEmail() throws FindingExection, TokenException, PasswordException {
+      String token =   churchService.verifyChurchAccount("samuelshola14@gmail.com","goatojjbujbu123").getToken();
+        System.out.println(token+"   the is token *****************");
+        assertEquals("invalidtoke",churchService.deleteByEmail("samuelshola14@gmail.com",token));
     }
 
 }
