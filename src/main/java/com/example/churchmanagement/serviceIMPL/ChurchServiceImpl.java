@@ -148,8 +148,11 @@ private final EmailService emailService ;
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(mail);
     //TODO a verification code will be sent to confirm deletion of church branch
     // TODO if the verification code is confirmed the deletion will take place
+   String addToGmail = "***** "+foundChurch.getEmailAddress();
     if (token.equals(foundChurch.getToken())) {
-
+    foundChurch.setValidationState(ValidationState.INVALID);
+    foundChurch.setEmailAddress(addToGmail);
+    churchRepository.save(foundChurch);
     }
         return null;
     }
