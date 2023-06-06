@@ -174,8 +174,9 @@ private final EmailService emailService ;
     }
 
     @Override
-    public void deleteChurchBranchByEmailAddress(String mail) {
-
+    public void deleteChurchBranchByEmailAddress(String mail,String token) throws FindingExection {
+        ChurchBranch churchBranch = findChurchBranchByEmailAddress(mail);
+        System.out.println(churchBranch.getChurchBranchName());
     }
 
     private void registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
