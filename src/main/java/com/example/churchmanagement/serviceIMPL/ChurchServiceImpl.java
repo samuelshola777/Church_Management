@@ -164,6 +164,17 @@ private final EmailService emailService ;
         return foundToken;
     }
 
+    public ChurchTokenZ tokenGenerator(ChurchBranch foundChurch) throws FindingExection, TokenException {
+
+      ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch("boneshaker");
+    foundToken.setChurchBranch(foundChurch);
+    foundChurch.initializisation();
+      foundChurch.addToken(foundToken);
+        foundChurch.setToken(foundToken.getToken());
+        churchRepository.save(foundChurch);
+        return foundToken;
+    }
+
     @Override
     public ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException {
    ChurchBranch   foundChurchAccount   = findChurchBranchByEmailAddress(mail);
@@ -176,7 +187,7 @@ private final EmailService emailService ;
     @Override
     public void deleteChurchBranchByEmailAddress(String mail,String token) throws FindingExection {
         ChurchBranch churchBranch = findChurchBranchByEmailAddress(mail);
-        System.out.println(churchBranch.getChurchBranchName());
+
     }
 
     private void registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
