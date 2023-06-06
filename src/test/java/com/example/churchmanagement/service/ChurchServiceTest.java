@@ -136,5 +136,12 @@ class ChurchServiceTest {
         assertEquals("",churchService.changeChurchPassword("glassPANEL"));
     }
 
+    @Test
+    void testThatWeCanDeleteByEmail(){
+
+        churchService.deleteChurchBranchByEmailAddress("samuelshola14@gmail.com");
+        assertEquals(2,churchService.countAllChurchBranch());
+    }
+
 
 }

@@ -40,4 +40,6 @@ public interface ChurchService {
     ChurchTokenZ tokenGenerator(String email) throws FindingExection, TokenException;
 
     ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException;
+
+    void deleteChurchBranchByEmailAddress(String mail);
 }

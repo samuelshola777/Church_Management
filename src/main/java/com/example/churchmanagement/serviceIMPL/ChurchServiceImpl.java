@@ -173,6 +173,11 @@ private final EmailService emailService ;
         return mapToResponse(foundChurchAccount);
     }
 
+    @Override
+    public void deleteChurchBranchByEmailAddress(String mail) {
+
+    }
+
     private void registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
         ChurchBranch churchBranch = churchRepository.findByPhoneNumber(phoneNumber);
         try {
