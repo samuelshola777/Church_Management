@@ -135,12 +135,6 @@ class ChurchServiceTest {
     void testThatWeCanChangePassword(){
         assertEquals("",churchService.changeChurchPassword("glassPANEL"));
     }
-    @Disabled
-    @Test
-    void testThatWeCanDeleteByEmail() throws FindingExection, TokenException, PasswordException {
-     String token =   churchService.tokenGenerator("jojololamartins686@gmail.com").getToken();
-       System.out.println("this is token ()-->  "+token);
-        assertEquals("church account delete successfully",churchService.deleteByEmail("jojololamartins686@gmail.com","jdkjd2djd"));
-    }
+
 
 }

@@ -34,7 +34,6 @@ public interface ChurchService {
 
 
 
-    String deleteByEmail(String mail, String token) throws FindingExection, TokenException;
 
     long countAllChurchBranch();
 
