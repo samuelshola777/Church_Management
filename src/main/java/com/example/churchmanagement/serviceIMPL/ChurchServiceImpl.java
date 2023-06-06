@@ -150,7 +150,6 @@ private final EmailService emailService ;
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(mail);
     if (token.equals(foundChurch.getToken())) {
     foundChurch.setValidationState(ValidationState.INVALID);
-    foundChurch.setEmailAddress("samuelshola14@gmail.com");
     churchRepository.save(foundChurch);
     return "church account delete successfully";
     }
