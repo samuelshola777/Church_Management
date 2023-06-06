@@ -94,8 +94,8 @@ class ChurchServiceTest {
     @Test
     void testThatWeCanRegisterANewChurchCenter() throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
   // churchService.registerANewChurchBranch(churchRequest1);
-  churchService.registerANewChurchBranch(churchRequest2);
-  // churchService.registerANewChurchBranch(churchRequest3);
+ // churchService.registerANewChurchBranch(churchRequest2);
+  churchService.registerANewChurchBranch(churchRequest3);
     assertEquals(3,churchService.countAllChurchBranch());
 
     }
@@ -138,9 +138,9 @@ class ChurchServiceTest {
     @Disabled
     @Test
     void testThatWeCanDeleteByEmail() throws FindingExection, TokenException, PasswordException {
-      String token =   churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
-        System.out.println("this is token ()-->  "+token);
-        assertEquals("church account delete successfully",churchService.deleteByEmail("samuelshola14@gmail.com",token));
+     String token =   churchService.tokenGenerator("jojololamartins686@gmail.com").getToken();
+       System.out.println("this is token ()-->  "+token);
+        assertEquals("church account delete successfully",churchService.deleteByEmail("jojololamartins686@gmail.com","jdkjd2djd"));
     }
 
 }
