@@ -1,6 +1,7 @@
 package com.example.churchmanagement.service;
 
 import com.example.churchmanagement.data.model.Address;
+import com.example.churchmanagement.data.model.ChurchBranch;
 import com.example.churchmanagement.data.model.ChurchType;
 import com.example.churchmanagement.data.model.ValidationState;
 import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
@@ -138,8 +139,10 @@ class ChurchServiceTest {
 
     @Test
     void testThatWeCanDeleteByEmail() throws FindingExection, TokenException {
-//       churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
-       // System.out.println("*****-->  "+token);
+//        ChurchBranch churchBranch = churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com");
+
+      String token = churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
+
 
        churchService.deleteChurchBranchByEmailAddress("samuelshola14@gmail.com","token");
 //        assertEquals(2,churchService.countAllChurchBranch());

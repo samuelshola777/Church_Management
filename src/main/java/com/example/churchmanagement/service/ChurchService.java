@@ -33,7 +33,7 @@ public interface ChurchService {
    ChurchResponse changeChurchPassword(String glassPANEL);
 
 
-
+    ChurchTokenZ tokenGenerator(ChurchBranch foundChurch) throws TokenException;
 
     long countAllChurchBranch();
 
