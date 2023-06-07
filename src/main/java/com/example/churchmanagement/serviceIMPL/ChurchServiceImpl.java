@@ -155,9 +155,10 @@ private final EmailService emailService ;
     @Override
     public ChurchTokenZ tokenGenerator(String email) throws FindingExection, TokenException {
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(email);
-      ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch("boneshaker");
+      ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
    foundToken.setChurchBranch(foundChurch);
         foundChurch.setToken(foundToken.getToken());
+        System.out.println("this is token ******  "+foundToken.getToken());
         churchRepository.save(foundChurch);
         return foundToken;
     }
@@ -180,12 +181,19 @@ private final EmailService emailService ;
     }
 
     @Override
-    public void deleteChurchBranchByEmailAddress(String mail,String token) throws FindingExection {
+    public void deleteChurchBranchByEmailAddress(String mail,String token)  {
+    try {
+
         ChurchBranch churchBranch = findChurchBranchByEmailAddress(mail);
-        if (churchBranch.getToken().equals(token)) {
-            churchBranch.setValidationState(ValidationState.INVALID);
+        if (! token.equalsIgnoreCase(churchBranch.getToken())) throw new TokenException("Token does not match");
+            churchBranch.setValidationState(ValidationState.VALIDATED);
             churchRepository.save(churchBranch);
-        }
+    }catch (TokenException k){
+        throw new TokenException("Token does not match");
+    }
+
+
+
     }
 
     private void registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {

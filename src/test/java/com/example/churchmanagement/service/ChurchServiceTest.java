@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -142,9 +143,9 @@ class ChurchServiceTest {
 //        ChurchBranch churchBranch = churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com");
 
       String token = churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
+        System.out.println("token: " + token);
+assertDoesNotThrow(()->{churchService.deleteChurchBranchByEmailAddress("samuelshola14@gmail.com","token");});
 
-
-       churchService.deleteChurchBranchByEmailAddress("samuelshola14@gmail.com","token");
 //        assertEquals(2,churchService.countAllChurchBranch());
     }
 
