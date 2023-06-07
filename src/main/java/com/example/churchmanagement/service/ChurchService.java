@@ -42,4 +42,7 @@ public interface ChurchService {
     ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException;
 
    void deleteChurchBranchByEmailAddress(String mail, String token) throws FindingExection;
+
+
+
 }
