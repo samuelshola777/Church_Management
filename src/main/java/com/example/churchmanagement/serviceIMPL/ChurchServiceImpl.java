@@ -186,7 +186,7 @@ private final EmailService emailService ;
 
         ChurchBranch churchBranch = findChurchBranchByEmailAddress(mail);
         if (! token.equalsIgnoreCase(churchBranch.getToken())) throw new TokenException("Token does not match");
-            churchBranch.setValidationState(ValidationState.VALIDATED);
+            churchBranch.setValidationState(ValidationState.INVALID);
             churchRepository.save(churchBranch);
     }catch (TokenException k){
         throw new TokenException("Token does not match");

@@ -1,6 +1,6 @@
 package com.example.churchmanagement.exception;
 
-public class PhoneNumberException extends Exception {
+public class PhoneNumberException extends RuntimeException {
 
     private String message;
 

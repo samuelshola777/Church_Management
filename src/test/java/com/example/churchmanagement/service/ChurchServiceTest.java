@@ -144,7 +144,7 @@ class ChurchServiceTest {
 
       String token = churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
         System.out.println("token: " + token);
-assertDoesNotThrow(()->{churchService.deleteChurchBranchByEmailAddress("samuelshola14@gmail.com","token");});
+assertDoesNotThrow(()->{churchService.deleteChurchBranchByEmailAddress("samuelshola14@gmail.com",token);});
 
 //        assertEquals(2,churchService.countAllChurchBranch());
     }
