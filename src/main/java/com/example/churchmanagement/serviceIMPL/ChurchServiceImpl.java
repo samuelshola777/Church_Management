@@ -202,7 +202,7 @@ private final EmailService emailService ;
 
     public void checkIfInvalid(ChurchBranch churchBranch){
         if (churchBranch.getValidationState() == ValidationState.INVALID)
-            throw new
+            throw new IllegalStateException("INVALID ACCOUNT");
     }
 
 }

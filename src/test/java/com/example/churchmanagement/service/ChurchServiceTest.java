@@ -6,20 +6,13 @@ import com.example.churchmanagement.data.model.ChurchType;
 import com.example.churchmanagement.data.model.ValidationState;
 import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
-import com.example.churchmanagement.exception.FindingExection;
-import com.example.churchmanagement.exception.PasswordException;
-import com.example.churchmanagement.exception.PhoneNumberException;
-import com.example.churchmanagement.exception.RegistrationException;
+import com.example.churchmanagement.exception.*;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ChurchServiceTest {
@@ -140,13 +133,16 @@ class ChurchServiceTest {
 
     @Test
     void testThatWeCanDeleteByEmail()  {
-//        ChurchBranch churchBranch = churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com");
+//
 
       String token = churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
         System.out.println("token: " + token);
 assertDoesNotThrow(()->{churchService.deleteChurchBranchByEmailAddress("samuelshola14@gmail.com",token);});
-
-
+    }
+    @Test
+    void testIfAccountHaveBeenDeactivated(){
+        ChurchBranch churchBranch = churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com");
+  assertThrows(InvalidAccountException.class ,()->  churchService.checkIfInvalid(churchBranch));
     }
 
 

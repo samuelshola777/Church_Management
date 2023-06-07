@@ -43,6 +43,6 @@ public interface ChurchService {
 
    void deleteChurchBranchByEmailAddress(String mail, String token) throws FindingExection;
 
-
+    void checkIfInvalid(ChurchBranch churchBranch);
 
 }
