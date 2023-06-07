@@ -9,10 +9,7 @@ import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
 import com.example.churchmanagement.emailEngine.service.EmailService;
-import com.example.churchmanagement.exception.FindingExection;
-import com.example.churchmanagement.exception.PasswordException;
-import com.example.churchmanagement.exception.PhoneNumberException;
-import com.example.churchmanagement.exception.RegistrationException;
+import com.example.churchmanagement.exception.*;
 import com.example.churchmanagement.service.ChurchService;
 import com.example.churchmanagement.data.repository.ChurchRepository;
 import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
@@ -202,7 +199,7 @@ private final EmailService emailService ;
 
     public void checkIfInvalid(ChurchBranch churchBranch){
         if (churchBranch.getValidationState() == ValidationState.INVALID)
-            throw new IllegalStateException("INVALID ACCOUNT");
+            throw new InvalidAccountException("INVALID ACCOUNT");
     }
 
 }
