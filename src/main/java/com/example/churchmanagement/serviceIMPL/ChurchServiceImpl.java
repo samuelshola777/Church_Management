@@ -49,7 +49,6 @@ private final EmailService emailService ;
         churchBranch.setToken(token.getToken());
         churchBranch.initializisation();
         churchBranch.addToken(token);
-        System.out.println("this is registration token  ()---->   " + token.getToken());
     //  emailService.sendEmail();
         // emailService.churchRegistrationMailSender(churchBranch.getToken(), churchBranch.getEmailAddress());
         churchRepository.save(churchBranch);
@@ -68,7 +67,7 @@ private final EmailService emailService ;
     }
 
 
- public ChurchBranch findChurchByName(String churchName) throws RegistrationException {
+ public ChurchBranch findChurchByName(String churchName){
         ChurchBranch foundChurch = churchRepository.findByChurchBranchName(churchName);
         if (foundChurch != null) throw new RegistrationException("account not found");
         return foundChurch;
@@ -80,7 +79,7 @@ private final EmailService emailService ;
     }
 
     @Override
-    public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) throws FindingExection {
+    public ChurchBranch findChurchBranchByEmailAddress(String emailAddress){
       ChurchBranch foundChurchBranch = churchRepository.findChurchBranchByEmailAddress(emailAddress);
    if (foundChurchBranch == null) throw new FindingExection("church branch does not exist");
    return foundChurchBranch;
@@ -111,8 +110,7 @@ private final EmailService emailService ;
         return churchResponse;
     }
     @Override
-    public ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection {
-      // TODO there most be an email verification
+    public ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry){     // TODO there most be an email verification
       //emailService.sendEmail();
         // TODO after the verification is complete then the system proceed
         ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(mail);
@@ -136,8 +134,8 @@ private final EmailService emailService ;
         }catch (FindingExection k){
             throw new IllegalStateException("account can't be found");
         }
-    return mapToResponse(foundChurchBranch);
-    }
+      return mapToResponse(foundChurchBranch);
+     }
 
     @Override
     public ChurchResponse changeChurchPassword(String glassPANEL) {
@@ -153,17 +151,16 @@ private final EmailService emailService ;
     }
 
     @Override
-    public ChurchTokenZ tokenGenerator(String email) throws FindingExection, TokenException {
+    public ChurchTokenZ tokenGenerator(String email){
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(email);
-      ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
-   foundToken.setChurchBranch(foundChurch);
+        ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
+       foundToken.setChurchBranch(foundChurch);
         foundChurch.setToken(foundToken.getToken());
-        System.out.println("this is token ******  "+foundToken.getToken());
         churchRepository.save(foundChurch);
         return foundToken;
     }
 
-    public ChurchTokenZ tokenGenerator(ChurchBranch foundChurch) throws TokenException {
+    public ChurchTokenZ tokenGenerator(ChurchBranch foundChurch)  {
       ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch("boneshaker");
     foundToken.setChurchBranch(foundChurch);
         foundChurch.setToken(foundToken.getToken());
@@ -172,7 +169,7 @@ private final EmailService emailService ;
     }
 
     @Override
-    public ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException {
+    public ChurchResponse verifyChurchAccount(String mail, String password)  {
    ChurchBranch   foundChurchAccount   = findChurchBranchByEmailAddress(mail);
    if (! foundChurchAccount.getPassword().equalsIgnoreCase(password)) throw new PasswordException("incorrect password");
      foundChurchAccount.setValidationState(ValidationState.VALIDATED);
@@ -182,21 +179,17 @@ private final EmailService emailService ;
 
     @Override
     public void deleteChurchBranchByEmailAddress(String mail,String token)  {
-    try {
-
+        try {
         ChurchBranch churchBranch = findChurchBranchByEmailAddress(mail);
         if (! token.equalsIgnoreCase(churchBranch.getToken())) throw new TokenException("Token does not match");
             churchBranch.setValidationState(ValidationState.INVALID);
             churchRepository.save(churchBranch);
-    }catch (TokenException k){
+        }catch (TokenException k){
         throw new TokenException("Token does not match");
-    }
+        }
+        }
 
-
-
-    }
-
-    private void registrationIfPhoneNumberExist(String phoneNumber) throws RegistrationException {
+    private void registrationIfPhoneNumberExist(String phoneNumber){
         ChurchBranch churchBranch = churchRepository.findByPhoneNumber(phoneNumber);
         try {
         if (churchBranch != null) {

@@ -139,7 +139,7 @@ class ChurchServiceTest {
     }
 
     @Test
-    void testThatWeCanDeleteByEmail() throws FindingExection, TokenException {
+    void testThatWeCanDeleteByEmail()  {
 //        ChurchBranch churchBranch = churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com");
 
       String token = churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
