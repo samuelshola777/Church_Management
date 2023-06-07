@@ -1,7 +1,6 @@
 package com.example.churchmanagement.serviceIMPL;
 
 import com.example.churchmanagement.ToolZ;
-import com.example.churchmanagement.ToolZ;
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchBranch;
 import com.example.churchmanagement.data.model.ValidationState;
@@ -24,52 +23,51 @@ import java.time.LocalDateTime;
 @Service
 public class ChurchServiceImpl implements ChurchService {
 
-private final ChurchRepository churchRepository;
+    private final ChurchRepository churchRepository;
 
-private final ToolZ tool;
+    private final ToolZ tool;
 
-private final ChurchTokenService churchTokenService;
+    private final ChurchTokenService churchTokenService;
 
-private final EmailService emailService ;
-
+    private final EmailService emailService;
 
 
     @Override
-    public void registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
+    public void registerANewChurchBranch(ChurchRequest churchRequest2) {
         ChurchBranch churchBranch = mapToRequest(churchRequest2);
         registrationFindChurchBranchByEmail(churchBranch.getEmailAddress());
-         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
+        registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
-       ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
-       churchBranch.setCreatedAt(LocalDateTime.now());
+        ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
+        churchBranch.setCreatedAt(LocalDateTime.now());
         churchBranch.setToken(token.getToken());
         churchBranch.initializisation();
         churchBranch.addToken(token);
-    //  emailService.sendEmail();
+        //  emailService.sendEmail();
         // emailService.churchRegistrationMailSender(churchBranch.getToken(), churchBranch.getEmailAddress());
         churchRepository.save(churchBranch);
 
     }
 
-    private ChurchBranch mapToRequest(ChurchRequest churchRequest2){
-    return    ChurchBranch.builder()
+    private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
+        return ChurchBranch.builder()
                 .churchBranchName(churchRequest2.getChurchBranchName())
                 .churchType(churchRequest2.getChurchType())
                 .password(churchRequest2.getPassword())
                 .phoneNumber(churchRequest2.getPhoneNumber())
-                 .address(churchRequest2.getAddress())
-            .validationState(churchRequest2.getValidationState())
+                .address(churchRequest2.getAddress())
+                .validationState(churchRequest2.getValidationState())
                 .emailAddress(churchRequest2.getEmailAddress()).build();
     }
 
 
- public ChurchBranch findChurchByName(String churchName){
+    public ChurchBranch findChurchByName(String churchName) {
         ChurchBranch foundChurch = churchRepository.findByChurchBranchName(churchName);
         if (foundChurch != null) throw new RegistrationException("account not found");
         checkIfInvalid(foundChurch);
         return foundChurch;
- }
+    }
 
     @Override
     public void deleteAllChurchBranch() {
@@ -77,26 +75,20 @@ private final EmailService emailService ;
     }
 
     @Override
-    public ChurchBranch findChurchBranchByEmailAddress(String emailAddress){
-      ChurchBranch foundChurchBranch = churchRepository.findChurchBranchByEmailAddress(emailAddress);
-      if (foundChurchBranch == null) throw new FindingExection("church branch does not exist");
-     checkIfInvalid(foundChurchBranch);
-     return foundChurchBranch;
+    public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
+        ChurchBranch foundChurchBranch = churchRepository.findChurchBranchByEmailAddress(emailAddress);
+        if (foundChurchBranch == null) throw new FindingExection("church branch does not exist");
+        checkIfInvalid(foundChurchBranch);
+        return foundChurchBranch;
     }
 
 
     public void registrationFindChurchBranchByEmail(String email) {
-        try {
             ChurchBranch foundChurch = churchRepository.findChurchBranchByEmailAddress(email);
-            if (foundChurch != null)
-                throw new RegistrationException("church with email address " + email + " already exists");
-        }catch (RegistrationException k){
-            throw new RuntimeException("church with email address " + email + " already exists");
+                    if (  foundChurch != null || foundChurch.getValidationState() != ValidationState.INVALID){
+                        throw new RegistrationException("church with email address " + email + " already exists");}
         }
-    }
-
-
-
+}
 
     public ChurchResponse mapToResponse(ChurchBranch foundChurchBranch ){
         ChurchResponse churchResponse = new ChurchResponse();
@@ -110,8 +102,7 @@ private final EmailService emailService ;
     }
     @Override
     public ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry){     // TODO there most be an email verification
-      //emailService.sendEmail();
-        // TODO after the verification is complete then the system proceed
+      emailService.sendEmail();
         ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(mail);
         checkIfInvalid(foundChurchBranch);
         foundChurchBranch.setChurchBranchName(strongTowerMinistry);
