@@ -16,32 +16,26 @@ import com.example.churchmanagement.data.model.ChurchBranch;
 public interface ChurchService {
 
 
-   void registerANewChurchBranch(ChurchRequest churchRequest2) throws PhoneNumberException, PasswordException, RegistrationException, TokenException;
-   ChurchBranch findChurchByName(String churchName) throws RegistrationException;
+   void registerANewChurchBranch(ChurchRequest churchRequest2);
+   ChurchBranch findChurchByName(String churchName) ;
 
    void deleteAllChurchBranch();
 
-   ChurchBranch findChurchBranchByEmailAddress(String emailAddress) throws FindingExection;
+   ChurchBranch findChurchBranchByEmailAddress(String emailAddress);
 
+   ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry);
 
-
-
-   ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry) throws FindingExection;
-
-  ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1) throws FindingExection;
+  ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1);
 
    ChurchResponse changeChurchPassword(String glassPANEL);
 
-
-    ChurchTokenZ tokenGenerator(ChurchBranch foundChurch) throws TokenException;
-
     long countAllChurchBranch();
 
-    ChurchTokenZ tokenGenerator(String email) throws FindingExection, TokenException;
+    ChurchTokenZ tokenGenerator(String email) ;
 
-    ChurchResponse verifyChurchAccount(String mail, String password) throws FindingExection, PasswordException;
+    ChurchResponse verifyChurchAccount(String mail, String password) ;
 
-   void deleteChurchBranchByEmailAddress(String mail, String token) throws FindingExection;
+   void deleteChurchBranchByEmailAddress(String mail, String token) ;
 
     void checkIfInvalid(ChurchBranch churchBranch);
 
