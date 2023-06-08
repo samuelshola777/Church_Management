@@ -8,6 +8,7 @@ public interface ChurchRepository extends JpaRepository<ChurchBranch, Long> {
 
     ChurchBranch findByPhoneNumber(String phoneNumber);
 
+     ChurchBranch findChurchBranchByEmailAddressAndValidationStateNotI
        ChurchBranch findChurchBranchByEmailAddress(String email);
 
       ChurchBranch findByChurchBranchName(String churchName);
