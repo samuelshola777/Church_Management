@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 public class ChurchRegistrationEmailRequest {
 
-    private String registrasionTopic = "Welcome to the Church Management Services Platform";
+    private String registrasionTopic = "\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E Welcome to the Church Management Services Platform \uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E";
     @NotBlank
     @NotEmpty
     private String verificationToken;

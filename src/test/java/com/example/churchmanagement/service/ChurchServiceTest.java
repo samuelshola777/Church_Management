@@ -99,8 +99,8 @@ class ChurchServiceTest {
     }
     @Test
     void testThatWeCanVerifyAccount() throws PasswordException, FindingExection {
-    String token = churchService.tokenGenerator("itsezebruce19@gmail.com").getToken();
-        assertEquals(ValidationState.VALIDATED, churchService.verifyChurchAccount("itsezebruce19@gmail.com","cloudinary127",token).getValidationState());
+    String token = churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
+        assertEquals(ValidationState.VALIDATED, churchService.verifyChurchAccount("samuelshola14@gmail.com","OREAN$W@N$ojjbujbu",token).getValidationState());
     }
     @Disabled
     @Test

@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Data
 public class ForgotPasswordRequest {
-    private String forgetPasswordHeader = "NEW PASSWORD ASSISTANCE";
+    private String forgetPasswordHeader = " \uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E NEW PASSWORD ASSISTANCE \uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E\uD83D\uDE0E";
     @NonNull
     private String newPassword ;
     @NonNull
