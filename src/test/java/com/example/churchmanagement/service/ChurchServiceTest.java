@@ -114,6 +114,11 @@ class ChurchServiceTest {
     assertEquals(31, churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com").getId());
 
     }
+    @Test
+    void testThatWeCanDeleteById(){
+        churchService.deleteChurchBranchById(31);
+        assertEquals(3, churchService.countAllChurchBranch());
+    }
     @Disabled
     @Test
     void testThatWeCanChangeChurchBranchName() throws FindingExection {

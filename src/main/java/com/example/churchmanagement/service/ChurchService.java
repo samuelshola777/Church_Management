@@ -39,4 +39,5 @@ public interface ChurchService {
 
     void checkIfInvalid(ChurchBranch churchBranch);
 
+    void deleteChurchBranchById(long id) ;
 }
