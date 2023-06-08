@@ -35,7 +35,7 @@ public class ChurchServiceImpl implements ChurchService {
     @Override
     public void registerANewChurchBranch(ChurchRequest churchRequest2) {
         ChurchBranch churchBranch = mapToRequest(churchRequest2);
-        findChurchBranchByEmailAddress(churchBranch.getEmailAddress());
+        emailExistingConfirmation(churchBranch.getEmailAddress());
         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
@@ -186,5 +186,11 @@ public class ChurchServiceImpl implements ChurchService {
         churchRepository.deleteById(id);
     }
 
+    private void emailExistingConfirmation(String email){
+        ChurchBranch churchBranch = churchRepository.findByEmailAddress(email);
+        if (churchBranch != null && churchBranch
+        .getValidationState() != ValidationState.INVALID)
+        throw new RegistrationException("Account is already Exist");
+    }
 
 }
