@@ -13,6 +13,7 @@ import com.example.churchmanagement.exception.RegistrationException;
 import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import com.example.churchmanagement.data.model.ChurchBranch;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -44,5 +45,5 @@ public interface ChurchService {
 
     void deleteChurchBranchById(long id) ;
 
-    List<ChurchBranch> getAllChurchBranch();
+   Page<ChurchBranch> getAllChurchBranch(int offSet, int pageSize);
 }

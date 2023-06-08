@@ -11,6 +11,7 @@ import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -149,8 +150,8 @@ class ChurchServiceTest {
     }
     @Test
     void testThatWeCanGetTheListOfChurchAccount(){
-        List<ChurchBranch> listOfChurchBranch = churchService.getAllChurchBranch();
-
+       Page<ChurchBranch> listOfChurchBranch = churchService.getAllChurchBranch(3,1);
+       assertNotNull(listOfChurchBranch);
     }
 
 

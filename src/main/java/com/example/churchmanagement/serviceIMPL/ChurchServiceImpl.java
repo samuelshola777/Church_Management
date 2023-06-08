@@ -15,9 +15,12 @@ import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.service.ChurchTokenService;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -184,6 +187,12 @@ public class ChurchServiceImpl implements ChurchService {
     @Override
     public void deleteChurchBranchById(long id) {
         churchRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<ChurchBranch> getAllChurchBranch(int offSet, int pageSize) {
+        Page<ChurchBranch> listOfChurchBranch = churchRepository.findAll(PageRequest.of(offSet, pageSize));
+        return listOfChurchBranch;
     }
 
     private ChurchBranch emailExistingConfirmation(String email){
