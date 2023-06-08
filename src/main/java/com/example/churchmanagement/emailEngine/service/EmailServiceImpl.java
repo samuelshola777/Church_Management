@@ -2,6 +2,7 @@ package com.example.churchmanagement.emailEngine.service;
 
 import com.example.churchmanagement.emailEngine.service.EmailRequest.ChurchRegistrationEmailRequest;
 import com.example.churchmanagement.emailEngine.service.EmailRequest.ForgotPasswordRequest;
+import com.example.churchmanagement.emailEngine.service.EmailRequest.GenerateTokenRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -69,6 +70,17 @@ public class EmailServiceImpl implements EmailService{
         message.setTo(forgotPasswordRequest.getReceiverEmail());
         message.setSubject(forgotPasswordRequest.getForgetPasswordHeader());
         message.setText(forgotPasswordRequest.getForgotPasswordMessage()+"  "+forgotPasswordRequest.getNewPassword());
+        mailSender.send(message);
+    }
+
+    @Override
+    public void generateTokenRequest(GenerateTokenRequest tokenRequest) {
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("samuelshola14@gmail.com");
+        message.setTo(tokenRequest.getReceiverEmail());
+        message.setSubject(tokenRequest.getTokenHeader());
+        message.setText(tokenRequest.getTokenMessage()+"  "+tokenRequest.getToken());
         mailSender.send(message);
     }
 

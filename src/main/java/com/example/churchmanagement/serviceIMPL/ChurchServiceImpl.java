@@ -8,6 +8,7 @@ import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
 import com.example.churchmanagement.emailEngine.service.EmailRequest.ForgotPasswordRequest;
+import com.example.churchmanagement.emailEngine.service.EmailRequest.GenerateTokenRequest;
 import com.example.churchmanagement.emailEngine.service.EmailService;
 import com.example.churchmanagement.exception.*;
 import com.example.churchmanagement.service.ChurchService;
@@ -48,8 +49,7 @@ public class ChurchServiceImpl implements ChurchService {
         churchBranch.setToken(token.getToken());
         churchBranch.initializisation();
         churchBranch.addToken(token);
-        //  emailService.sendEmail();
-        // emailService.churchRegistrationMailSender(churchBranch.getToken(), churchBranch.getEmailAddress());
+        //emailService.churchRegistrationMailSender(churchBranch.getToken(), churchBranch.getEmailAddress());
         churchRepository.save(churchBranch);
 
     }
@@ -148,6 +148,8 @@ public class ChurchServiceImpl implements ChurchService {
         ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
        foundToken.setChurchBranch(foundChurch);
         foundChurch.setToken(foundToken.getToken());
+        GenerateTokenRequest generateTokenRequest = new GenerateTokenRequest(foundToken.getToken(),foundChurch.getEmailAddress());
+       emailService.generateTokenRequest(generateTokenRequest);
         churchRepository.save(foundChurch);
         return foundToken;
     }
@@ -197,8 +199,7 @@ public class ChurchServiceImpl implements ChurchService {
 
     @Override
     public Page<ChurchBranch> getAllChurchBranch(int offSet, int pageSize) {
-        Page<ChurchBranch> listOfChurchBranch = churchRepository.findAll(PageRequest.of(offSet, pageSize));
-        return listOfChurchBranch;
+        return churchRepository.findAll(PageRequest.of(offSet, pageSize));
     }
 
     @Override
@@ -206,7 +207,8 @@ public class ChurchServiceImpl implements ChurchService {
         ChurchBranch churchBranch = findChurchBranchByEmailAddress(mail);
         if (! churchBranch.getToken().equals(token)) throw new TokenException("Token does not match");
         String newPassword = tool.passwordGenerator(churchBranch);
-        System.out.println("-->    "+newPassword);
+        churchBranch.setPassword(newPassword);
+        churchRepository.save(churchBranch);
         ForgotPasswordRequest forgotPasswordRequest = new ForgotPasswordRequest(newPassword,mail);
         forgotPasswordRequest.setNewPassword(newPassword);
            emailService.forgotPasswordMailSender(forgotPasswordRequest);
