@@ -135,7 +135,12 @@ class ChurchServiceTest {
     @Disabled
     @Test
     void testThatWeCanChangePassword(){
-        assertEquals("",churchService.changeChurchPassword("glassPANEL"));
+        assertDoesNotThrow(()->{churchService.changeChurchPassword("itsezebruce19@gmail.com","GhostGoat879");});
+    }
+    @Test
+    void thatWeCanForGetPasswordAndGetAnotherPassword(){
+      String token =  churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
+        assertDoesNotThrow(()->{churchService.forgotPassword("samuelshola14@gmail.com",token);});
     }
 
     @Test

@@ -28,7 +28,7 @@ public class ChurchBranch {
     @Enumerated(EnumType.STRING)
    private ValidationState validationState = ValidationState.PENDING;
 
-    private String emailAddress;
+private String emailAddress;
 
     private  String churchBranchName;
 

@@ -46,4 +46,6 @@ public interface ChurchService {
     void deleteChurchBranchById(long id) ;
 
    Page<ChurchBranch> getAllChurchBranch(int offSet, int pageSize);
+
+    ChurchResponse forgotPassword(String mail, String token);
 }

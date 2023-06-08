@@ -1,6 +1,7 @@
 package com.example.churchmanagement.emailEngine.service;
 
 import com.example.churchmanagement.emailEngine.service.EmailRequest.ChurchRegistrationEmailRequest;
+import com.example.churchmanagement.emailEngine.service.EmailRequest.ForgotPasswordRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -49,16 +50,27 @@ public class EmailServiceImpl implements EmailService{
         mailSender.send(message);
     }
 
-//    @Override
-//    public void churchRegistrationMailSender( String token, String receiverEmail) {
-//        ChurchRegistrationEmailRequest request =  ChurchRegistrationEmailRequest.
-//        builder().emailAddress(receiverEmail).verificationToken(token).build();
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setFrom("samuelshola14@gmail.com");
-//        message.setTo("samuelshola14@gmail.com");
-//        message.setSubject(request.getRegistrasionTopic());
-//        message.setText(request.getMessage());
-//    }
+    @Override
+    public void churchRegistrationMailSender( String token, String receiverEmail) {
+        ChurchRegistrationEmailRequest request =  ChurchRegistrationEmailRequest.
+        builder().emailAddress(receiverEmail).verificationToken(token).build();
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("samuelshola14@gmail.com");
+        message.setTo("samuelshola14@gmail.com");
+        message.setSubject(request.getRegistrasionTopic());
+        message.setText(request.getMessage());
+        mailSender.send(message);
+    }
+
+    @Override
+    public void forgotPasswordMailSender(ForgotPasswordRequest forgotPasswordRequest) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("samuelshola14@gmail.com");
+        message.setTo(forgotPasswordRequest.getReceiverEmail());
+        message.setSubject(forgotPasswordRequest.getForgetPasswordHeader());
+        message.setText(forgotPasswordRequest.getForgotPasswordMessage()+"  "+forgotPasswordRequest.getNewPassword());
+        mailSender.send(message);
+    }
 
 
 }

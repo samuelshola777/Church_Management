@@ -1,12 +1,16 @@
 package com.example.churchmanagement;
 
 import com.example.churchmanagement.data.model.ChurchBranch;
+import com.example.churchmanagement.data.model.ChurchType;
+import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.exception.PasswordException;
 import com.example.churchmanagement.exception.PhoneNumberException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import java.security.SecureRandom;
 
 @Service
 public class ToolZ {
@@ -27,6 +31,17 @@ public class ToolZ {
 
 
     }
+
+    public  String passwordGenerator(ChurchBranch churchBranch){
+        String [] weiredWord = {"ULSOW@","TOYRE&","WQUEST#","HNGEW%","OREAN$"};
+        SecureRandom secureRandom = new SecureRandom();
+        int random = secureRandom.nextInt(weiredWord.length);
+        String addAlphabetic = weiredWord[random];
+        StringBuilder builder = new StringBuilder(churchBranch.getPassword());
+        String newPassword = builder.substring(4,churchBranch.getPassword().length()-1 );
+        return addAlphabetic + newPassword;
+    }
+
 
     }
 

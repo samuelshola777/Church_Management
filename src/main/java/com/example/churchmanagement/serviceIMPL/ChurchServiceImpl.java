@@ -7,6 +7,7 @@ import com.example.churchmanagement.data.model.ValidationState;
 import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
+import com.example.churchmanagement.emailEngine.service.EmailRequest.ForgotPasswordRequest;
 import com.example.churchmanagement.emailEngine.service.EmailService;
 import com.example.churchmanagement.exception.*;
 import com.example.churchmanagement.service.ChurchService;
@@ -128,10 +129,12 @@ public class ChurchServiceImpl implements ChurchService {
     @Override
     public ChurchResponse changeChurchPassword(String emailAddress, String newPassword) {
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(emailAddress);
+        tool.passwordValidator(newPassword);
         foundChurch.setPassword(newPassword);
         churchRepository.save(foundChurch);
         return mapToResponse(foundChurch);
     }
+
 
     @Override
     public long countAllChurchBranch() {
@@ -196,6 +199,18 @@ public class ChurchServiceImpl implements ChurchService {
     public Page<ChurchBranch> getAllChurchBranch(int offSet, int pageSize) {
         Page<ChurchBranch> listOfChurchBranch = churchRepository.findAll(PageRequest.of(offSet, pageSize));
         return listOfChurchBranch;
+    }
+
+    @Override
+    public ChurchResponse forgotPassword(String mail, String token) {
+        ChurchBranch churchBranch = findChurchBranchByEmailAddress(mail);
+        if (! churchBranch.getToken().equals(token)) throw new TokenException("Token does not match");
+        String newPassword = tool.passwordGenerator(churchBranch);
+        System.out.println("-->    "+newPassword);
+        ForgotPasswordRequest forgotPasswordRequest = new ForgotPasswordRequest(newPassword,mail);
+        forgotPasswordRequest.setNewPassword(newPassword);
+           emailService.forgotPasswordMailSender(forgotPasswordRequest);
+        return mapToResponse(churchBranch);
     }
 
     private ChurchBranch emailExistingConfirmation(String email){
