@@ -2,13 +2,15 @@ package com.example.churchmanagement.data.repository;
 
 import com.example.churchmanagement.data.model.ChurchBranch;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface ChurchRepository extends JpaRepository<ChurchBranch, Long> {
     ChurchBranch findByEmailAddress(String emailAddress);
 
     ChurchBranch findByPhoneNumber(String phoneNumber);
-
-     ChurchBranch findChurchBranchByEmailAddressAndValidationStateNotInvalid(String emailAddress);
+    @Query("SELECT cb FROM ChurchBranch cb WHERE cb.emailAddress = :email AND cb.validationState != com.example.ValidationState.INVALID")
+     ChurchBranch findChurchBranchByEmailAddressAndValidationStateNotInvalid(@Param("emailAddress") String emailAddress);
        ChurchBranch findChurchBranchByEmailAddress(String email);
 
       ChurchBranch findByChurchBranchName(String churchName);
