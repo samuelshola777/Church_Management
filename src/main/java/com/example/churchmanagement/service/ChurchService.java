@@ -33,7 +33,7 @@ public interface ChurchService {
 
     ChurchTokenZ tokenGenerator(String email) ;
 
-    ChurchResponse verifyChurchAccount(String mail, String password) ;
+    ChurchResponse verifyChurchAccount(String mail, String password,String token) ;
 
    void deleteChurchBranchByEmailAddress(String mail, String token) ;
 

@@ -144,10 +144,10 @@ public class ChurchServiceImpl implements ChurchService {
     }
 
     @Override
-    public ChurchResponse verifyChurchAccount(String mail, String password)  {
+    public ChurchResponse verifyChurchAccount(String mail, String password, String token)  {
    ChurchBranch   foundChurchAccount   = findChurchBranchByEmailAddress(mail);
-  checkIfInvalid(foundChurchAccount);
    if (! foundChurchAccount.getPassword().equalsIgnoreCase(password)) throw new PasswordException("incorrect password");
+    if (! foundChurchAccount.getToken().equalsIgnoreCase(token)) throw new TokenException("incorrect token");
      foundChurchAccount.setValidationState(ValidationState.VALIDATED);
      churchRepository.save(foundChurchAccount);
         return mapToResponse(foundChurchAccount);
