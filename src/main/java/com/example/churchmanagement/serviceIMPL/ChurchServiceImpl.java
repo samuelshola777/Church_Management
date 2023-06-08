@@ -77,18 +77,21 @@ public class ChurchServiceImpl implements ChurchService {
     @Override
     public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
         ChurchBranch foundChurchBranch = churchRepository.findChurchBranchByEmailAddress(emailAddress);
-        if (foundChurchBranch == null) throw new FindingExection("church branch does not exist");
-        checkIfInvalid(foundChurchBranch);
+        if (foundChurchBranch == null && foundChurchBranch.getValidationState() == ValidationState.INVALID) throw new FindingExection("church branch does not exist");
+       // checkIfInvalid(foundChurchBranch);
         return foundChurchBranch;
     }
 
 
     public void registrationFindChurchBranchByEmail(String email) {
             ChurchBranch foundChurch = churchRepository.findChurchBranchByEmailAddress(email);
-                    if (  foundChurch != null || foundChurch.getValidationState() != ValidationState.INVALID){
-                        throw new RegistrationException("church with email address " + email + " already exists");}
+                        if (foundChurch != null && ! foundChurch.getValidationState().equals(ValidationState.INVALID)) {
+                            throw new RegistrationException("church with email address " + email + " already exist");
+                    }
+
+
         }
-}
+
 
     public ChurchResponse mapToResponse(ChurchBranch foundChurchBranch ){
         ChurchResponse churchResponse = new ChurchResponse();
@@ -179,7 +182,7 @@ public class ChurchServiceImpl implements ChurchService {
     private void registrationIfPhoneNumberExist(String phoneNumber){
         ChurchBranch churchBranch = churchRepository.findByPhoneNumber(phoneNumber);
         try {
-        if (churchBranch != null) {
+        if (churchBranch != null && churchBranch.getValidationState() != ValidationState.INVALID) {
             throw new RegistrationException("account already exists");
             }
         }catch (RegistrationException kue) {

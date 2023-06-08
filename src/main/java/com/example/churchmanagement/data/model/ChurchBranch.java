@@ -41,7 +41,6 @@ public class ChurchBranch {
      private Address address;
 
     @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "church_branch_id")
     private List<ChurchTokenZ> listOfToken  = new ArrayList<>();
 
     private String password;
