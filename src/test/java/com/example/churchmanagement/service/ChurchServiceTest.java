@@ -111,7 +111,7 @@ class ChurchServiceTest {
     @Disabled
     @Test
     void testThatWeCanFindChurchBranchByEmailAddress() throws FindingExection {
-    assertEquals("09099332737", churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com").getPhoneNumber());
+    assertEquals(31, churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com").getId());
 
     }
     @Disabled

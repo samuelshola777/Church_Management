@@ -76,16 +76,17 @@ public class ChurchServiceImpl implements ChurchService {
 
     @Override
     public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
-        ChurchBranch foundChurchBranch = churchRepository.findChurchBranchByEmailAddress(emailAddress);
-        if (foundChurchBranch == null && foundChurchBranch.getValidationState() == ValidationState.INVALID) throw new FindingExection("church branch does not exist");
-       // checkIfInvalid(foundChurchBranch);
-        return foundChurchBranch;
+        ChurchBranch foundChurch = churchRepository.findByEmailAddress(emailAddress);
+        if (foundChurch == null ||
+        foundChurch.getValidationState() == ValidationState
+        .INVALID) throw new FindingExection("church branch does not exist");
+        return foundChurch;
     }
 
 
     public void registrationFindChurchBranchByEmail(String email) {
-            ChurchBranch foundChurch = churchRepository.findChurchBranchByEmailAddress(email);
-                        if (foundChurch != null && ! foundChurch.getValidationState().equals(ValidationState.INVALID)) {
+            ChurchBranch foundChurch = churchRepository.findByEmailAddress(email).orElseThrow(() -> new RegistrationException("church with email address " + email + " already exist"));
+                        if (!foundChurch.getValidationState().equals(ValidationState.INVALID)) {
                             throw new RegistrationException("church with email address " + email + " already exist");
                     }
 
