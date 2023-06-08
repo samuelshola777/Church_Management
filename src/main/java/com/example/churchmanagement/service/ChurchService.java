@@ -31,7 +31,7 @@ public interface ChurchService {
 
   ChurchResponse changeChurchAddress(ChangeChurchAddressRequest changeChurchAddress1);
 
-   ChurchResponse changeChurchPassword(String glassPANEL);
+   ChurchResponse changeChurchPassword(String email, String password);
 
     long countAllChurchBranch();
 

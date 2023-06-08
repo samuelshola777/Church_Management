@@ -126,8 +126,11 @@ public class ChurchServiceImpl implements ChurchService {
      }
 
     @Override
-    public ChurchResponse changeChurchPassword(String glassPANEL) {
-        return null;
+    public ChurchResponse changeChurchPassword(String emailAddress, String newPassword) {
+        ChurchBranch foundChurch = findChurchBranchByEmailAddress(emailAddress);
+        foundChurch.setPassword(newPassword);
+        churchRepository.save(foundChurch);
+        return mapToResponse(foundChurch);
     }
 
     @Override
