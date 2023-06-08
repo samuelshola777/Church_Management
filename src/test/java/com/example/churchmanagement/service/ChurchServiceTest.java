@@ -12,6 +12,8 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -144,6 +146,11 @@ class ChurchServiceTest {
     void testIfAccountHaveBeenDeactivated(){
         ChurchBranch churchBranch = churchService.findChurchBranchByEmailAddress("samuelshola14@gmail.com");
   assertThrows(InvalidAccountException.class ,()->  churchService.checkIfInvalid(churchBranch));
+    }
+    @Test
+    void testThatWeCanGetTheListOfChurchAccount(){
+        List<ChurchBranch> listOfChurchBranch = churchService.getAllChurchBranch();
+
     }
 
 
