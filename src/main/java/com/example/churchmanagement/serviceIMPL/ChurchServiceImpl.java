@@ -64,8 +64,8 @@ public class ChurchServiceImpl implements ChurchService {
 
     public ChurchBranch findChurchByName(String churchName) {
         ChurchBranch foundChurch = churchRepository.findByChurchBranchName(churchName);
-        if (foundChurch != null) throw new RegistrationException("account not found");
-        checkIfInvalid(foundChurch);
+        if (foundChurch == null  )throw new RegistrationException("account not found");
+        if (foundChurch.getValidationState() == ValidationState.INVALID) throw new RegistrationException("account not found");
         return foundChurch;
     }
 
@@ -83,13 +83,6 @@ public class ChurchServiceImpl implements ChurchService {
         return foundChurch;
     }
 
-
-
-
-
-
-
-
     public ChurchResponse mapToResponse(ChurchBranch foundChurchBranch ){
         ChurchResponse churchResponse = new ChurchResponse();
         churchResponse.setChurchBranchName(foundChurchBranch.getChurchBranchName());
@@ -101,11 +94,11 @@ public class ChurchServiceImpl implements ChurchService {
         return churchResponse;
     }
     @Override
-    public ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry){     // TODO there most be an email verification
+    public ChurchResponse changeChurchBranchName(String mail, String newBranchName){     // TODO there most be an email verification
       emailService.sendEmail();
         ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(mail);
         checkIfInvalid(foundChurchBranch);
-        foundChurchBranch.setChurchBranchName(strongTowerMinistry);
+        foundChurchBranch.setChurchBranchName(newBranchName);
         churchRepository.save(foundChurchBranch);
         // TODO a notification mail will be sent that the churchBranchName has been changed
      return mapToResponse(foundChurchBranch);
@@ -133,9 +126,6 @@ public class ChurchServiceImpl implements ChurchService {
     public ChurchResponse changeChurchPassword(String glassPANEL) {
         return null;
     }
-
-
-
 
     @Override
     public long countAllChurchBranch() {
@@ -167,7 +157,6 @@ public class ChurchServiceImpl implements ChurchService {
     public void deleteChurchBranchByEmailAddress(String mail,String token)  {
         try {
         ChurchBranch churchBranch = findChurchBranchByEmailAddress(mail);
-       checkIfInvalid(churchBranch);
         if (! token.equalsIgnoreCase(churchBranch.getToken())) throw new TokenException("Token does not match");
             churchBranch.setValidationState(ValidationState.INVALID);
             churchRepository.save(churchBranch);
@@ -196,5 +185,6 @@ public class ChurchServiceImpl implements ChurchService {
     public void deleteChurchBranchById(long id) {
         churchRepository.deleteById(id);
     }
+
 
 }
