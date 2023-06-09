@@ -37,6 +37,7 @@ public class ChurchServiceImpl implements ChurchService {
     private final EmailService emailService;
 
 
+
     @Override
     public void registerANewChurchBranch(ChurchRequest churchRequest2) {
         ChurchBranch foundChurch = mapToRequest(churchRequest2);
