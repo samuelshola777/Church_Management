@@ -8,10 +8,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -23,8 +20,10 @@ public class ChurchBranchController {
   private final ChurchService churchService;
 
     @PostMapping("create")
-   public ResponseEntity<ChurchResponse> createChurchAccount(ChurchRequest churchRequest){
+   public ResponseEntity<ChurchResponse> createChurchAccount(@RequestBody ChurchRequest churchRequest){
         return new ResponseEntity<>(churchService.registerANewChurchBranch(churchRequest), HttpStatus.CREATED);
     }
+    @GetMapping("findByName")
+    public ResponseEntity<ChurchResponse> ()
 
 }
