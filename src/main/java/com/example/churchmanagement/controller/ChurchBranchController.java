@@ -20,7 +20,7 @@ public class ChurchBranchController {
     private final ChurchService churchService;
 
     @PostMapping("create")
-    public CompletableFuture<ResponseEntity<?>> createChurchAccount(@RequestBody ChurchRequest churchRequest){
+    public ResponseEntity<?> createChurchAccount(@RequestBody ChurchRequest churchRequest){
         return churchService.registerANewChurchBranch(churchRequest);
     }
 
