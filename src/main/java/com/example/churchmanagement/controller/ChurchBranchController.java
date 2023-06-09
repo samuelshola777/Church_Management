@@ -28,4 +28,11 @@ public class ChurchBranchController {
         return new ResponseEntity<>(churchService.findChurchByName(name),HttpStatus.OK);
     }
 
+    @DeleteMapping("deleteAll")
+    public ResponseEntity<?> deleteAll(){
+        churchService.deleteAllChurchBranch();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+
 }

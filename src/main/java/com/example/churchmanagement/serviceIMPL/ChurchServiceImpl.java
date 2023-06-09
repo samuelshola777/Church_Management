@@ -80,12 +80,12 @@ return mapToResponse(churchBranch);
     }
 
     @Override
-    public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
+    public ChurchResponse findChurchBranchByEmailAddress(String emailAddress) {
         ChurchBranch foundChurch = churchRepository.findByEmailAddress(emailAddress);
         if (foundChurch == null ||
         foundChurch.getValidationState() == ValidationState
         .INVALID) throw new FindingExection("church branch does not exist");
-        return foundChurch;
+        return mapToResponse(foundChurch);
     }
 
     public ChurchResponse mapToResponse(ChurchBranch foundChurchBranch ){
