@@ -20,7 +20,7 @@ import java.util.List;
 public interface ChurchService {
 
 
-   void registerANewChurchBranch(ChurchRequest churchRequest2);
+  ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2);
    ChurchBranch findChurchByName(String churchName) ;
 
    void deleteAllChurchBranch();

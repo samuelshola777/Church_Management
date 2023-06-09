@@ -24,7 +24,7 @@ public class ChurchBranchController {
 
     @PostMapping("create")
    public ResponseEntity<ChurchResponse> createChurchAccount(ChurchRequest churchRequest){
-        return new ResponseEntity<>(churchService.registerANewChurchBranch(churchRequest), HttpStatus.CREATED)
+        return new ResponseEntity<>(churchService.registerANewChurchBranch(churchRequest), HttpStatus.CREATED);
     }
 
 }

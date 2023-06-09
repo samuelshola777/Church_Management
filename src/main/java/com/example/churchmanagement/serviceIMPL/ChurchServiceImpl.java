@@ -39,7 +39,7 @@ public class ChurchServiceImpl implements ChurchService {
 
 
     @Override
-    public void registerANewChurchBranch(ChurchRequest churchRequest2) {
+    public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) {
         ChurchBranch foundChurch = mapToRequest(churchRequest2);
        ChurchBranch churchBranch = emailExistingConfirmation(foundChurch.getEmailAddress());
         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
@@ -52,7 +52,7 @@ public class ChurchServiceImpl implements ChurchService {
         churchBranch.addToken(token);
         //emailService.churchRegistrationMailSender(churchBranch.getToken(), churchBranch.getEmailAddress());
         churchRepository.save(churchBranch);
-
+return mapToResponse(churchBranch);
     }
 
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
