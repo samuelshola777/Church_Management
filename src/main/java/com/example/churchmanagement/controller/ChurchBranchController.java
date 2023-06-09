@@ -24,6 +24,8 @@ public class ChurchBranchController {
         return new ResponseEntity<>(churchService.registerANewChurchBranch(churchRequest), HttpStatus.CREATED);
     }
     @GetMapping("findByName")
-    public ResponseEntity<ChurchResponse> ()
+    public ResponseEntity<ChurchResponse> findChurchByName(@PathVariable String name){
+        return new ResponseEntity<>(churchService.findChurchByName(name),HttpStatus.OK);
+    }
 
 }

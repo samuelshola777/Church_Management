@@ -67,11 +67,11 @@ return mapToResponse(churchBranch);
     }
 
 
-    public ChurchBranch findChurchByName(String churchName) {
+    public ChurchResponse findChurchByName(String churchName) {
         ChurchBranch foundChurch = churchRepository.findByChurchBranchName(churchName);
         if (foundChurch == null  )throw new RegistrationException("account not found");
         if (foundChurch.getValidationState() == ValidationState.INVALID) throw new RegistrationException("account not found");
-        return foundChurch;
+        return mapToResponse(foundChurch);
     }
 
     @Override

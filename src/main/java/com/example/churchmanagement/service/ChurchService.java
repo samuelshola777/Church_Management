@@ -21,7 +21,7 @@ public interface ChurchService {
 
 
   ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2);
-   ChurchBranch findChurchByName(String churchName) ;
+   ChurchResponse findChurchByName(String churchName) ;
 
    void deleteAllChurchBranch();
 
