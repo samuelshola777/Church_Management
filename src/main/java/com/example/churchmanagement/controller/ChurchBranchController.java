@@ -1,5 +1,6 @@
 package com.example.churchmanagement.controller;
 
+import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.dto.response.ChurchResponse;
 import com.example.churchmanagement.service.ChurchService;
@@ -23,11 +24,6 @@ public class ChurchBranchController {
    public ResponseEntity<ChurchResponse> createChurchAccount(@RequestBody ChurchRequest churchRequest){
         return new ResponseEntity<>(churchService.registerANewChurchBranch(churchRequest), HttpStatus.CREATED);
     }
-    @GetMapping("findByName")
-    public ResponseEntity<ChurchResponse> findChurchByName(@PathVariable String name){
-        return new ResponseEntity<>(churchService.findChurchByName(name),HttpStatus.OK);
-    }
-
     @DeleteMapping("deleteAll")
     public ResponseEntity<?> deleteAll(){
         churchService.deleteAllChurchBranch();
@@ -41,5 +37,20 @@ public class ChurchBranchController {
     public ResponseEntity<?> findChurchByEmail(@PathVariable String email){
         return new ResponseEntity<>(churchService.findChurchBranchByEmailAddress(email),HttpStatus.FOUND);
 }
-
+@GetMapping("findByName")
+    public ResponseEntity< ? > findChurchByName(@PathVariable String churchName) {
+        return new ResponseEntity<>(churchService.findChurchByName(churchName),HttpStatus.FOUND);
+    }
+    @PutMapping("changeChurchName")
+public ResponseEntity<?> changeChurchName(@PathVariable String email, @PathVariable String churchName) {
+        return new ResponseEntity<>(churchService.changeChurchBranchName(email, churchName),HttpStatus.OK);
+    }
+    @PutMapping("changeChurchAddress")
+    public ResponseEntity<?> changeChurchAddress(@RequestBody ChangeChurchAddressRequest changeChurchAddressRequest){
+        return new ResponseEntity<>(churchService.changeChurchAddress(changeChurchAddressRequest),HttpStatus.OK);
+    }
+    @PutMapping("changePassword")
+    public ResponseEntity<?> changePassword(@PathVariable String email, @PathVariable String newPassword){
+        return new ResponseEntity<>(churchService.changeChurchPassword(email, newPassword),HttpStatus.OK);
+    }
 }
