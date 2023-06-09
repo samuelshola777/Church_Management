@@ -25,7 +25,9 @@ public interface ChurchService {
 
    void deleteAllChurchBranch();
 
-   ChurchResponse findChurchBranchByEmailAddress(String emailAddress);
+   ChurchBranch findChurchBranchByEmailAddress(String emailAddress);
+
+   ChurchResponse findByEmailResponse(String email);
 
    ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry);
 
