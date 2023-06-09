@@ -2,6 +2,7 @@ package com.example.churchmanagement.tokenZ.data.model;
 
 import com.example.churchmanagement.data.model.ChurchBranch;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -14,7 +15,8 @@ public class ChurchTokenZ  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
+    @NotNull(message = "churchBranch cannotyu be null")
+    @OneToOne
     private ChurchBranch churchBranch;
 
     private LocalDateTime createAt;

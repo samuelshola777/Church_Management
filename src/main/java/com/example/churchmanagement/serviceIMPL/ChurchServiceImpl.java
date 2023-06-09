@@ -150,14 +150,14 @@ return mapToResponse(churchBranch);
     @Override
     public ChurchTokenZ tokenGenerator(String email){
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(email);
-       checkIfInvalid(foundChurch);
-        ChurchTokenZ foundToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
-       foundToken.setChurchBranch(foundChurch);
-        foundChurch.setToken(foundToken.getToken());
-        GenerateTokenRequest generateTokenRequest = new GenerateTokenRequest(foundToken.getToken(),foundChurch.getEmailAddress());
-       emailService.generateTokenRequest(generateTokenRequest);
+        ChurchTokenZ createdToken =   churchTokenService.createTokenForChurchBranch(foundChurch.getChurchBranchName());
+       createdToken.setChurchBranch(foundChurch);
+        foundChurch.setToken(createdToken.getToken());
+        GenerateTokenRequest generateTokenRequest = new GenerateTokenRequest(createdToken.getToken(),foundChurch.getEmailAddress());
+      emailService.generateTokenRequest(generateTokenRequest);
+     churchTokenService.saveToken(createdToken);
         churchRepository.save(foundChurch);
-        return foundToken;
+        return createdToken;
     }
 
     @Override

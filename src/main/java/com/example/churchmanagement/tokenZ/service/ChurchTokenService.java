@@ -13,20 +13,19 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
-@NoArgsConstructor
+
 @AllArgsConstructor
 @Service
 public class ChurchTokenService {
 
-    private  ChurchTokenRepository churchTokenRepository;
+
+    private final ChurchTokenRepository churchTokenRepository;
 
     public ChurchTokenZ createTokenForChurchBranch(String name) throws TokenException {
      SecureRandom secureRandom = new SecureRandom();
   int intToken =  secureRandom.nextInt(777000,799999);
     StringBuilder build = new StringBuilder(name);
     String first2 = build.substring(0,3);
-//   String first2k = first2.toString();
-
     String token = String.valueOf(intToken)+first2;
        ChurchTokenZ tokenZ = new ChurchTokenZ();
 
@@ -34,8 +33,10 @@ public class ChurchTokenService {
        tokenZ.setCreateAt(LocalDateTime.now());
         tokenZ.setTokenState(TokenState.VALID);
         tokenZ.setExpiredAt(tokenZ.getCreateAt().plusMinutes(5));
-       // churchTokenRepository.save(tokenZ);
         return tokenZ;
+    }
+    public void saveToken(ChurchTokenZ churchTokenZ){
+        churchTokenRepository.save(churchTokenZ);
     }
 
 

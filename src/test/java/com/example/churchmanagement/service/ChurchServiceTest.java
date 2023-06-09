@@ -158,6 +158,10 @@ class ChurchServiceTest {
        Page<ChurchBranch> listOfChurchBranch = churchService.getAllChurchBranch(3,1);
        assertNotNull(listOfChurchBranch);
     }
+    @Test
+    void testThatWeCanGenerateToken(){
+      assertDoesNotThrow(()->{  churchService.tokenGenerator("itsezebruce19@gmail.com");});
+    }
 
 
 }
