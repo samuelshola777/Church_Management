@@ -15,7 +15,6 @@ public class ChurchTokenZ  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull(message = "churchBranch cannotyu be null")
     @OneToOne
     private ChurchBranch churchBranch;
 

@@ -68,11 +68,11 @@ class ChurchServiceTest {
 
     churchRequest2 = new ChurchRequest();
     churchRequest2.setChurchType(ChurchType.BRANCH);
-    churchRequest2.setChurchBranchName("Discovery center");
+    churchRequest2.setChurchBranchName("jehovahnessi");
     churchRequest2.setAddress(address2);
-    churchRequest2.setPhoneNumber("09099332737");
+    churchRequest2.setPhoneNumber("08142465995");
     churchRequest2.setPassword("goatojjbujbu123");
-    churchRequest2.setEmailAddress("samuelshola14@gmail.com");
+    churchRequest2.setEmailAddress("orework22@gmail.com");
 
     churchRequest3 = new ChurchRequest();
     churchRequest3.setChurchType(ChurchType.HEADQUARTER);
@@ -91,9 +91,9 @@ class ChurchServiceTest {
     @Disabled
     @Test
     void testThatWeCanRegisterANewChurchCenter() throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
-   //churchService.registerANewChurchBranch(churchRequest1);
+  churchService.registerANewChurchBranch(churchRequest1);
    churchService.registerANewChurchBranch(churchRequest2);
-  // churchService.registerANewChurchBranch(churchRequest3);
+   churchService.registerANewChurchBranch(churchRequest3);
     assertEquals(3,churchService.countAllChurchBranch());
 
     }

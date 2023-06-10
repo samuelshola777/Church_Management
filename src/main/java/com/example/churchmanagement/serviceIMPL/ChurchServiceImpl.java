@@ -43,6 +43,7 @@ public class ChurchServiceImpl implements ChurchService {
         ChurchBranch foundChurch = mapToRequest(churchRequest2);
        ChurchBranch churchBranch = emailExistingConfirmation(foundChurch.getEmailAddress());
         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
+
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
         ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
@@ -54,16 +55,22 @@ public class ChurchServiceImpl implements ChurchService {
         churchRepository.save(churchBranch);
 return mapToResponse(churchBranch);
     }
+    private ChurchTokenZ registrationTokenGenerator(ChurchBranch churchBranch){
+        churchTokenService.createTokenForChurchBranch()
+    }
 
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
+
         return ChurchBranch.builder()
                 .churchBranchName(churchRequest2.getChurchBranchName())
                 .churchType(churchRequest2.getChurchType())
                 .password(churchRequest2.getPassword())
+
                 .phoneNumber(churchRequest2.getPhoneNumber())
                 .address(churchRequest2.getAddress())
                 .validationState(churchRequest2.getValidationState())
                 .emailAddress(churchRequest2.getEmailAddress()).build();
+
     }
 
 
@@ -105,7 +112,7 @@ return mapToResponse(churchBranch);
     }
     @Override
     public ChurchResponse changeChurchBranchName(String mail, String newBranchName){     // TODO there most be an email verification
-      emailService.sendEmail();
+   //   emailService.sendEmail();
         ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(mail);
         checkIfInvalid(foundChurchBranch);
         foundChurchBranch.setChurchBranchName(newBranchName);
@@ -119,7 +126,7 @@ return mapToResponse(churchBranch);
         ChurchBranch foundChurchBranch;
         try {
             foundChurchBranch = findChurchBranchByEmailAddress(changeChurchAddress1.getChurchBranchEmailAddress());
-           checkIfInvalid(foundChurchBranch);
+
             Address address = new Address();
             address.setHouseNumber(changeChurchAddress1.getHouseNumber());
             address.setState(changeChurchAddress1.getState());
@@ -154,7 +161,7 @@ return mapToResponse(churchBranch);
        createdToken.setChurchBranch(foundChurch);
         foundChurch.setToken(createdToken.getToken());
         GenerateTokenRequest generateTokenRequest = new GenerateTokenRequest(createdToken.getToken(),foundChurch.getEmailAddress());
-      emailService.generateTokenRequest(generateTokenRequest);
+    //  emailService.generateTokenRequest(generateTokenRequest);
      churchTokenService.saveToken(createdToken);
         churchRepository.save(foundChurch);
         return createdToken;
