@@ -52,12 +52,9 @@ public class ChurchServiceImpl implements ChurchService {
 
         churchBranch.setCreatedAt(LocalDateTime.now());
         churchBranch.setToken(token.getToken());
-
-     //  churchBranch.initializisation();
         churchBranch.addToken(churchTokenService.saveToken(token));
         //emailService.churchRegistrationMailSender(foundChurch.getToken(), foundChurch.getEmailAddress());
-//        token.setChurchBranch(churchBranch);
-//        churchTokenService.saveToken(token);
+
        return mapToResponse(churchRepository.save(churchBranch));
     }
 
