@@ -56,7 +56,7 @@ public class ChurchServiceImpl implements ChurchService {
 return mapToResponse(churchBranch);
     }
     private ChurchTokenZ registrationTokenGenerator(ChurchBranch churchBranch){
-    }
+
 
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
 
