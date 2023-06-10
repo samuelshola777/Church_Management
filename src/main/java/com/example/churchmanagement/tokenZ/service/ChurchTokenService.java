@@ -35,8 +35,8 @@ public class ChurchTokenService {
         tokenZ.setExpiredAt(tokenZ.getCreateAt().plusMinutes(5));
         return tokenZ;
     }
-    public void saveToken(ChurchTokenZ churchTokenZ){
-        churchTokenRepository.save(churchTokenZ);
+    public ChurchTokenZ saveToken(ChurchTokenZ churchTokenZ){
+       return churchTokenRepository.save(churchTokenZ);
     }
 
 

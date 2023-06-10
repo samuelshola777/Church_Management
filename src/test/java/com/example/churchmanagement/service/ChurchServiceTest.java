@@ -139,14 +139,14 @@ class ChurchServiceTest {
     }
     @Test
     void thatWeCanForGetPasswordAndGetAnotherPassword(){
-      String token =  churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
-        assertDoesNotThrow(()->{churchService.forgotPassword("samuelshola14@gmail.com",token);});
+      String token =  churchService.tokenGenerator("jojololamartins686@gmail.com").getToken();
+        assertDoesNotThrow(()->{churchService.forgotPassword("jojololamartins686@gmail.com",token);});
     }
 
     @Test
     void testThatWeCanDeleteByEmail()  {
-      String token = churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
-        assertDoesNotThrow(()->{churchService.deleteChurchBranchByEmailAddress("samuelshola14@gmail.com",token);});
+      String token = churchService.tokenGenerator("jojololamartins686@gmail.com").getToken();
+        assertDoesNotThrow(()->{churchService.deleteChurchBranchByEmailAddress("jojololamartins686@gmail.com",token);});
     }
     @Test
     void testIfAccountHaveBeenDeactivated(){

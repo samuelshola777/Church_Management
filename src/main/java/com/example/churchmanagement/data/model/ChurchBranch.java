@@ -40,22 +40,22 @@ private String emailAddress;
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
      private Address address;
 
-    @OneToMany( cascade = CascadeType.DETACH, orphanRemoval = true)
-    private List<ChurchTokenZ> listOfToken  = new ArrayList<>();
+    @OneToMany( cascade = CascadeType.ALL, mappedBy = "churchBranch", orphanRemoval = true)
+    private final List<ChurchTokenZ> listOfToken  = new ArrayList<>();
 
     private String password;
 
     private String phoneNumber;
 
     private String token;
-    @Bean
-    @PostConstruct
-    public void initializisation(){
-    this.listOfToken = new ArrayList<>();
-}
-    public List<ChurchTokenZ> getListOfToken() {
-        return listOfToken;
-    }
+//    @Bean
+//    @PostConstruct
+//    public void initializisation(){
+//    this.listOfToken = new ArrayList<>();
+//}
+//    public List<ChurchTokenZ> getListOfToken() {
+//        return listOfToken;
+//    }
     public void addToken(ChurchTokenZ token) {
         listOfToken.add(token);
     }

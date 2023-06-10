@@ -16,6 +16,7 @@ import com.example.churchmanagement.data.repository.ChurchRepository;
 import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.service.ChurchTokenService;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,6 +27,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
+@Transactional
 public class ChurchServiceImpl implements ChurchService {
 
     private final ChurchRepository churchRepository;
@@ -40,20 +42,23 @@ public class ChurchServiceImpl implements ChurchService {
 
     @Override
     public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) {
-        ChurchBranch foundChurch = mapToRequest(churchRequest2);
-       ChurchBranch churchBranch = emailExistingConfirmation(foundChurch.getEmailAddress());
+        ChurchBranch churchBranch = mapToRequest(churchRequest2);
+       emailExistingConfirmation(churchBranch.getEmailAddress());
         registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
 
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
         ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
+
         churchBranch.setCreatedAt(LocalDateTime.now());
         churchBranch.setToken(token.getToken());
-        churchBranch.initializisation();
-        churchBranch.addToken(token);
-        //emailService.churchRegistrationMailSender(churchBranch.getToken(), churchBranch.getEmailAddress());
-        churchRepository.save(churchBranch);
-return mapToResponse(churchBranch);
+
+     //  churchBranch.initializisation();
+        churchBranch.addToken(churchTokenService.saveToken(token));
+        //emailService.churchRegistrationMailSender(foundChurch.getToken(), foundChurch.getEmailAddress());
+//        token.setChurchBranch(churchBranch);
+//        churchTokenService.saveToken(token);
+       return mapToResponse(churchRepository.save(churchBranch));
     }
 
 

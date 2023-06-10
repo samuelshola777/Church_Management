@@ -15,7 +15,12 @@ public class ChurchTokenZ  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(
+            foreignKey = @ForeignKey(
+                    foreignKeyDefinition = "foreign key (church_branch_id) references church_branch (id) ON DELETE CASCADE"
+            )
+    )
     private ChurchBranch churchBranch;
 
     private LocalDateTime createAt;
