@@ -55,7 +55,7 @@ public class ChurchServiceImpl implements ChurchService {
         churchRepository.save(churchBranch);
 return mapToResponse(churchBranch);
     }
-    private ChurchTokenZ registrationTokenGenerator(ChurchBranch churchBranch){
+    private ChurchTokenZ registrationTokenGenerator(ChurchBranch churchBranch)
 
 
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
