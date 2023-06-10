@@ -56,7 +56,6 @@ public class ChurchServiceImpl implements ChurchService {
 return mapToResponse(churchBranch);
     }
     private ChurchTokenZ registrationTokenGenerator(ChurchBranch churchBranch){
-        churchTokenService.createTokenForChurchBranch()
     }
 
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
