@@ -49,6 +49,7 @@ public class ChurchServiceImpl implements ChurchService {
         tool.passwordValidator(churchBranch.getPassword());
         ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
         churchBranch.setCreatedAt(LocalDateTime.now());
+        churchBranch.setValidationState(ValidationState.PENDING);
         churchBranch.setToken(token.getToken());
         token.setChurchBranch(churchBranch);
         ChurchTokenZ savedToken = churchTokenService.saveToken(token);
@@ -60,7 +61,6 @@ public class ChurchServiceImpl implements ChurchService {
 
 
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
-
         return ChurchBranch.builder()
                 .churchBranchName(churchRequest2.getChurchBranchName())
                 .churchType(churchRequest2.getChurchType())
@@ -229,12 +229,13 @@ public class ChurchServiceImpl implements ChurchService {
         churchRepository.deleteAllChurchTokenZByEmailAddress(mail);
     }
 
-    private void emailExistingConfirmation(String email){
+    private ChurchBranch emailExistingConfirmation(String email){
         ChurchBranch churchBranch = churchRepository.findByEmailAddress(email);
         if (churchBranch != null && churchBranch
         .getValidationState() != ValidationState.INVALID) {
             throw new RegistrationException(" Church branch with the email address"+email+"already exists");
         }
+        return churchBranch;
     }
 
 }
