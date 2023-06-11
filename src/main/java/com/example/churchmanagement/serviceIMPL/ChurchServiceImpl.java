@@ -42,9 +42,9 @@ public class ChurchServiceImpl implements ChurchService {
 
     @Override
     public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) {
-        ChurchBranch churchBranch1 = mapToRequest(churchRequest2);
+        ChurchBranch churchBranch = mapToRequest(churchRequest2);
        // registrationIfPhoneNumberExist(churchBranch1.getPhoneNumber());
-   ChurchBranch churchBranch =   emailExistingConfirmation(churchBranch1.getEmailAddress());
+  emailExistingConfirmation(churchBranch.getEmailAddress());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
         ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
@@ -229,13 +229,13 @@ public class ChurchServiceImpl implements ChurchService {
         churchRepository.deleteAllChurchTokenZByEmailAddress(mail);
     }
 
-    private ChurchBranch emailExistingConfirmation(String email){
+    private void emailExistingConfirmation(String email){
         ChurchBranch churchBranch = churchRepository.findByEmailAddress(email);
         if (churchBranch != null && churchBranch
         .getValidationState() != ValidationState.INVALID) {
             throw new RegistrationException(" Church branch with the email address"+email+"already exists");
         }
-        return churchBranch;
+
     }
 
 }
