@@ -40,7 +40,7 @@ private String emailAddress;
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
      private Address address;
 
-    @OneToMany( cascade = CascadeType.ALL, mappedBy = "churchBranch", orphanRemoval = true)
+    @OneToMany( cascade = CascadeType.DETACH, mappedBy = "churchBranch", orphanRemoval = true)
     private final List<ChurchTokenZ> listOfToken  = new ArrayList<>();
 
     private String password;

@@ -92,8 +92,8 @@ class ChurchServiceTest {
     @Test
     void testThatWeCanRegisterANewChurchCenter() throws PhoneNumberException, PasswordException, RegistrationException, TokenException {
   churchService.registerANewChurchBranch(churchRequest1);
-   churchService.registerANewChurchBranch(churchRequest2);
-   churchService.registerANewChurchBranch(churchRequest3);
+  churchService.registerANewChurchBranch(churchRequest2);
+  churchService.registerANewChurchBranch(churchRequest3);
     assertEquals(3,churchService.countAllChurchBranch());
 
     }
@@ -145,8 +145,8 @@ class ChurchServiceTest {
 
     @Test
     void testThatWeCanDeleteByEmail()  {
-      String token = churchService.tokenGenerator("jojololamartins686@gmail.com").getToken();
-        assertDoesNotThrow(()->{churchService.deleteChurchBranchByEmailAddress("jojololamartins686@gmail.com",token);});
+      String token = churchService.tokenGenerator("samuelshola14@gmail.com").getToken();
+        assertDoesNotThrow(()->{churchService.deleteChurchBranchByEmailAddress("samuelshola14@gmail.com",token);});
     }
     @Test
     void testIfAccountHaveBeenDeactivated(){
@@ -163,5 +163,9 @@ class ChurchServiceTest {
       assertDoesNotThrow(()->{  churchService.tokenGenerator("itsezebruce19@gmail.com");});
     }
 
+    @Test
+    void testThatWeCanDeleteAllTokenByChurchEmail(){
+        assertDoesNotThrow(()->{churchService.deleteAllTokenByChurchEmail("itsezebruce19@gmail.com");});
+    }
 
 }

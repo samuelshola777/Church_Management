@@ -12,4 +12,6 @@ public interface ChurchRepository extends JpaRepository<ChurchBranch, Long> {
     ChurchBranch findByPhoneNumber(String phoneNumber);
 
     ChurchBranch findByChurchBranchName(String churchName);
+
+    void deleteAllChurchTokenZByEmailAddress(String mail);
 }
