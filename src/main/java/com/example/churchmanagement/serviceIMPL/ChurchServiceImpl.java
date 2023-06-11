@@ -44,19 +44,22 @@ public class ChurchServiceImpl implements ChurchService {
     public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) {
         ChurchBranch churchBranch = mapToRequest(churchRequest2);
        // registrationIfPhoneNumberExist(churchBranch1.getPhoneNumber());
-  emailExistingConfirmation(churchBranch.getEmailAddress());
-        tool.phoneNumberValidator(churchBranch.getPhoneNumber());
-        tool.passwordValidator(churchBranch.getPassword());
-        ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
-        churchBranch.setCreatedAt(LocalDateTime.now());
-        churchBranch.setValidationState(ValidationState.PENDING);
-        churchBranch.setToken(token.getToken());
-        token.setChurchBranch(churchBranch);
-        ChurchTokenZ savedToken = churchTokenService.saveToken(token);
-       // savedToken.setChurchBranch(savedChurchBranch);
-        churchBranch.addToken(savedToken);
+  try {
+      emailExistingConfirmation(churchBranch.getEmailAddress());
+  }catch (RegistrationException o) {
+      tool.phoneNumberValidator(churchBranch.getPhoneNumber());
+      tool.passwordValidator(churchBranch.getPassword());
+      ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
+      churchBranch.setCreatedAt(LocalDateTime.now());
+      churchBranch.setValidationState(ValidationState.PENDING);
+      churchBranch.setToken(token.getToken());
+      token.setChurchBranch(churchBranch);
+      ChurchTokenZ savedToken = churchTokenService.saveToken(token);
+      // savedToken.setChurchBranch(savedChurchBranch);
+      churchBranch.addToken(savedToken);
+  }
         ChurchBranch savedChurchBranch = churchRepository.save(churchBranch);
-       return mapToResponse(savedChurchBranch);
+        return mapToResponse(savedChurchBranch);
     }
 
 
