@@ -43,7 +43,8 @@ public class ChurchServiceImpl implements ChurchService {
     @Override
     public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) {
         ChurchBranch churchBranch = mapToRequest(churchRequest2);
-            registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
+        registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
+        emailExistingConfirmation(churchBranch.getEmailAddress());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
         ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
@@ -51,7 +52,6 @@ public class ChurchServiceImpl implements ChurchService {
         churchBranch.setToken(token.getToken());
         token.setChurchBranch(churchBranch);
         ChurchTokenZ savedToken = churchTokenService.saveToken(token);
-        //emailService.churchRegistrationMailSender(foundChurch.getToken(), foundChurch.getEmailAddress());
        // savedToken.setChurchBranch(savedChurchBranch);
         churchBranch.addToken(savedToken);
         ChurchBranch savedChurchBranch = churchRepository.save(churchBranch);
