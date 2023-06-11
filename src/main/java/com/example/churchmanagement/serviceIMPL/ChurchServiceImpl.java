@@ -43,7 +43,7 @@ public class ChurchServiceImpl implements ChurchService {
     @Override
     public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) {
         ChurchBranch churchBranch1 = mapToRequest(churchRequest2);
-        registrationIfPhoneNumberExist(churchBranch1.getPhoneNumber());
+       // registrationIfPhoneNumberExist(churchBranch1.getPhoneNumber());
    ChurchBranch churchBranch =   emailExistingConfirmation(churchBranch1.getEmailAddress());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
