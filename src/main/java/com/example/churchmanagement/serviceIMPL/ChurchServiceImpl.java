@@ -42,9 +42,9 @@ public class ChurchServiceImpl implements ChurchService {
 
     @Override
     public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) {
-        ChurchBranch churchBranch = mapToRequest(churchRequest2);
-        registrationIfPhoneNumberExist(churchBranch.getPhoneNumber());
-        emailExistingConfirmation(churchBranch.getEmailAddress());
+        ChurchBranch churchBranch1 = mapToRequest(churchRequest2);
+        registrationIfPhoneNumberExist(churchBranch1.getPhoneNumber());
+   ChurchBranch churchBranch =   emailExistingConfirmation(churchBranch1.getEmailAddress());
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
         tool.passwordValidator(churchBranch.getPassword());
         ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
