@@ -71,7 +71,7 @@ public class ChurchServiceImpl implements ChurchService {
                 .churchBranchName(churchRequest2.getChurchBranchName())
                 .churchType(churchRequest2.getChurchType())
                 .password(churchRequest2.getPassword())
-
+                .id(churchRequest2.getId())
                 .phoneNumber(churchRequest2.getPhoneNumber())
                 .address(churchRequest2.getAddress())
                 .validationState(churchRequest2.getValidationState())
