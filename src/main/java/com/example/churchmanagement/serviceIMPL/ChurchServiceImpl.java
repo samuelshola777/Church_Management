@@ -63,20 +63,7 @@ public class ChurchServiceImpl implements ChurchService {
   if (churchBranch != null && churchBranch.getValidationState() != ValidationState.INVALID)  throw new RegistrationException(" Church branch with the email address"+email+"already exists");
     }
 
-//    private ChurchResponse ifInvalid(ChurchBranch churchBranch){
-//        tool.phoneNumberValidator(churchBranch.getPhoneNumber());
-//        tool.passwordValidator(churchBranch.getPassword());
-//        ChurchTokenZ token = churchTokenService.createTokenForChurchBranch(churchBranch.getChurchBranchName());
-//        churchBranch.setCreatedAt(LocalDateTime.now());
-//        churchBranch.setValidationState(ValidationState.PENDING);
-//        churchBranch.setToken(token.getToken());
-//        token.setChurchBranch(churchBranch);
-//        ChurchTokenZ savedToken = churchTokenService.saveToken(token);
-//        // savedToken.setChurchBranch(savedChurchBranch);
-//        churchBranch.addToken(savedToken);
-//        ChurchBranch savedChurchBranch = churchRepository.save(churchBranch);
-//        return mapToResponse(savedChurchBranch);
-//    }
+
 
 
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
