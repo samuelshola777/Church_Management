@@ -76,7 +76,6 @@ public class ChurchServiceImpl implements ChurchService {
                 .address(churchRequest2.getAddress())
                 .validationState(churchRequest2.getValidationState())
                 .emailAddress(churchRequest2.getEmailAddress()).build();
-
     }
 
 

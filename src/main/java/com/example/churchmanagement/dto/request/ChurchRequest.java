@@ -20,4 +20,7 @@ public class ChurchRequest {
     private String password;
     private String phoneNumber;
     private String emailAddress;
+    private long id;
+
+
 }
