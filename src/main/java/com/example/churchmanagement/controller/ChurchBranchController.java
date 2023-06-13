@@ -29,7 +29,7 @@ public class ChurchBranchController {
         churchService.deleteAllChurchBranch();
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-@GetMapping("findByEmailResponse")
+@GetMapping("findByEmailResponse{email}")
     public ResponseEntity<?> findByEmailResponse(@PathVariable String email){
         return new ResponseEntity<>(churchService.findByEmailResponse(email),HttpStatus.FOUND);
 }

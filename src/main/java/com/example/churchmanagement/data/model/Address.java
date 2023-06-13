@@ -17,7 +17,6 @@ public class Address {
     @Id
     @GeneratedValue
     private Long id;
-
     private String streetName;
     private String state;
     private String localGovernment;
