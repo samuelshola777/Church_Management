@@ -33,10 +33,7 @@ public class ChurchBranchController {
     public ResponseEntity<ChurchResponse> findByEmailResponse(@PathVariable String email){
         return new ResponseEntity<>(churchService.findByEmailResponse(email),HttpStatus.FOUND);
 }
-@GetMapping("findByEmail/{email}")
-    public ResponseEntity<?> findChurchByEmail(@PathVariable String email){
-        return new ResponseEntity<>(churchService.findChurchBranchByEmailAddress(email),HttpStatus.FOUND);
-}
+
 @GetMapping("findByName{churchName}")
     public ResponseEntity< ? > findChurchByName(@PathVariable String churchName) {
         return new ResponseEntity<>(churchService.findChurchByName(churchName),HttpStatus.FOUND);
