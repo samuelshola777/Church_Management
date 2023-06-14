@@ -7,6 +7,7 @@ import com.example.churchmanagement.service.ChurchService;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.concurrent.CompletableFuture;
 @RequestMapping("/api/churchmanagement/")
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class ChurchBranchController {
   @NonNull
   private final ChurchService churchService;
@@ -31,6 +33,7 @@ public class ChurchBranchController {
     }
 @GetMapping("find/{email}")
     public ResponseEntity<ChurchResponse> findByEmailResponse(@PathVariable String email){
+        log.info("Called method");
         return new ResponseEntity<>(churchService.findByEmailResponse(email),HttpStatus.FOUND);
 }
 

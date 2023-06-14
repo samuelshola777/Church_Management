@@ -24,6 +24,7 @@ import java.util.Set;
 public class ChurchBranch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column(unique = true, nullable = false)
     private long id;
     @Enumerated(EnumType.STRING)
    private ValidationState validationState = ValidationState.PENDING;

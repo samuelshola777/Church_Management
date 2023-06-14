@@ -18,6 +18,7 @@ import com.example.churchmanagement.tokenZ.service.ChurchTokenService;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,7 @@ import java.util.List;
 @AllArgsConstructor
 @Service
 @Transactional
+@Slf4j
 public class ChurchServiceImpl implements ChurchService {
 
     private final ChurchRepository churchRepository;
@@ -93,10 +95,13 @@ public class ChurchServiceImpl implements ChurchService {
 
     @Override
     public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
+        log.info("Called method 2");
         ChurchBranch foundChurch = churchRepository.findByEmailAddress(emailAddress);
+        log.info("Called method 3");
         if (foundChurch == null ||
         foundChurch.getValidationState() == ValidationState
         .INVALID) throw new FindingExection("church branch does not exist");
+        log.info("Called method 4");
         return foundChurch;
     }
 
