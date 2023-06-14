@@ -5,3 +5,14 @@ header{
 #toggle-mode{
 
 }
+/* Light mode styles */
+body.light-mode {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #333;
+    color: #f9f9f9;
+}
