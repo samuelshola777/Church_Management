@@ -9,6 +9,16 @@ nav ul li a {
 }
 nav ul li {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 20px;
+}
+nav ul{
+
+}
+body{
+    background-image: url("darkBackGround.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+   // background-position: center;
+
 }
 
