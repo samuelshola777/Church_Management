@@ -2,8 +2,10 @@ header{
     background-position: center;
     background-size: cover;
     background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%);
-    /*height: 109vh;*/
-
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
 }
 
 /* Light mode styles */
