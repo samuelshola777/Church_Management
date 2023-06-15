@@ -47,7 +47,8 @@ public class ChurchServiceImpl implements ChurchService {
    // registrationIfPhoneNumberExist(churchRequest2.getPhoneNumber());
         ChurchBranch churchBranch;
         if (registerCheckIfEmailExists(churchRequest2.getEmailAddress())){
-         churchBranch = registrationFindByEmail(churchRequest2.getEmailAddress());
+         churchBranch = completeUpDate(churchRequest2);
+         churchBranch.setValidationState(ValidationState.PENDING);
         }
 
       churchBranch   = mapToRequest(churchRequest2);
@@ -64,11 +65,7 @@ public class ChurchServiceImpl implements ChurchService {
         ChurchBranch savedChurchBranch = churchRepository.save(churchBranch);
         return mapToResponse(savedChurchBranch);
     }
-    private ChurchBranch registrationFindByEmail(String email){
-       ChurchBranch churchBranch= churchRepository.findByEmailAddress(email);
-       if (churchBranch.getValidationState() != ValidationState.INVALID)throw new RegistrationException("account already exist");
-       return churchBranch;
-    }
+
     private boolean registerCheckIfEmailExists(String email) {
         ChurchBranch churchBranch = churchRepository.findByEmailAddress(email);
   if (churchBranch != null && churchBranch.getValidationState() == ValidationState.INVALID) ifExist = true;
