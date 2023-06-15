@@ -64,7 +64,9 @@ public class ChurchServiceImpl implements ChurchService {
     }
     private boolean registerCheckIfEmailExists(String email) {
         ChurchBranch churchBranch = churchRepository.findByEmailAddress(email);
-  if (churchBranch != null && churchBranch.getValidationState() == ValidationState.INVALID)  throw new RegistrationException(" Church branch with the email address"+email+"already exists");
+  if (churchBranch != null && churchBranch.getValidationState() == ValidationState.INVALID) ifExist = true;
+      //throw new RegistrationException(" Church branch with the email address"+email+"already exists");
+    return ifExist;
     }
 
 
