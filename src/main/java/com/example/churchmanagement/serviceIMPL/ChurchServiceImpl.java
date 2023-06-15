@@ -40,7 +40,7 @@ public class ChurchServiceImpl implements ChurchService {
 
     private final EmailService emailService;
 
-
+    private boolean ifExist;
 
     @Override
     public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) {
