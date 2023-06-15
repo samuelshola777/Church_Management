@@ -48,7 +48,7 @@ public class ChurchServiceImpl implements ChurchService {
         ChurchBranch churchBranch;
         if (registerCheckIfEmailExists(churchRequest2.getEmailAddress())){
 
-         churchBranch = completeUpDate();
+         churchBranch = completeUpDate(churchRequest2.getEmailAddress());
          churchBranch.setValidationState(ValidationState.PENDING);
        return mapToResponse(  churchRepository.save(churchBranch));
         }
