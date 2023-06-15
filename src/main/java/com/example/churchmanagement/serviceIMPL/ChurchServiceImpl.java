@@ -18,6 +18,8 @@ import com.example.churchmanagement.tokenZ.service.ChurchTokenService;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,18 +28,18 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 @Transactional
 @Slf4j
 public class ChurchServiceImpl implements ChurchService {
-
+    @NonNull
     private final ChurchRepository churchRepository;
-
+@NonNull
     private final ToolZ tool;
-
+    @NonNull
     private final ChurchTokenService churchTokenService;
-
+    @NonNull
     private final EmailService emailService;
 
     private boolean ifExist;
