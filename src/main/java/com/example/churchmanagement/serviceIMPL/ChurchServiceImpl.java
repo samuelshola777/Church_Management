@@ -49,7 +49,7 @@ public class ChurchServiceImpl implements ChurchService {
    // registrationIfPhoneNumberExist(churchRequest2.getPhoneNumber());
         ChurchBranch churchBranch;
         if (registerCheckIfEmailExists(churchRequest2.getEmailAddress())){
-         churchBranch = findChurchBranchByEmailAddress(churchRequest2.getEmailAddress());
+         churchBranch = registrationFindByEmail(churchRequest2.getEmailAddress());
         }
 
       churchBranch   = mapToRequest(churchRequest2);
@@ -161,6 +161,7 @@ public class ChurchServiceImpl implements ChurchService {
         }
       return mapToResponse(foundChurchBranch);
      }
+     public ChurchResponse completeUpDate()
 
     @Override
     public ChurchResponse changeChurchPassword(String emailAddress, String newPassword) {
