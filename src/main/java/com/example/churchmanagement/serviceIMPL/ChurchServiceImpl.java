@@ -17,7 +17,6 @@ import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.service.ChurchTokenService;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +25,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -161,7 +159,19 @@ public class ChurchServiceImpl implements ChurchService {
         }
       return mapToResponse(foundChurchBranch);
      }
-     public ChurchResponse completeUpDate()
+     public ChurchBranch completeUpDate(ChurchRequest churchRequest){
+        return ChurchBranch.builder()
+                .id(churchRequest.getId())
+                .validationState(churchRequest.getValidationState())
+                .churchType(churchRequest.getChurchType())
+                .emailAddress(churchRequest.getEmailAddress())
+                .address(churchRequest.getAddress())
+                .password(churchRequest.getPassword())
+                .churchBranchName(churchRequest.getChurchBranchName())
+                .phoneNumber(churchRequest.getPhoneNumber())
+                .createdAt(churchRequest.getCreatedAt()).build();
+
+     }
 
     @Override
     public ChurchResponse changeChurchPassword(String emailAddress, String newPassword) {
