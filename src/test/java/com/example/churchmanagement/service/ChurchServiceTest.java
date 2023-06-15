@@ -91,9 +91,9 @@ class ChurchServiceTest {
     @Disabled
     @Test
     void testThatWeCanRegisterANewChurchCenter()  {
-//  churchService.registerANewChurchBranch(churchRequest1);
-//  churchService.registerANewChurchBranch(churchRequest2);
-//  churchService.registerANewChurchBranch(churchRequest3);
+  churchService.registerANewChurchBranch(churchRequest1);
+  churchService.registerANewChurchBranch(churchRequest2);
+  churchService.registerANewChurchBranch(churchRequest3);
     assertEquals(4,churchService.countAllChurchBranch());
 
     }

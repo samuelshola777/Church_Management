@@ -47,8 +47,10 @@ public class ChurchServiceImpl implements ChurchService {
    // registrationIfPhoneNumberExist(churchRequest2.getPhoneNumber());
         ChurchBranch churchBranch;
         if (registerCheckIfEmailExists(churchRequest2.getEmailAddress())){
-         churchBranch = completeUpDate(churchRequest2);
+
+         churchBranch = completeUpDate();
          churchBranch.setValidationState(ValidationState.PENDING);
+       return mapToResponse(  churchRepository.save(churchBranch));
         }
 
       churchBranch   = mapToRequest(churchRequest2);
@@ -72,9 +74,6 @@ public class ChurchServiceImpl implements ChurchService {
       //throw new RegistrationException(" Church branch with the email address"+email+"already exists");
     return ifExist;
     }
-
-
-
 
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
         return ChurchBranch.builder()
@@ -129,8 +128,7 @@ public class ChurchServiceImpl implements ChurchService {
         return churchResponse;
     }
     @Override
-    public ChurchResponse changeChurchBranchName(String mail, String newBranchName){     // TODO there most be an email verification
-   //   emailService.sendEmail();
+    public ChurchResponse changeChurchBranchName(String mail, String newBranchName){
         ChurchBranch foundChurchBranch = findChurchBranchByEmailAddress(mail);
         checkIfInvalid(foundChurchBranch);
         foundChurchBranch.setChurchBranchName(newBranchName);
@@ -156,17 +154,18 @@ public class ChurchServiceImpl implements ChurchService {
         }
       return mapToResponse(foundChurchBranch);
      }
-     public ChurchBranch completeUpDate(ChurchRequest churchRequest){
+     public ChurchBranch completeUpDate(String email){
+       ChurchBranch churchBranch = churchRepository.findByEmailAddress(email);
         return ChurchBranch.builder()
-                .id(churchRequest.getId())
-                .validationState(churchRequest.getValidationState())
-                .churchType(churchRequest.getChurchType())
-                .emailAddress(churchRequest.getEmailAddress())
-                .address(churchRequest.getAddress())
-                .password(churchRequest.getPassword())
-                .churchBranchName(churchRequest.getChurchBranchName())
-                .phoneNumber(churchRequest.getPhoneNumber())
-                .createdAt(churchRequest.getCreatedAt()).build();
+                .id(churchBranch.getId())
+                .validationState(churchBranch.getValidationState())
+                .churchType(churchBranch.getChurchType())
+                .emailAddress(churchBranch.getEmailAddress())
+                .address(churchBranch.getAddress())
+                .password(churchBranch.getPassword())
+                .churchBranchName(churchBranch.getChurchBranchName())
+                .phoneNumber(churchBranch.getPhoneNumber())
+                .createdAt(churchBranch.getCreatedAt()).build();
 
      }
 
