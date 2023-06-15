@@ -66,6 +66,9 @@ public class ChurchServiceImpl implements ChurchService {
         ChurchBranch savedChurchBranch = churchRepository.save(churchBranch);
         return mapToResponse(savedChurchBranch);
     }
+    private ChurchBranch registrationFindByEmail(String email){
+        churchRepository.findByEmailAddress(email)
+    }
     private boolean registerCheckIfEmailExists(String email) {
         ChurchBranch churchBranch = churchRepository.findByEmailAddress(email);
   if (churchBranch != null && churchBranch.getValidationState() == ValidationState.INVALID) ifExist = true;
