@@ -40,19 +40,15 @@ public class ChurchServiceImpl implements ChurchService {
     @NonNull
     private final EmailService emailService;
 
-    private boolean ifExist;
-
     @Override
     public ChurchResponse registerANewChurchBranch(ChurchRequest churchRequest2) {
    // registrationIfPhoneNumberExist(churchRequest2.getPhoneNumber());
         ChurchBranch churchBranch;
         if (registerCheckIfEmailExists(churchRequest2.getEmailAddress())){
-
          churchBranch = completeUpDate(churchRequest2.getEmailAddress());
          churchBranch.setValidationState(ValidationState.PENDING);
        return mapToResponse(  churchRepository.save(churchBranch));
         }
-
       churchBranch   = mapToRequest(churchRequest2);
         tool.phoneNumberValidator(churchBranch.getPhoneNumber());
       tool.passwordValidator(churchBranch.getPassword());
@@ -62,7 +58,6 @@ public class ChurchServiceImpl implements ChurchService {
       churchBranch.setToken(token.getToken());
       token.setChurchBranch(churchBranch);
         ChurchTokenZ savedToken = churchTokenService.saveToken(token);
-        // savedToken.setChurchBranch(savedChurchBranch);
         churchBranch.addToken(savedToken);
         ChurchBranch savedChurchBranch = churchRepository.save(churchBranch);
         return mapToResponse(savedChurchBranch);
@@ -70,9 +65,10 @@ public class ChurchServiceImpl implements ChurchService {
 
     private boolean registerCheckIfEmailExists(String email) {
         ChurchBranch churchBranch = churchRepository.findByEmailAddress(email);
-  if (churchBranch != null && churchBranch.getValidationState() == ValidationState.INVALID) ifExist = true;
-      //throw new RegistrationException(" Church branch with the email address"+email+"already exists");
-    return ifExist;
+  if (churchBranch != null && churchBranch.getValidationState() == ValidationState.INVALID){
+      return true;}
+  if (churchBranch != null)throw new RegistrationException(" Church branch with the email address  "+email+ "  already exists");
+return false;
     }
 
     private ChurchBranch mapToRequest(ChurchRequest churchRequest2) {
