@@ -35,7 +35,7 @@ import java.util.List;
 public class ChurchServiceImpl implements ChurchService {
     @NonNull
     private final ChurchRepository churchRepository;
-@NonNull
+    @NonNull
     private final ToolZ tool;
     @NonNull
     private final ChurchTokenService churchTokenService;
