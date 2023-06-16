@@ -1,10 +1,14 @@
 .navBar-div {
     background-position: center;
-
     width: 80%;
-    /*background-size: cover;*/
+   display: flex;
+    margin-right: 20px;
     height: 40px;
-    background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%);
+}
+.navBar-div .headerLogo{
+    color: white;
+    font-size: 20px;
+    
 }
 .image-div .logoImage{
     height: 100vh;
@@ -43,7 +47,7 @@ nav ul li a {
     /*background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%);*/
     /*color: #fff;*/
     text-decoration: none;
-    color: #333333;
+    color: white;
     font-family: sans-serif;
 }
 nav ul li {
