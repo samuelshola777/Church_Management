@@ -69,6 +69,8 @@ body{
     justify-content: flex-start;
 }
 nav ul li a {
+    /*padding: 5px 20px;*/ //TODO: to add the texts in to a box
+    /*border: 1px solid ;*/ // to add the texts in to a box this two lines
     /*background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%);*/
     /*color: #fff;*/
     text-decoration: none;
@@ -96,6 +98,17 @@ nav ul li {
     display: flex;
     justify-content: flex-end; /* Shift the li elements to the right */
 }
-
+.pageBody{
+    width: 50%;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+.pageBody .pageHeader{
+   font-size: 40px;
+    color: darkgrey;
+    /*padding: 5px 10px;*/
+    /*border: 5px solid;*/
+}
 
 
