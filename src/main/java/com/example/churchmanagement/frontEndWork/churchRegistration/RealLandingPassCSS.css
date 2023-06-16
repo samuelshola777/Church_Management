@@ -79,6 +79,8 @@ nav ul li a {
 }
 
 nav ul li a:hover{
+    color: orange;
+    font-size: 120%;
     /*text-decoration: underline;*/
 }
 nav ul li {
