@@ -5,20 +5,34 @@
     list-style: none;
     box-sizing: border-box;
 }
+.navBar-div .theLogoLine{
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+.navBar-div .theLogoLine hr{
+    width: 6px;
+    height: 50px; /* Adjust the height as needed */
+    background-color: black;
+}
 body{
     font-family: montserrat;
 
 }
 .navBar-div {
-    background-position: center;
+    /*background-position: center;*/
     width: 100%;
    display: flex;
     justify-content: space-between;
     height: 60px;
-    background-color: #6f726f;
-    background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2));
+    padding-top: 20px;
+
 }
+
 .navBar-div .headerLogo{
+    padding-left: 10px;
+    align-self: flex-start; /* Move the logo to the start (left) */
     color: white;
     font-size: 20px;
 
@@ -54,9 +68,6 @@ body{
     display: flex;
     justify-content: flex-start;
 }
-.navBar-div .naV ul{
-    float: right;
-}
 nav ul li a {
     /*background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%);*/
     /*color: #fff;*/
@@ -66,9 +77,10 @@ nav ul li a {
 }
 nav ul li {
     display: inline-block;
-    margin-right: 20px;/* the space between the multiple anchor elements*/
+    margin-right: 50px;/* the space between the multiple anchor elements*/
 }
-nav ul{
+.naV ul{
+    align-self: flex-end; /* Move the navbar to the end (right) */
     float: right;
     list-style-type: none;
     margin: 0;
@@ -77,7 +89,5 @@ nav ul{
     justify-content: flex-end; /* Shift the li elements to the right */
 }
 
-.logoImage{
 
-}
 
