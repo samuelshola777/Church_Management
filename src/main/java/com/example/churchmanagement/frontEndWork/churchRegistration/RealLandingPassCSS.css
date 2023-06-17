@@ -108,46 +108,22 @@ nav ul li {
 .pageBody .pageHeader{
    font-size: 40px;
     color: darkgrey;
-    /*padding: 5px 10px;*/
-    /*border: 5px solid;*/
+
 }
 .pageBody button{
-    float: right;
-    position: absolute;
-    width: 30%;
-    height: 20%;
-    background: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
-    color: #ffffff;
-    z-index:1;
-    font-weight: 400;
-    letter-spacing: 1px;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 3s;
+    height: 60%;
+    color: antiquewhite;
 }
-.pageBody button a:hover{
- letter-spacing: 3px;
-    font-size: 50px;
-}
-.pageBody button::before{
- content: '';
-  position: absolute;
-    top: 0;
-    left: 0;
+.pageBody .getStarted {
+    color: green;
     width: 50%;
-    height: 100%;
-    background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
-    transform: skew(45deg) translateX(0);
-    transition: 0.5s;
+    height: 400%;
+    padding: 5px 10px;
+    border: 5px solid;
+    border-radius: 15px;
 }
-.pageBody button:hover a::before{
-    transform: skew(45deg) translateX(200%);
 
 
-}
+
 
 
