@@ -11,9 +11,9 @@ import com.example.churchmanagement.exception.RegistrationVerificationException;
 
 public interface PastorService {
 
-    PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1) throws PhoneNumberException, PasswordException, RegistrationException;
+    PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1) ;
 
    long countChurchMenber();
 
-   PastorVerificationResponse verifyPastorAccount(PastorVerificationRequest verifyRequest) throws RegistrationVerificationException;
+   PastorVerificationResponse verifyPastorAccount(PastorVerificationRequest verifyRequest) ;
 }

@@ -1,10 +1,13 @@
 img{
 height:650px;
-justify-content: left;
+justify-content: flex-start;
+
 }
 
-.superDiv .logoDiv .headerLogo {
-    height:20px;
+.superDiv .headerLogo{
+    background-color: black;
+    height:10px;
+align-self: flex-end;
 }
 .superDiv .body-Div{
     margin-top: 5%;
