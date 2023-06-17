@@ -112,7 +112,6 @@ return false;
     public boolean emailAlreadyInUsed(String email) {
         if (churchRepository.findByEmailAddress(email) == null) return true;
         return false;
-
     }
 
     @Override

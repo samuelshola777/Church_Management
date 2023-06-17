@@ -7,18 +7,20 @@ import com.example.churchmanagement.dto.request.PastorRequest;
 import com.example.churchmanagement.dto.request.PastorVerificationRequest;
 import com.example.churchmanagement.dto.response.PastorResponse;
 import com.example.churchmanagement.dto.response.PastorVerificationResponse;
-import com.example.churchmanagement.exception.PasswordException;
-import com.example.churchmanagement.exception.PhoneNumberException;
-import com.example.churchmanagement.exception.RegistrationException;
-import com.example.churchmanagement.exception.RegistrationVerificationException;
+import com.example.churchmanagement.exception.*;
+import com.example.churchmanagement.service.ChurchService;
 import com.example.churchmanagement.service.PastorService;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
-
+@RequiredArgsConstructor
 @Service
 public class PastorServiceIMPL implements PastorService {
+    @NonNull
+   private final ChurchService churchService;
    static SecureRandom secureRandom = new SecureRandom();
 //   @Autowired
 //   ToolZ toolZ;
@@ -26,7 +28,8 @@ public class PastorServiceIMPL implements PastorService {
      PastorRepository pastorRepository;
 
     @Override
-    public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1) throws PhoneNumberException, PasswordException, RegistrationException {
+    public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
+        if (churchService.emailAlreadyInUsed(pastorRequest1.getEmailAddress())) throw new EmailAlreadyInUseException("Email already in use");
         Pastor buildPastor = mapFromRequestToPastor(pastorRequest1);
     //    toolZ.verifyPhoneNumbers(buildPastor.getPhoneNumber());
     //    toolZ.verifyPassword(buildPastor.getPassword());
