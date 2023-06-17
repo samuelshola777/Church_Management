@@ -27,7 +27,7 @@ public interface ChurchService {
 
    ChurchBranch findChurchBranchByEmailAddress(String emailAddress);
 
-   boolean emailAlreadyInUsed(String email);
+
    ChurchResponse findByEmailResponse(String email);
 
    ChurchResponse changeChurchBranchName(String mail, String strongTowerMinistry);
