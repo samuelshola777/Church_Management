@@ -2,14 +2,16 @@ img{
 height:650px;
 justify-content: left;
 }
-.superDiv .logoDiv{
-    height: 2px;
+
+.superDiv .logoDiv .headerLogo {
+    height:20px;
 }
 .superDiv .body-Div{
     margin-top: 5%;
+
 }
 .superDiv{
-mso-space-above: yes;
+
 }
 
 
