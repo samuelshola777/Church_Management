@@ -41,8 +41,8 @@ public class PastorServiceIMPL implements PastorService {
 
     @Override
     public boolean emailAlreadyInUsed(String email) {
-     if (   pastorRepository.findByEmailAddress(email) != null) return false;
-     return true;
+     if (pastorRepository.findByEmailAddress(email) == null) return true;
+     return false;
     }
 
     String boneshaker = "gold";

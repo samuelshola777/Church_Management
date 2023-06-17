@@ -109,6 +109,13 @@ return false;
     }
 
     @Override
+    public boolean emailAlreadyInUsed(String email) {
+        if (churchRepository.findByEmailAddress(email) == null) return true;
+        return false;
+
+    }
+
+    @Override
     public ChurchResponse findByEmailResponse(String email) {
       return  mapToResponse( findChurchBranchByEmailAddress(email));
     }
