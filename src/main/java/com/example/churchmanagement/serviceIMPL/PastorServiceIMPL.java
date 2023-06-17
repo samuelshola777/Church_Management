@@ -21,15 +21,13 @@ import java.security.SecureRandom;
 public class PastorServiceIMPL implements PastorService {
     @NonNull
    private final ChurchService churchService;
-   static SecureRandom secureRandom = new SecureRandom();
-//   @Autowired
-//   ToolZ toolZ;
-   @Autowired
-     PastorRepository pastorRepository;
+    private final  PastorRepository pastorRepository;
+
+
+
 
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
-        if (churchService.emailAlreadyInUsed(pastorRequest1.getEmailAddress())) throw new EmailAlreadyInUseException("Email already in use");
         Pastor buildPastor = mapFromRequestToPastor(pastorRequest1);
     //    toolZ.verifyPhoneNumbers(buildPastor.getPhoneNumber());
     //    toolZ.verifyPassword(buildPastor.getPassword());
