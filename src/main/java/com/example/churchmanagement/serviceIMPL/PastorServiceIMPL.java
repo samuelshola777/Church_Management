@@ -38,7 +38,14 @@ public class PastorServiceIMPL implements PastorService {
 
         return new PastorResponse("registration completed successfully please log on to your confirmation site to verify your account");
     }
-String boneshaker = "gold";
+
+    @Override
+    public boolean emailAlreadyInUsed(String email) {
+     if (   pastorRepository.findByEmailAddress(email) != null) return false;
+     return true;
+    }
+
+    String boneshaker = "gold";
     @Override
     public long countChurchMenber() {
         return pastorRepository.count();
