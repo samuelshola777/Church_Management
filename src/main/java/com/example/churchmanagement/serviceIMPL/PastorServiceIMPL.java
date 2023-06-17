@@ -1,6 +1,7 @@
 package com.example.churchmanagement.serviceIMPL;
 
 import ch.qos.logback.core.model.Model;
+import com.example.churchmanagement.ToolZ;
 import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.data.repository.PastorRepository;
 import com.example.churchmanagement.dto.request.PastorRequest;
@@ -21,7 +22,10 @@ import java.security.SecureRandom;
 public class PastorServiceIMPL implements PastorService {
     @NonNull
    private final ChurchService churchService;
+    @NonNull
     private final  PastorRepository pastorRepository;
+    @NonNull
+    private final ToolZ toolz;
 
 
 
@@ -29,8 +33,7 @@ public class PastorServiceIMPL implements PastorService {
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
         Pastor buildPastor = mapFromRequestToPastor(pastorRequest1);
-    //    toolZ.verifyPhoneNumbers(buildPastor.getPhoneNumber());
-    //    toolZ.verifyPassword(buildPastor.getPassword());
+        toolz.passwordValidator(buildPastor.getPassword());
         confirmIfEmailAddressAlreadyExist(buildPastor.getEmailAddress());
         confirmIfPhoneAlreadyExist(buildPastor.getPhoneNumber());
         String token = tokenCreator(buildPastor);
