@@ -11,7 +11,8 @@ import com.example.churchmanagement.exception.RegistrationVerificationException;
 
 public interface PastorService {
 
-    PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1) ;
+    PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1);
+    boolean emailAlreadyInUsed(String email);
 
    long countChurchMenber();
 
