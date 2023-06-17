@@ -1,5 +1,6 @@
 package com.example.churchmanagement.serviceIMPL;
 
+import com.example.churchmanagement.exception.EmailAlreadyInUseException;
 import com.example.churchmanagement.service.ChurchService;
 import com.example.churchmanagement.service.EmailAlreadyInUse;
 import com.example.churchmanagement.service.PastorService;
@@ -13,8 +14,8 @@ public class EmailAlreadyInUseImpl implements EmailAlreadyInUse {
     private PastorService pastorService;
 
     @Override
-    public boolean emailAlreadyInUse(String email) {
-       if (churchService.findChurchByName(email) != null ) return true;
-       return false;
+    public void emailAlreadyInUse(String email) {
+       if (churchService.findChurchByName(email) != null ) throw new EmailAlreadyInUseException("email already in use");
+
     }
 }
