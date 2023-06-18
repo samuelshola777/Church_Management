@@ -39,7 +39,7 @@ public class PastorServiceIMPL implements PastorService {
         registrationCheckIfEmailAreadyExist(pastorRequest1.getEmailAddress());
         toolz.passwordValidator(pastorRequest1.getPassword());
         toolz.phoneNumberValidator(pastorRequest1.getPhoneNumber());
-
+    Pastor mappedPastor = mapToPastorEntity(pastorRequest1);
         return ;
     }
 
@@ -48,7 +48,19 @@ public class PastorServiceIMPL implements PastorService {
     if(existingPastor!=null) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");
     }
 
-
+    public Pastor mapToPastorEntity(PastorRequest pastorRequest){
+        return Pastor.builder()
+                .gender(pastorRequest.getGender())
+                .password(pastorRequest.getPassword())
+                .phoneNumber(pastorRequest.getPhoneNumber())
+                .address(pastorRequest.getAddress())
+                .Profile_picture(pastorRequest.getProfile_picture())
+                .emailAddress(pastorRequest.getEmailAddress())
+                .lastName(pastorRequest.getLastName())
+                .firstName(pastorRequest.getFirstName())
+                .churchName(pastorRequest.getChurchName())
+                .build();
+    }
 
 
 }
