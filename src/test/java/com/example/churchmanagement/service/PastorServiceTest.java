@@ -21,15 +21,22 @@ class PastorServiceTest {
 private PastorService pastorService;
 
 private PastorRequest pastorRequest1;
+private PastorRequest pastorRequest2;
+private PastorRequest pastorRequest3;
 private Address address1;
+private Address address2;
 private PastorVerificationRequest verifyRequest;
     @BeforeEach
     void setUp() {
         pastorRequest1 = new PastorRequest();
-        pastorRequest1.setFirstName("samuel");
-        pastorRequest1.setLastName("shola");
+        pastorRequest1.setFirstName("elijah");
+        pastorRequest1.setLastName("Echo");
         pastorRequest1.setPhoneNumber("09099332737");
-        pastorRequest1.setEmailAddress("samuelshola14@gmail.com");
+        pastorRequest1.setEmailAddress("ebukachukwunenye@gmal.com");
+        pastorRequest1.setAddress(address1);
+        pastorRequest1.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
+        pastorRequest1.setGender(Gender.MALE);
+        pastorRequest1.setPassword("boneshaker123");
 
         address1 = new Address();
         address1.setHouseNumber("103");
@@ -37,14 +44,25 @@ private PastorVerificationRequest verifyRequest;
         address1.setStreetName("ilaje road");
         address1.setLocalGovernment("bariga");
 
-        pastorRequest1.setAddress(address1);
-        pastorRequest1.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
-        pastorRequest1.setGender(Gender.MALE);
-        pastorRequest1.setPassword("boneshaker123");
+        pastorRequest2 = new PastorRequest();
+        pastorRequest2.setFirstName("elijah");
+        pastorRequest2.setLastName("Echo");
+        pastorRequest2.setPhoneNumber("09099332737");
+        pastorRequest2.setEmailAddress("ebukachukwunenye@gmal.com");
+
+        address2 = new Address();
+        address2.setHouseNumber("290");
+        address2.setState("lagos_State");
+        address2.setStreetName("ilaje road");
+        address2.setLocalGovernment("bariga");
+        pastorRequest2.setAddress(address2);
+        pastorRequest2.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
+        pastorRequest2.setGender(Gender.MALE);
+        pastorRequest2.setPassword("boneshaker123");
 
         verifyRequest = new PastorVerificationRequest();
        verifyRequest.setPassword("boneshaker123");
-        verifyRequest.setEmailAddress("samuelshola14@gmail.com");
+        verifyRequest.setEmailAddress("ebukachukwunenye@gmal.com");
         verifyRequest.setToken("7450631sa");
     }
 
