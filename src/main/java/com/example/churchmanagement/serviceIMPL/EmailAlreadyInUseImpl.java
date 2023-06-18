@@ -6,7 +6,9 @@ import com.example.churchmanagement.service.EmailAlreadyInUse;
 import com.example.churchmanagement.service.PastorService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @AllArgsConstructor
 public class EmailAlreadyInUseImpl implements EmailAlreadyInUse {
 

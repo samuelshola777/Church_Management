@@ -10,6 +10,7 @@ import com.example.churchmanagement.dto.response.PastorResponse;
 import com.example.churchmanagement.dto.response.PastorVerificationResponse;
 import com.example.churchmanagement.exception.*;
 import com.example.churchmanagement.service.ChurchService;
+import com.example.churchmanagement.service.EmailAlreadyInUse;
 import com.example.churchmanagement.service.PastorService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -26,28 +27,26 @@ public class PastorServiceIMPL implements PastorService {
     private final  PastorRepository pastorRepository;
     @NonNull
     private final ToolZ toolz;
+    @NonNull
+    private final EmailAlreadyInUse emailAlreadyInUse;
 
 
 
 
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
+      emailAlreadyInUse.emailAlreadyInUse(pastorRequest1.getEmailAddress());
         Pastor buildPastor = mapFromRequestToPastor(pastorRequest1);
         toolz.passwordValidator(buildPastor.getPassword());
         confirmIfEmailAddressAlreadyExist(buildPastor.getEmailAddress());
         confirmIfPhoneAlreadyExist(buildPastor.getPhoneNumber());
-        String token = tokenCreator(buildPastor);
-       //toolZ.registrationEmailSender(buildPastor,token);
+
      //  buildPastor.setToken(token);
 
         return new PastorResponse("registration completed successfully please log on to your confirmation site to verify your account");
     }
 
-    @Override
-    public boolean emailAlreadyInUsed(String email) {
-     if (pastorRepository.findByEmailAddress(email) == null) return true;
-     return false;
-    }
+
 
     String boneshaker = "gold";
     @Override
@@ -98,14 +97,7 @@ public class PastorServiceIMPL implements PastorService {
         Pastor pastor = pastorRepository.findByPhoneNumber(phoneNumber);
         if (pastor != null) throw new RegistrationException("Phone number already exists  "+phoneNumber);
     }
-    private static   String tokenCreator(Pastor pastor){
-       String cutFirst = pastor.getFirstName();
-        StringBuilder stringBuilder = new StringBuilder(cutFirst);
-    int token = secureRandom.nextInt(7000000,7999999);
-    String stringToken = String.valueOf(token);
-    String firstTwoAlphabet = stringBuilder.substring(0,2);
-    return stringToken+firstTwoAlphabet;
-    }
+
 
 
 
