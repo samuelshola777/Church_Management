@@ -24,6 +24,7 @@ public class Pastor {
 
     private  String firstName , lastName;
     private String phoneNumber;
+    private String churchName;
     private String emailAddress;
     private LocalDateTime registrationDate ;
     private ValidationState validationState;

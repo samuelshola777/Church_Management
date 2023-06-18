@@ -108,11 +108,6 @@ return false;
         return foundChurch;
     }
 
-    @Override
-    public boolean emailAlreadyInUsed(String email) {
-        if (churchRepository.findByEmailAddress(email) == null) return true;
-        return false;
-    }
 
     @Override
     public ChurchResponse findByEmailResponse(String email) {
@@ -261,9 +256,6 @@ return false;
         churchRepository.deleteAllChurchTokenZByEmailAddress(mail);
     }
 
-    private void emailExistingConfirmation(String email){
 
-
-    }
 
 }
