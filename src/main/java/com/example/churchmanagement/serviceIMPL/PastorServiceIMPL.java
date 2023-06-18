@@ -2,6 +2,7 @@ package com.example.churchmanagement.serviceIMPL;
 
 import ch.qos.logback.core.model.Model;
 import com.example.churchmanagement.ToolZ;
+import com.example.churchmanagement.data.model.DateZ;
 import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.data.repository.PastorRepository;
 import com.example.churchmanagement.dto.request.PastorRequest;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.time.Period;
 
 @RequiredArgsConstructor
 @Service
@@ -43,8 +45,8 @@ public class PastorServiceIMPL implements PastorService {
         toolz.phoneNumberValidator(pastorRequest1.getPhoneNumber());
     Pastor mappedPastor = mapToPastorEntity(pastorRequest1);
     mappedPastor.setRegistrationDate(LocalDateTime.now());
-
-        return ;
+    mappedPastor.setAge(calculateAge(mappedPastor.getDateOfBirth()));
+return ;
     }
 
     public void registrationCheckIfEmailAreadyExist(String email){
@@ -66,6 +68,13 @@ public class PastorServiceIMPL implements PastorService {
                 .build();
     }
 
-
+    public  int calculateAge(DateZ dateZ) {
+        int year = Integer.parseInt(dateZ.getYear());
+        int month = Integer.parseInt(dateZ.getMonth());
+        int day = Integer.parseInt(dateZ.getDate());
+        LocalDateTime currentDate = LocalDateTime.now();
+        LocalDateTime birthDate = LocalDateTime.of(year, month, day, 0, 0);
+     return Period.between(birthDate.toLocalDate(), currentDate.toLocalDate()).getYears();
+    }
 }
 

@@ -24,6 +24,8 @@ public class Pastor {
 
     private  String firstName , lastName;
     private String phoneNumber;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private DateZ dateOfBirth;
     private String churchName;
     private String emailAddress;
     private LocalDateTime registrationDate ;
