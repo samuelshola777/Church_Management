@@ -16,8 +16,13 @@ public class EmailAlreadyInUseImpl implements EmailAlreadyInUse {
     private PastorService pastorService;
 
     @Override
-    public void emailAlreadyInUse(String email) {
+    public void pastorEmailAlreadyInUse(String email) {
        if (churchService.findChurchByName(email) != null ) throw new EmailAlreadyInUseException("email already in use");
+
+    }
+
+    @Override
+    public void churchEmailAlreadyInUse(String email) {
 
     }
 }

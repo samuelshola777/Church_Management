@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Set;
 
@@ -23,18 +24,18 @@ public class Pastor {
 
     private  String firstName , lastName;
     private String phoneNumber;
-
     private String emailAddress;
-    private LocalDate registrationDate = LocalDate.now();
-    private static LocalTime registrationTime = LocalTime.now();
-
+    private LocalDateTime registrationDate ;
+    private ValidationState validationState;
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;
     private String password;
     private String Profile_picture;
     private Role role = Role.PASTOR;
     private Gender gender;
-
+    private int age;
+    @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
+    private ChurchBranch churchBranch;
 
    
 }
