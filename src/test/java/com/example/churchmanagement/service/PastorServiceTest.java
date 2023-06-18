@@ -62,7 +62,7 @@ private PastorVerificationRequest verifyRequest;
 
         verifyRequest = new PastorVerificationRequest();
        verifyRequest.setPassword("boneshaker123");
-        verifyRequest.setEmailAddress("ebukachukwunenye@gmal.com");
+        verifyRequest.setEmailAddress("boneshaker@malinator.com");
         verifyRequest.setToken("7450631sa");
     }
 
@@ -73,6 +73,7 @@ private PastorVerificationRequest verifyRequest;
     void testThatWeCanCreateANewPastorAccount() throws PhoneNumberException, PasswordException, RegistrationException {
 
         pastorService.RegisterNewPastorAccount( pastorRequest1);
+        pastorService.RegisterNewPastorAccount( pastorRequest2);
         pastorService.countChurchMenber();
 
     }
