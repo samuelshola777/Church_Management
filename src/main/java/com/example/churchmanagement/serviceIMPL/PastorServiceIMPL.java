@@ -36,11 +36,14 @@ public class PastorServiceIMPL implements PastorService {
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
       emailAlreadyInUse.pastorEmailAlreadyInUse(pastorRequest1.getEmailAddress());
+        registrationCheckIfEmailAreadyExist(pastorRequest1.getEmailAddress());
+        toolz.passwordValidator(pastorRequest1.getPassword());
+        toolz.phoneNumberValidator(pastorRequest1.getPhoneNumber());
 
         return ;
     }
 
-    public void registrationFindByEmail(String email){
+    public void registrationCheckIfEmailAreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);
     if(existingPastor!=null) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");
     }
