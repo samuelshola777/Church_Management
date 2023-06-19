@@ -58,7 +58,7 @@ public class PastorServiceIMPL implements PastorService {
     tokenZ.setPastor(pastorRepository.save(mappedPastor));
     //emailService.sendEmail();
      tokenService.saveToken(tokenZ);
-
+return mapToPastorResponse(mappedPastor);
     }
 
     public void registrationCheckIfEmailAlreadyExist(String email){
