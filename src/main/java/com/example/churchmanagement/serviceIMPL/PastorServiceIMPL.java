@@ -40,16 +40,17 @@ public class PastorServiceIMPL implements PastorService {
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
       emailAlreadyInUse.pastorEmailAlreadyInUse(pastorRequest1.getEmailAddress());
-        registrationCheckIfEmailAreadyExist(pastorRequest1.getEmailAddress());
+        registrationCheckIfEmailAlreadyExist(pastorRequest1.getEmailAddress());
         toolz.passwordValidator(pastorRequest1.getPassword());
         toolz.phoneNumberValidator(pastorRequest1.getPhoneNumber());
     Pastor mappedPastor = mapToPastorEntity(pastorRequest1);
     mappedPastor.setRegistrationDate(LocalDateTime.now());
     mappedPastor.setAge(calculateAge(mappedPastor.getDateOfBirth()));
+    mappedPastor.setChurchBranch(churchService.findChurchByNameEntity(mappedPastor.getChurchName()));
 return ;
     }
 
-    public void registrationCheckIfEmailAreadyExist(String email){
+    public void registrationCheckIfEmailAlreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);
     if(existingPastor!=null) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");
     }

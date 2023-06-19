@@ -90,6 +90,12 @@ return false;
         if (foundChurch.getValidationState() == ValidationState.INVALID) throw new RegistrationException("account not found");
         return mapToResponse(foundChurch);
     }
+    public ChurchBranch findChurchByNameEntity(String churchName) {
+        ChurchBranch foundChurch = churchRepository.findByChurchBranchName(churchName);
+        if (foundChurch == null  )throw new RegistrationException("account not found");
+        if (foundChurch.getValidationState() == ValidationState.INVALID) throw new RegistrationException("account not found");
+        return foundChurch;
+    }
 
     @Override
     public void deleteAllChurchBranch() {

@@ -24,6 +24,7 @@ public interface ChurchService {
    ChurchResponse findChurchByName(String churchName) ;
 
    void deleteAllChurchBranch();
+ ChurchBranch findChurchByNameEntity(String churchName);
 
    ChurchBranch findChurchBranchByEmailAddress(String emailAddress);
 
