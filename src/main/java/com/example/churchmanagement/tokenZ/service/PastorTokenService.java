@@ -2,7 +2,7 @@ package com.example.churchmanagement.tokenZ.service;
 
 import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
-import com.example.churchmanagement.tokenZ.data.repository.PastorTokeRepository;
+import com.example.churchmanagement.tokenZ.data.repository.PastorTokenRepository;
 import jakarta.transaction.Transactional;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Transactional
 public class PastorTokenService {
 @NonNull
-PastorTokeRepository pastorTokeRepository;
+PastorTokenRepository pastorTokenRepository;
 
 
 public PastorTokenZ createPastorToken(Pastor pastor){
@@ -30,8 +30,7 @@ public PastorTokenZ createPastorToken(Pastor pastor){
     token.setCreateAt(LocalDateTime.now());
     token.setPastor(pastor);
     token.setExpiredAt(token.getCreateAt().plusMinutes(30));
-
-
+return pastorTokenRepository.save(token);
 }
 
 }
