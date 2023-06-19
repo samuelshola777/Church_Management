@@ -61,6 +61,16 @@ public class PastorServiceIMPL implements PastorService {
 return mapToPastorResponse(mappedPastor);
     }
 
+    @Override
+    public long countChurchMenber() {
+        return pastorRepository.count();
+    }
+
+    @Override
+    public PastorVerificationResponse verifyPastorAccount(PastorVerificationRequest verifyRequest) {
+        return null;
+    }
+
     public void registrationCheckIfEmailAlreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);
     if(existingPastor!=null) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");
