@@ -6,6 +6,7 @@ import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.data.model.TokenState;
 import com.example.churchmanagement.tokenZ.data.repository.ChurchTokenRepository;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Service
+@Transactional
 public class ChurchTokenService {
 
 

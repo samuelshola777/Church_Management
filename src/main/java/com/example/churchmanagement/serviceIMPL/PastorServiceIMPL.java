@@ -33,7 +33,7 @@ public class PastorServiceIMPL implements PastorService {
     private final ToolZ toolz;
     @NonNull
     private final EmailAlreadyInUse emailAlreadyInUse;
-
+    @NonNull
 
 
 
@@ -47,6 +47,7 @@ public class PastorServiceIMPL implements PastorService {
     mappedPastor.setRegistrationDate(LocalDateTime.now());
     mappedPastor.setAge(calculateAge(mappedPastor.getDateOfBirth()));
     mappedPastor.setChurchBranch(churchService.findChurchByNameEntity(mappedPastor.getChurchName()));
+
 return ;
     }
 

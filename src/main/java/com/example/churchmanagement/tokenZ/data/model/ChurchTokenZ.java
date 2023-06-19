@@ -16,11 +16,6 @@ public class ChurchTokenZ  {
     private long id;
 
     @ManyToOne
-//    @JoinColumn(
-//            foreignKey = @ForeignKey(
-//                    foreignKeyDefinition = "foreign key (church_branch_id) references church_branch (id) ON DELETE CASCADE"
-//            )
-//    )
     private ChurchBranch churchBranch;
 
     private LocalDateTime createAt;
