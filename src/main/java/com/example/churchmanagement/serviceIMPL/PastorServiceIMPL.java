@@ -4,6 +4,7 @@ import ch.qos.logback.core.model.Model;
 import com.example.churchmanagement.ToolZ;
 import com.example.churchmanagement.data.model.DateZ;
 import com.example.churchmanagement.data.model.Pastor;
+import com.example.churchmanagement.data.model.Role;
 import com.example.churchmanagement.data.repository.PastorRepository;
 import com.example.churchmanagement.dto.request.PastorRequest;
 import com.example.churchmanagement.dto.request.PastorVerificationRequest;
@@ -88,6 +89,18 @@ public class PastorServiceIMPL implements PastorService {
         LocalDateTime birthDate = LocalDateTime.of(year, month, day, 0, 0);
      return Period.between(birthDate.toLocalDate(), currentDate.toLocalDate()).getYears();
     }
-
+    public PastorResponse mapToPastorResponse(Pastor pastor){
+        return PastorResponse.builder()
+              .firstName(pastor.getFirstName())
+              .lastName(pastor.getLastName())
+              .churchName(pastor.getChurchName())
+              .phoneNumber(pastor.getPhoneNumber())
+              .address(pastor.getAddress())
+              .gender(pastor.getGender())
+              .token(pastor.getToken())
+                .role(Role.PASTOR)
+              .registrationDate(pastor.getRegistrationDate())
+              .build();
+    }
 }
 
