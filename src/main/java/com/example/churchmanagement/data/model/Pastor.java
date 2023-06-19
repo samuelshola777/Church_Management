@@ -1,6 +1,7 @@
 package com.example.churchmanagement.data.model;
 
 
+import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,6 +33,7 @@ public class Pastor {
     private ValidationState validationState;
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;
+    private String token;
     private String password;
     private String Profile_picture;
     private Role role = Role.PASTOR;

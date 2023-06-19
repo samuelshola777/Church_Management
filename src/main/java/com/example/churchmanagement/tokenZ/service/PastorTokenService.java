@@ -30,7 +30,10 @@ public PastorTokenZ createPastorToken(Pastor pastor){
     token.setCreateAt(LocalDateTime.now());
     token.setPastor(pastor);
     token.setExpiredAt(token.getCreateAt().plusMinutes(30));
-return pastorTokenRepository.save(token);
+return token;
 }
 
+public PastorTokenZ saveToken(PastorTokenZ token) {
+   return pastorTokenRepository.save(token);
+}
 }

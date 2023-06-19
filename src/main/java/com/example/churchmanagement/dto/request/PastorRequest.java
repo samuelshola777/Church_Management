@@ -4,6 +4,7 @@ import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.Gender;
 import com.example.churchmanagement.data.model.Role;
 import com.example.churchmanagement.data.model.ValidationState;
+import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
@@ -25,4 +26,6 @@ public class PastorRequest {
     private Gender gender;
     private String password;
     private String token;
+    private PastorTokenZ pastorTokenZ;
+
 }

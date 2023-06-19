@@ -9,10 +9,14 @@ import com.example.churchmanagement.dto.request.PastorRequest;
 import com.example.churchmanagement.dto.request.PastorVerificationRequest;
 import com.example.churchmanagement.dto.response.PastorResponse;
 import com.example.churchmanagement.dto.response.PastorVerificationResponse;
+import com.example.churchmanagement.emailEngine.service.EmailService;
 import com.example.churchmanagement.exception.*;
 import com.example.churchmanagement.service.ChurchService;
 import com.example.churchmanagement.service.EmailAlreadyInUse;
 import com.example.churchmanagement.service.PastorService;
+import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
+import com.example.churchmanagement.tokenZ.data.repository.PastorTokenRepository;
+import com.example.churchmanagement.tokenZ.service.PastorTokenService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +38,9 @@ public class PastorServiceIMPL implements PastorService {
     @NonNull
     private final EmailAlreadyInUse emailAlreadyInUse;
     @NonNull
-
-
+    private final PastorTokenService tokenService;
+    @NonNull
+    private EmailService emailService;
 
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
@@ -47,8 +52,12 @@ public class PastorServiceIMPL implements PastorService {
     mappedPastor.setRegistrationDate(LocalDateTime.now());
     mappedPastor.setAge(calculateAge(mappedPastor.getDateOfBirth()));
     mappedPastor.setChurchBranch(churchService.findChurchByNameEntity(mappedPastor.getChurchName()));
+    PastorTokenZ tokenZ = tokenService.createPastorToken(mappedPastor);
+    mappedPastor.setToken(tokenZ.getToken());
+    tokenZ.setPastor(pastorRepository.save(mappedPastor));
+    //emailService.sendEmail();
+     tokenService.saveToken(tokenZ);
 
-return ;
     }
 
     public void registrationCheckIfEmailAlreadyExist(String email){
@@ -67,6 +76,7 @@ return ;
                 .lastName(pastorRequest.getLastName())
                 .firstName(pastorRequest.getFirstName())
                 .churchName(pastorRequest.getChurchName())
+                .token(pastorRequest.getToken())
                 .build();
     }
 
@@ -78,5 +88,6 @@ return ;
         LocalDateTime birthDate = LocalDateTime.of(year, month, day, 0, 0);
      return Period.between(birthDate.toLocalDate(), currentDate.toLocalDate()).getYears();
     }
+
 }
 
