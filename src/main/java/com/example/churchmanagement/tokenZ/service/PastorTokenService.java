@@ -1,5 +1,6 @@
 package com.example.churchmanagement.tokenZ.service;
 
+import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
 import com.example.churchmanagement.tokenZ.data.repository.PastorTokeRepository;
 import jakarta.transaction.Transactional;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Service
@@ -17,11 +19,19 @@ public class PastorTokenService {
 PastorTokeRepository pastorTokeRepository;
 
 
-public PastorTokenZ createPastorToken(String pastorName){
+public PastorTokenZ createPastorToken(Pastor pastor){
     SecureRandom secureRandom = new SecureRandom();
     int tokenNumber = secureRandom.nextInt(60000,69999);
-    StringBuilder tokenString = new StringBuilder(pastorName);
-String lastFour = tokenString.substring(0,4);
+    StringBuilder tokenString = new StringBuilder(pastor.getFirstName());
+    String lastFour = tokenString.substring(0,4);
+    String completeToken = String.valueOf(tokenNumber)+ lastFour;
+    PastorTokenZ token = new PastorTokenZ();
+    token.setToken(completeToken);
+    token.setCreateAt(LocalDateTime.now());
+    token.setPastor(pastor);
+    token.setExpiredAt(token.getCreateAt().plusMinutes(30));
+
+
 }
 
 }
