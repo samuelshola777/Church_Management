@@ -74,7 +74,7 @@ private PastorVerificationRequest verifyRequest;
 
         pastorService.RegisterNewPastorAccount( pastorRequest1);
         pastorService.RegisterNewPastorAccount( pastorRequest2);
-        pastorService.countChurchMenber();
+        assertEquals(2, pastorService.countChu);
 
     }
     @Test
