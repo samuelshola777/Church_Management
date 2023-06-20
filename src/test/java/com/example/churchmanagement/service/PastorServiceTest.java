@@ -70,7 +70,7 @@ private PastorVerificationRequest verifyRequest;
     void tearDown() {
     }
     @Test
-    void testThatWeCanCreateANewPastorAccount() throws PhoneNumberException, PasswordException, RegistrationException {
+    void testThatWeCanCreateANewPastorAccount()  {
 
         pastorService.RegisterNewPastorAccount( pastorRequest1);
         pastorService.RegisterNewPastorAccount( pastorRequest2);
@@ -78,7 +78,7 @@ private PastorVerificationRequest verifyRequest;
 
     }
     @Test
-    void testThatPastorCanVerifyAccountAfterTryingToRegister() throws RegistrationVerificationException {
+    void testThatPastorCanVerifyAccountAfterTryingToRegister() {
         pastorService.verifyPastorAccount(verifyRequest);
     }
 }
