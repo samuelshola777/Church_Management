@@ -105,13 +105,10 @@ return false;
 
     @Override
     public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
-        log.info("Called method 2");
         ChurchBranch foundChurch = churchRepository.findByEmailAddress(emailAddress);
-        log.info("Called method 3");
-        if (foundChurch == null ||
+        if (foundChurch != null &&
         foundChurch.getValidationState() == ValidationState
         .INVALID) throw new FindingExection("church branch does not exist");
-        log.info("Called method 4");
         return foundChurch;
     }
 

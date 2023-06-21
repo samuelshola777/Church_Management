@@ -81,6 +81,7 @@ return mapToPastorResponse(mappedPastor);
 
     public Pastor mapToPastorEntity(PastorRequest pastorRequest){
         return Pastor.builder()
+                .dateOfBirth(pastorRequest.getDateOfBirth())
                 .gender(pastorRequest.getGender())
                 .password(pastorRequest.getPassword())
                 .phoneNumber(pastorRequest.getPhoneNumber())

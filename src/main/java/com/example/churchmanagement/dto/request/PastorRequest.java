@@ -1,9 +1,6 @@
 package com.example.churchmanagement.dto.request;
 
-import com.example.churchmanagement.data.model.Address;
-import com.example.churchmanagement.data.model.Gender;
-import com.example.churchmanagement.data.model.Role;
-import com.example.churchmanagement.data.model.ValidationState;
+import com.example.churchmanagement.data.model.*;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToOne;
@@ -26,6 +23,7 @@ public class PastorRequest {
     private Gender gender;
     private String password;
     private String token;
+    private DateZ dateOfBirth;
     private PastorTokenZ pastorTokenZ;
 
 }
