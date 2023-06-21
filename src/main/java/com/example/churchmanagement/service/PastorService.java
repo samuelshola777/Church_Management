@@ -14,7 +14,9 @@ public interface PastorService {
     PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1);
 
 
-   long countChurchMenber();
 
-   PastorVerificationResponse verifyPastorAccount(PastorVerificationRequest verifyRequest) ;
+
+    long countPastorAccounts();
+
+    PastorVerificationResponse verifyPastorAccount(PastorVerificationRequest verifyRequest) ;
 }

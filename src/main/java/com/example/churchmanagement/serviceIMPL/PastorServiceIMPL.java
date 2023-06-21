@@ -1,6 +1,5 @@
 package com.example.churchmanagement.serviceIMPL;
 
-import ch.qos.logback.core.model.Model;
 import com.example.churchmanagement.ToolZ;
 import com.example.churchmanagement.data.model.DateZ;
 import com.example.churchmanagement.data.model.Pastor;
@@ -16,14 +15,11 @@ import com.example.churchmanagement.service.ChurchService;
 import com.example.churchmanagement.service.EmailAlreadyInUse;
 import com.example.churchmanagement.service.PastorService;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
-import com.example.churchmanagement.tokenZ.data.repository.PastorTokenRepository;
 import com.example.churchmanagement.tokenZ.service.PastorTokenService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.Period;
 
@@ -62,7 +58,7 @@ return mapToPastorResponse(mappedPastor);
     }
 
     @Override
-    public long countChurchMenber() {
+    public long countPastorAccounts() {
         return pastorRepository.count();
     }
 

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class EmailAlreadyInUseImpl implements EmailAlreadyInUse {
 
     private ChurchService churchService;
-    private PastorService pastorService;
+
 
     @Override
     public void pastorEmailAlreadyInUse(String email) {
