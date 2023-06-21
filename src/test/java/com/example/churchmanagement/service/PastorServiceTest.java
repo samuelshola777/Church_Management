@@ -49,7 +49,7 @@ private PastorVerificationRequest verifyRequest;
         pastorRequest2.setFirstName("elijah");
         pastorRequest2.setLastName("Echo");
         pastorRequest2.setPhoneNumber("09099332737");
-//        pastorRequest2.setEmailAddress("ebukachukwunenye@gmal.com");
+        pastorRequest2.setEmailAddress("ebukachukwunenye@gmal.com");
 
         address2 = new Address();
         address2.setHouseNumber("290");
@@ -64,7 +64,7 @@ private PastorVerificationRequest verifyRequest;
 
         verifyRequest = new PastorVerificationRequest();
        verifyRequest.setPassword("boneshaker123");
-//        verifyRequest.setEmailAddress("boneshaker@mailinator.com");
+        verifyRequest.setEmailAddress("boneshaker@mailinator.com");
         verifyRequest.setToken("7450631sa");
     }
 
