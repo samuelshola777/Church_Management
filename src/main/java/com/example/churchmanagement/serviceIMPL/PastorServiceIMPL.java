@@ -1,6 +1,7 @@
 package com.example.churchmanagement.serviceIMPL;
 
 import com.example.churchmanagement.ToolZ;
+import com.example.churchmanagement.data.model.ChurchBranch;
 import com.example.churchmanagement.data.model.DateZ;
 import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.data.model.Role;
@@ -49,6 +50,7 @@ public class PastorServiceIMPL implements PastorService {
     mappedPastor.setRegistrationDate(LocalDateTime.now());
     mappedPastor.setAge(calculateAge(mappedPastor.getDateOfBirth()));
     //mappedPastor.setChurchBranch(churchService.findChurchByNameEntity(pastorRequest1.getChurchName()));
+        ChurchBranch foundChurchBranch = churchService.findChurchByNameEntity(mappedPastor.getChurchName());
     PastorTokenZ tokenZ = tokenService.createPastorToken(mappedPastor);
     mappedPastor.setToken(tokenZ.getToken());
     tokenZ.setPastor(pastorRepository.save(mappedPastor));
