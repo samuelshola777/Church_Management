@@ -127,12 +127,12 @@ class ChurchServiceTest {
     }
     @Disabled
     @Test
-    void testThatWeCanChangeChurchBranchName() throws FindingExection {
+    void testThatWeCanChangeChurchBranchName()  {
     assertEquals("Strong tower ministry", churchService.changeChurchBranchName("samuelshola14@gmail.com","Strong tower ministry").getChurchBranchName());
     }
     @Disabled
     @Test
-  void testThatWeCanChangeChurchAddress() throws FindingExection {
+  void testThatWeCanChangeChurchAddress()  {
       assertEquals("57", churchService.changeChurchAddress(changeChurchAddress1).getAddress().getHouseNumber());
 
     }
