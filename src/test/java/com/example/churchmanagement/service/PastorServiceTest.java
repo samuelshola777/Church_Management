@@ -30,6 +30,7 @@ private PastorVerificationRequest verifyRequest;
     void setUp() {
         pastorRequest1 = new PastorRequest();
         pastorRequest1.setFirstName("elijah");
+        pastorRequest1.setChurchName("StrongTower");
         pastorRequest1.setLastName("Echo");
         pastorRequest1.setPhoneNumber("09099332737");
         pastorRequest1.setEmailAddress("ebukachukwunenye@gmal.com");
@@ -59,10 +60,11 @@ private PastorVerificationRequest verifyRequest;
         pastorRequest2.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
         pastorRequest2.setGender(Gender.MALE);
         pastorRequest2.setPassword("boneshaker123");
+        pastorRequest2.setChurchName("jehovahnessi");
 
         verifyRequest = new PastorVerificationRequest();
        verifyRequest.setPassword("boneshaker123");
-        verifyRequest.setEmailAddress("boneshaker@malinator.com");
+        verifyRequest.setEmailAddress("boneshaker@mailinator.com");
         verifyRequest.setToken("7450631sa");
     }
 
