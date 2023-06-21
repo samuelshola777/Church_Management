@@ -1,6 +1,7 @@
 package com.example.churchmanagement.service;
 
 import com.example.churchmanagement.data.model.Address;
+import com.example.churchmanagement.data.model.DateZ;
 import com.example.churchmanagement.data.model.Gender;
 import com.example.churchmanagement.dto.request.PastorRequest;
 import com.example.churchmanagement.dto.request.PastorVerificationRequest;
@@ -21,6 +22,9 @@ class PastorServiceTest {
 private PastorService pastorService;
 
 private PastorRequest pastorRequest1;
+private DateZ dateOfBirth1;
+private DateZ dateOfBirth2;
+
 private PastorRequest pastorRequest2;
 private PastorRequest pastorRequest3;
 private Address address1;
@@ -28,6 +32,7 @@ private Address address2;
 private PastorVerificationRequest verifyRequest;
     @BeforeEach
     void setUp() {
+
         pastorRequest1 = new PastorRequest();
         pastorRequest1.setFirstName("elijah");
         pastorRequest1.setChurchName("StrongTower");
@@ -38,6 +43,11 @@ private PastorVerificationRequest verifyRequest;
         pastorRequest1.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
         pastorRequest1.setGender(Gender.MALE);
         pastorRequest1.setPassword("boneshaker123");
+
+        dateOfBirth1 = new DateZ();
+        dateOfBirth1.setDate("06");
+        dateOfBirth1.setMonth("04");
+        dateOfBirth1.setYear("1990");
 
         address1 = new Address();
         address1.setHouseNumber("103");
@@ -55,12 +65,18 @@ private PastorVerificationRequest verifyRequest;
         address2.setHouseNumber("290");
         address2.setState("lagos_State");
         address2.setStreetName("ilaje road");
+
+
         address2.setLocalGovernment("bariga");
         pastorRequest2.setAddress(address2);
         pastorRequest2.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
         pastorRequest2.setGender(Gender.MALE);
         pastorRequest2.setPassword("boneshaker123");
         pastorRequest2.setChurchName("jehovahnessi");
+
+        dateOfBirth2.setDate("27");
+        dateOfBirth2.setMonth("04");
+        dateOfBirth2.setYear("2009");
 
         verifyRequest = new PastorVerificationRequest();
        verifyRequest.setPassword("boneshaker123");
