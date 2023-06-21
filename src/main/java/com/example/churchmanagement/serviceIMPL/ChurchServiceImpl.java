@@ -85,6 +85,7 @@ return false;
 
 
     public ChurchResponse findChurchByName(String churchName) {
+        System.out.println("<<"+churchName+">>");
         ChurchBranch foundChurch = churchRepository.findByChurchBranchName(churchName);
         if (foundChurch == null  )throw new RegistrationException("==>  church account with the name " + churchName+ " does not exist <==");
         if (foundChurch.getValidationState() == ValidationState.INVALID) throw new RegistrationException("account not found");
