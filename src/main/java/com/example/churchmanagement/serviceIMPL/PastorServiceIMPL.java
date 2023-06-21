@@ -51,6 +51,7 @@ public class PastorServiceIMPL implements PastorService {
     mappedPastor.setAge(calculateAge(mappedPastor.getDateOfBirth()));
     //mappedPastor.setChurchBranch(churchService.findChurchByNameEntity(pastorRequest1.getChurchName()));
         ChurchBranch foundChurchBranch = churchService.findChurchByNameEntity(mappedPastor.getChurchName());
+        mappedPastor.setChurchBranch(foundChurchBranch);
     PastorTokenZ tokenZ = tokenService.createPastorToken(mappedPastor);
     mappedPastor.setToken(tokenZ.getToken());
     tokenZ.setPastor(pastorRepository.save(mappedPastor));
