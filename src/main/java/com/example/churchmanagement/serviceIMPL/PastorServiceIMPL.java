@@ -43,8 +43,8 @@ public class PastorServiceIMPL implements PastorService {
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
         System.out.println(" 1 <====================================================>");
-      emailAlreadyInUse.
-              System.out.println(" 2 <====================================================>");
+        emailAlreadyInUse.pastorEmailAlreadyInUse(pastorRequest1.getEmailAddress());
+        System.out.println(" 2 <====================================================>");
         registrationCheckIfEmailAlreadyExist(pastorRequest1.getEmailAddress());
         System.out.println(" 3 <====================================================>");
         toolz.passwordValidator(pastorRequest1.getPassword());
