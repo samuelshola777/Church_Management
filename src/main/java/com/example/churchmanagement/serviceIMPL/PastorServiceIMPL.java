@@ -42,25 +42,20 @@ public class PastorServiceIMPL implements PastorService {
 
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
-        System.out.println(" 1 <====================================================>");
         emailAlreadyInUse.pastorEmailAlreadyInUse(pastorRequest1.getEmailAddress());
-        System.out.println(" 2 <====================================================>");
         registrationCheckIfEmailAlreadyExist(pastorRequest1.getEmailAddress());
-        System.out.println(" 3 <====================================================>");
         toolz.passwordValidator(pastorRequest1.getPassword());
         toolz.phoneNumberValidator(pastorRequest1.getPhoneNumber());
     Pastor mappedPastor = mapToPastorEntity(pastorRequest1);
     mappedPastor.setRegistrationDate(LocalDateTime.now());
     mappedPastor.setAge(calculateAge(mappedPastor.getDateOfBirth()));
-    mappedPastor.setChurchBranch(churchService.findChurchByNameEntity(pastorRequest1.getChurchName()));
-
+   // mappedPastor.setChurchBranch(churchService.findChurchByNameEntity(pastorRequest1.getChurchName()));
     PastorTokenZ tokenZ = tokenService.createPastorToken(mappedPastor);
-        tokenZ.setPastor(mappedPastor);
     mappedPastor.setToken(tokenZ.getToken());
-   mappedPastor.getListOfToken().add(tokenZ);
-
     //emailService.sendEmail();
-    tokenService.saveToken(tokenZ);
+PastorTokenZ savedToken =  tokenService.saveToken(tokenZ);
+mappedPastor.getListOfToken().add(tokenZ);
+Pastor savedPastor = pastorRepository.save(mappedPastor);
 return mapToPastorResponse(mappedPastor);
     }
 

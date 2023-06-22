@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -29,7 +30,7 @@ public class Pastor {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private DateZ dateOfBirth;
     @OneToMany( cascade = CascadeType.DETACH, mappedBy = "pastor", orphanRemoval = true)
-    private List<PastorTokenZ> listOfToken;
+    private final List<PastorTokenZ> listOfToken = new ArrayList<>();
     private String churchName;
     private String emailAddress;
     private LocalDateTime registrationDate ;
@@ -39,7 +40,9 @@ public class Pastor {
     private String token;
     private String password;
     private String Profile_picture;
+    @Enumerated( EnumType.STRING)
     private Role role = Role.PASTOR;
+    @Enumerated( EnumType.STRING)
     private Gender gender;
     private int age;
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
