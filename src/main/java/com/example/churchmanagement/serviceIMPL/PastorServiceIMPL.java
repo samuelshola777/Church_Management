@@ -79,7 +79,9 @@ return mapToPastorResponse(mappedPastor);
      if (! foundChurchBranch.getToken().equals(token)) throw new TokenException("invalid token");
     if (!foundChurchBranch.getValidationState().equals(ValidationState.VALIDATED)) throw new ValidationException("the church account with the email => "+churchEmailAddress+" has not not been verified");
      foundPastor.setChurchBranch(foundChurchBranch);
-     foundChurchBranch.setPastor(pastorRepository.save(foundPastor));
+     Pastor savedPastor = pastorRepository.save(foundPastor);
+     foundChurchBranch.setPastor(savedPastor);
+     churchService.saveChurchWithPastorAccount(foundChurchBranch);
      return "completed";
     }
 
@@ -104,6 +106,7 @@ return mapToPastorResponse(mappedPastor);
                 .build();
     }
 
+    
 
     public  int calculateAge(DateZ dateZ) {
         int year = Integer.parseInt(dateZ.getYear());

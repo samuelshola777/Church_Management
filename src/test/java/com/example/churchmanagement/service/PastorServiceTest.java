@@ -45,7 +45,7 @@ private PastorVerificationRequest verifyRequest;
         pastorRequest1.setChurchName("StrongTower");
         pastorRequest1.setLastName("Echo");
         pastorRequest1.setPhoneNumber("09099332737");
-        pastorRequest1.setEmailAddress("ebukachukwunenye@gmal.com");
+        pastorRequest1.setEmailAddress("pastorAccount01@mailinator.com");
         pastorRequest1.setAddress(address1);
         pastorRequest1.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
         pastorRequest1.setGender(Gender.MALE);
@@ -63,7 +63,7 @@ private PastorVerificationRequest verifyRequest;
         pastorRequest2.setFirstName("elijah");
         pastorRequest2.setLastName("Echo");
         pastorRequest2.setPhoneNumber("09099332737");
-        pastorRequest2.setEmailAddress("ebukachukwunenye@gmal.com");
+        pastorRequest2.setEmailAddress("pastorAccount02.mailinator@mailinator.com");
 
         address2 = new Address();
         address2.setHouseNumber("290");
@@ -87,7 +87,7 @@ private PastorVerificationRequest verifyRequest;
 
         verifyRequest = new PastorVerificationRequest();
        verifyRequest.setPassword("boneshaker123");
-        verifyRequest.setEmailAddress("boneshaker@mailinator.com");
+        verifyRequest.setEmailAddress("pastorAccount01@mailinator.com");
         verifyRequest.setToken("7450631sa");
     }
 

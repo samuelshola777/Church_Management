@@ -94,7 +94,7 @@ class ChurchServiceTest {
   churchService.registerANewChurchBranch(churchRequest1);
   churchService.registerANewChurchBranch(churchRequest2);
   churchService.registerANewChurchBranch(churchRequest3);
-    assertEquals(4,churchService.countAllChurchBranch());
+    assertEquals(3,churchService.countAllChurchBranch());
 
     }
     @Test

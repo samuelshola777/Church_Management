@@ -3,6 +3,7 @@ package com.example.churchmanagement.serviceIMPL;
 import com.example.churchmanagement.ToolZ;
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchBranch;
+import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.data.model.ValidationState;
 import com.example.churchmanagement.dto.request.ChangeChurchAddressRequest;
 import com.example.churchmanagement.dto.request.ChurchRequest;
@@ -261,6 +262,8 @@ return false;
         churchRepository.deleteAllChurchTokenZByEmailAddress(mail);
     }
 
-    public void save
+    public void saveChurchWithPastorAccount(ChurchBranch churchBranch){
+        churchRepository.save(churchBranch);
+    }
 
 }
