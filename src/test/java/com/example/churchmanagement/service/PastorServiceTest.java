@@ -32,8 +32,14 @@ private Address address2;
 private PastorVerificationRequest verifyRequest;
     @BeforeEach
     void setUp() {
+        dateOfBirth1 = new DateZ();
+        dateOfBirth1.setDate("06");
+        dateOfBirth1.setMonth("04");
+        dateOfBirth1.setYear("1990");
+
 
         pastorRequest1 = new PastorRequest();
+        pastorRequest1.setDateOfBirth(dateOfBirth1);
         pastorRequest1.setFirstName("elijah");
         pastorRequest1.setChurchName("StrongTower");
         pastorRequest1.setLastName("Echo");
@@ -44,10 +50,7 @@ private PastorVerificationRequest verifyRequest;
         pastorRequest1.setGender(Gender.MALE);
         pastorRequest1.setPassword("boneshaker123");
 
-        dateOfBirth1 = new DateZ();
-        dateOfBirth1.setDate("06");
-        dateOfBirth1.setMonth("04");
-        dateOfBirth1.setYear("1990");
+
 
         address1 = new Address();
         address1.setHouseNumber("103");
@@ -66,7 +69,12 @@ private PastorVerificationRequest verifyRequest;
         address2.setState("lagos_State");
         address2.setStreetName("ilaje road");
 
+        dateOfBirth2 = new DateZ();
 
+        dateOfBirth2.setDate("27");
+        dateOfBirth2.setMonth("04");
+        dateOfBirth2.setYear("2009");
+        pastorRequest2.setDateOfBirth(dateOfBirth2);
         address2.setLocalGovernment("bariga");
         pastorRequest2.setAddress(address2);
         pastorRequest2.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
@@ -74,9 +82,7 @@ private PastorVerificationRequest verifyRequest;
         pastorRequest2.setPassword("boneshaker123");
         pastorRequest2.setChurchName("jehovahnessi");
 
-        dateOfBirth2.setDate("27");
-        dateOfBirth2.setMonth("04");
-        dateOfBirth2.setYear("2009");
+
 
         verifyRequest = new PastorVerificationRequest();
        verifyRequest.setPassword("boneshaker123");
