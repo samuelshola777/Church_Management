@@ -56,7 +56,7 @@ public class PastorServiceIMPL implements PastorService {
 
     PastorTokenZ tokenZ = tokenService.createPastorToken(mappedPastor);
     mappedPastor.setToken(tokenZ.getToken());
-   mappedPastor.g
+   mappedPastor.getListOfToken().add(tokenZ);
     tokenZ.setPastor(pastorRepository.save(mappedPastor));
     //emailService.sendEmail();
     tokenService.saveToken(tokenZ);
