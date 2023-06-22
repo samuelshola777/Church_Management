@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PastorServiceTest {
 @Autowired
 private PastorService pastorService;
-
+private ChurchService churchService;
 private PastorRequest pastorRequest1;
 private DateZ dateOfBirth1;
 private DateZ dateOfBirth2;
@@ -111,6 +111,12 @@ private PastorVerificationRequest verifyRequest;
     void testThatDeleteAllPastorsAccount(){
     pastorService.deleteAllPastorAccount();
     assertEquals(0,pastorService.countPastorAccounts());
+    }
+    @Test
+    void testThatPastorCanSetToLeadAChurch(){
+        String token = churchService.tokenGenerator("orework22@gmail.com").getToken();
+        assertEquals("StrongTower",pastorService.setPastorToLeadAChurch("orework22@gmail.com","ebukachukwunenye@gmal.com",token));
+
     }
 
 }

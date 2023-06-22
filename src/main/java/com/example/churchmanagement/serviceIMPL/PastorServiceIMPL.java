@@ -1,10 +1,7 @@
 package com.example.churchmanagement.serviceIMPL;
 
 import com.example.churchmanagement.ToolZ;
-import com.example.churchmanagement.data.model.ChurchBranch;
-import com.example.churchmanagement.data.model.DateZ;
-import com.example.churchmanagement.data.model.Pastor;
-import com.example.churchmanagement.data.model.Role;
+import com.example.churchmanagement.data.model.*;
 import com.example.churchmanagement.data.repository.PastorRepository;
 import com.example.churchmanagement.dto.request.PastorRequest;
 import com.example.churchmanagement.dto.request.PastorVerificationRequest;
@@ -17,6 +14,8 @@ import com.example.churchmanagement.service.EmailAlreadyInUse;
 import com.example.churchmanagement.service.PastorService;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
 import com.example.churchmanagement.tokenZ.service.PastorTokenService;
+import com.example.churchmanagement.tokenZ.tokenException.TokenException;
+import jakarta.validation.ValidationException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -49,7 +48,6 @@ public class PastorServiceIMPL implements PastorService {
     Pastor mappedPastor = mapToPastorEntity(pastorRequest1);
     mappedPastor.setRegistrationDate(LocalDateTime.now());
     mappedPastor.setAge(calculateAge(mappedPastor.getDateOfBirth()));
-    mappedPastor.setChurchBranch(churchService.findChurchByNameEntity(pastorRequest1.getChurchName()));
     PastorTokenZ tokenZ = tokenService.createPastorToken(mappedPastor);
     mappedPastor.setToken(tokenZ.getToken());
     //emailService.sendEmail();
@@ -74,6 +72,17 @@ return mapToPastorResponse(mappedPastor);
         pastorRepository.deleteAll();
     }
 
+    @Override
+    public String setPastorToLeadAChurch(String churchEmailAddress, String pastorEmail,String token) {
+     Pastor foundPastor = pastorRepository.findByEmailAddress(pastorEmail);
+     ChurchBranch foundChurchBranch = churchService.findChurchBranchByEmailAddress(churchEmailAddress);
+     if (! foundChurchBranch.getToken().equals(token)) throw new TokenException("invalid token");
+    if (!foundChurchBranch.getValidationState().equals(ValidationState.VALIDATED)) throw new ValidationException("the church account with the email => "+churchEmailAddress+" has not not been verified");
+     foundPastor.setChurchBranch(foundChurchBranch);
+     foundChurchBranch.setPastor(pastorRepository.save(foundPastor));
+     return "completed";
+    }
+
     public void registrationCheckIfEmailAlreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);
     if(existingPastor!=null) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");
@@ -94,6 +103,7 @@ return mapToPastorResponse(mappedPastor);
                 .token(pastorRequest.getToken())
                 .build();
     }
+
 
     public  int calculateAge(DateZ dateZ) {
         int year = Integer.parseInt(dateZ.getYear());

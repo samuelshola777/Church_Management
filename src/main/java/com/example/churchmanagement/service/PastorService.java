@@ -21,4 +21,6 @@ public interface PastorService {
     PastorVerificationResponse verifyPastorAccount(PastorVerificationRequest verifyRequest) ;
 
     void deleteAllPastorAccount();
+
+    String setPastorToLeadAChurch(String churchEmailAddress,String pastorEmailAddress, String token);
 }

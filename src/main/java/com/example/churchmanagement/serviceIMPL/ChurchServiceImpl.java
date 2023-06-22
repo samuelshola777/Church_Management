@@ -166,6 +166,7 @@ return false;
                 .password(churchBranch.getPassword())
                 .churchBranchName(churchBranch.getChurchBranchName())
                 .phoneNumber(churchBranch.getPhoneNumber())
+                .pastor(churchBranch.getPastor())
                 .createdAt(churchBranch.getCreatedAt()).build();
 
      }
@@ -260,6 +261,6 @@ return false;
         churchRepository.deleteAllChurchTokenZByEmailAddress(mail);
     }
 
-
+    public void save
 
 }

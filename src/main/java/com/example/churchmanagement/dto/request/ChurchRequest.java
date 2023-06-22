@@ -2,6 +2,7 @@ package com.example.churchmanagement.dto.request;
 
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.ChurchType;
+import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.data.model.ValidationState;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToOne;
@@ -18,6 +19,7 @@ public class ChurchRequest {
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;
     private String password;
+    private Pastor pastor;
     private String phoneNumber;
     private String emailAddress;
     private long id;

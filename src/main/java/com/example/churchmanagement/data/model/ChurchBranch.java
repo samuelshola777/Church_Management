@@ -45,6 +45,8 @@ private String emailAddress;
     private final List<ChurchTokenZ> listOfToken  = new ArrayList<>();
 
     private String password;
+    @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
+    private Pastor pastor;
 
     private String phoneNumber;
 
