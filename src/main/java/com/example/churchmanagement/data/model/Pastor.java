@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Set;
 
 @Builder
@@ -27,8 +28,8 @@ public class Pastor {
     private String phoneNumber;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private DateZ dateOfBirth;
-
-    private PastorTokenZ tokenZ;
+    @OneToMany( cascade = CascadeType.DETACH, mappedBy = "pastor", orphanRemoval = true)
+    private List<PastorTokenZ> listOfToken;
     private String churchName;
     private String emailAddress;
     private LocalDateTime registrationDate ;
