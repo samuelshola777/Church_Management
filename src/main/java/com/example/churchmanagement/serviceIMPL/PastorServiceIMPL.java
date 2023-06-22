@@ -99,14 +99,16 @@ return mapToPastorResponse(mappedPastor);
                 .address(pastorRequest.getAddress())
                 .Profile_picture(pastorRequest.getProfile_picture())
                 .emailAddress(pastorRequest.getEmailAddress())
+                .validationState(pastorRequest.getValidationState())
                 .lastName(pastorRequest.getLastName())
                 .firstName(pastorRequest.getFirstName())
                 .churchName(pastorRequest.getChurchName())
+                .role(pastorRequest.getRole())
                 .token(pastorRequest.getToken())
                 .build();
     }
 
-    
+
 
     public  int calculateAge(DateZ dateZ) {
         int year = Integer.parseInt(dateZ.getYear());

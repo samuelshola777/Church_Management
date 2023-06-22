@@ -38,26 +38,27 @@ private PastorVerificationRequest verifyRequest;
         dateOfBirth1.setMonth("04");
         dateOfBirth1.setYear("1990");
 
+        address1 = new Address();
+        address1.setHouseNumber("103");
+        address1.setState("lagos_State");
+        address1.setStreetName("ilaje road");
+        address1.setLocalGovernment("bariga");
+
 
         pastorRequest1 = new PastorRequest();
+        pastorRequest1.setAddress(address1);
         pastorRequest1.setDateOfBirth(dateOfBirth1);
-        pastorRequest1.setFirstName("elijah");
+        pastorRequest1.setFirstName("emi-goldy");
         pastorRequest1.setChurchName("StrongTower");
-        pastorRequest1.setLastName("Echo");
+        pastorRequest1.setLastName("goat");
         pastorRequest1.setPhoneNumber("09099332737");
         pastorRequest1.setEmailAddress("pastorAccount01@mailinator.com");
-        pastorRequest1.setAddress(address1);
         pastorRequest1.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
         pastorRequest1.setGender(Gender.MALE);
         pastorRequest1.setPassword("boneshaker123");
 
 
 
-        address1 = new Address();
-        address1.setHouseNumber("103");
-        address1.setState("lagos_State");
-        address1.setStreetName("ilaje road");
-        address1.setLocalGovernment("bariga");
 
         pastorRequest2 = new PastorRequest();
         pastorRequest2.setFirstName("elijah");
@@ -75,6 +76,7 @@ private PastorVerificationRequest verifyRequest;
         dateOfBirth2.setDate("27");
         dateOfBirth2.setMonth("04");
         dateOfBirth2.setYear("2009");
+
         pastorRequest2.setDateOfBirth(dateOfBirth2);
         address2.setLocalGovernment("bariga");
         pastorRequest2.setAddress(address2);
@@ -85,10 +87,7 @@ private PastorVerificationRequest verifyRequest;
 
 
 
-        verifyRequest = new PastorVerificationRequest();
-       verifyRequest.setPassword("boneshaker123");
-        verifyRequest.setEmailAddress("pastorAccount01@mailinator.com");
-        verifyRequest.setToken("7450631sa");
+
     }
 
     @AfterEach
