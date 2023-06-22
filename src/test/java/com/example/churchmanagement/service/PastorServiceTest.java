@@ -105,4 +105,10 @@ private PastorVerificationRequest verifyRequest;
     void testThatPastorCanVerifyAccountAfterTryingToRegister() {
         pastorService.verifyPastorAccount(verifyRequest);
     }
+
+    @Test
+    void testThatDeleteAllPastorsAccount(){
+
+    }
+
 }
