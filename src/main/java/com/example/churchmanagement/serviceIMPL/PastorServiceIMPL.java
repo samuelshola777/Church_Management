@@ -55,9 +55,10 @@ public class PastorServiceIMPL implements PastorService {
     mappedPastor.setChurchBranch(churchService.findChurchByNameEntity(pastorRequest1.getChurchName()));
 
     PastorTokenZ tokenZ = tokenService.createPastorToken(mappedPastor);
+        tokenZ.setPastor(mappedPastor);
     mappedPastor.setToken(tokenZ.getToken());
    mappedPastor.getListOfToken().add(tokenZ);
-    tokenZ.setPastor(pastorRepository.save(mappedPastor));
+
     //emailService.sendEmail();
     tokenService.saveToken(tokenZ);
 return mapToPastorResponse(mappedPastor);
