@@ -75,14 +75,27 @@ return mapToPastorResponse(mappedPastor);
     @Override
     public String setPastorToLeadAChurch(String churchEmailAddress, String pastorEmail,String token) {
      Pastor foundPastor = pastorRepository.findByEmailAddress(pastorEmail);
+    if (foundPastor == null)throw new FindingExection("pastor's account "+pastorEmail+" does not exist");
+     if (foundPastor.getValidationState() != ValidationState.VALIDATED) throw new ValidationException
+         ("pastor's account has not been validated please ensure to validate your account");
      ChurchBranch foundChurchBranch = churchService.findChurchBranchByEmailAddress(churchEmailAddress);
-     if (! foundChurchBranch.getToken().equals(token)) throw new TokenException("invalid token");
+  if (foundChurchBranch == null) throw new FindingExection("church branch with email address => "+churchEmailAddress+" <= does not exist");
+     if (! foundChurchBranch.getToken().equals(token))
+         throw new TokenException("invalid token");
     if (!foundChurchBranch.getValidationState().equals(ValidationState.VALIDATED)) throw new ValidationException("the church account with the email => "+churchEmailAddress+" has not not been verified");
      foundPastor.setChurchBranch(foundChurchBranch);
      Pastor savedPastor = pastorRepository.save(foundPastor);
      foundChurchBranch.setPastor(savedPastor);
      churchService.saveChurchWithPastorAccount(foundChurchBranch);
      return "completed";
+    }
+
+    @Override
+    public Pastor findPastorByEmailAddress(String mail) {
+        Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
+    if (foundPastor == null) throw new FindingExection("pastor account with the email "+mail+" does not exist");
+        if (foundPastor.getValidationState() == ValidationState.INVALID) throw  new ValidationException("=> invalid pastor account <=");
+        return foundPastor;
     }
 
     public void registrationCheckIfEmailAlreadyExist(String email){

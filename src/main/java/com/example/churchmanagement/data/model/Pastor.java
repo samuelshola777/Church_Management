@@ -34,6 +34,7 @@ public class Pastor {
     private String churchName;
     private String emailAddress;
     private LocalDateTime registrationDate ;
+    @Enumerated( EnumType.STRING)
     private ValidationState validationState;
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;

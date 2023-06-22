@@ -1,5 +1,6 @@
 package com.example.churchmanagement.service;
 
+import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.dto.request.PastorRequest;
 import com.example.churchmanagement.dto.request.PastorVerificationRequest;
 import com.example.churchmanagement.dto.response.PastorResponse;
@@ -23,4 +24,6 @@ public interface PastorService {
     void deleteAllPastorAccount();
 
     String setPastorToLeadAChurch(String churchEmailAddress,String pastorEmailAddress, String token);
+
+    Pastor findPastorByEmailAddress(String mail);
 }
