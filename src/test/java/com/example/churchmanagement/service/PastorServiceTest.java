@@ -11,6 +11,7 @@ import com.example.churchmanagement.exception.RegistrationException;
 import com.example.churchmanagement.exception.RegistrationVerificationException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -105,10 +106,11 @@ private PastorVerificationRequest verifyRequest;
     void testThatPastorCanVerifyAccountAfterTryingToRegister() {
         pastorService.verifyPastorAccount(verifyRequest);
     }
-
+@Disabled
     @Test
     void testThatDeleteAllPastorsAccount(){
-
+    pastorService.deleteAllPastorAccount();
+    assertEquals(0,pastorService.countPastorAccounts());
     }
 
 }

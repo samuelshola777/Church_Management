@@ -69,6 +69,11 @@ return mapToPastorResponse(mappedPastor);
         return null;
     }
 
+    @Override
+    public void deleteAllPastorAccount() {
+        pastorRepository.deleteAll();
+    }
+
     public void registrationCheckIfEmailAlreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);
     if(existingPastor!=null) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");

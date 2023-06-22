@@ -19,4 +19,6 @@ public interface PastorService {
     long countPastorAccounts();
 
     PastorVerificationResponse verifyPastorAccount(PastorVerificationRequest verifyRequest) ;
+
+    void deleteAllPastorAccount();
 }
