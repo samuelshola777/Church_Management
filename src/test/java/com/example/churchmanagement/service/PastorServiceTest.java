@@ -127,8 +127,8 @@ private PastorVerificationRequest verifyRequest;
     }
     @Test
     void testThatWeCanVerifyPastorAccount(){
-        String token = pastorService.generatePastorToken("pastorAccount01@mailinator.com").getToken();
-    assertDoesNotThrow(()->{pastorService.validatePastorAccount("pastorAccount01@mailinator.com","boneshaker123",token);});
+        String token = pastorService.generatePastorToken("pastorAccount02.mailinator@mailinator.com").getToken();
+    assertDoesNotThrow(()->{pastorService.validatePastorAccount("pastorAccount02.mailinator@mailinator.com","boneshaker123",token);});
     }
 
 }

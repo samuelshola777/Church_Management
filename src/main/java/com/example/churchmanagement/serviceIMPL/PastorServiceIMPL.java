@@ -83,7 +83,9 @@ return mapToPastorResponse(mappedPastor);
      foundPastor.setChurchBranch(foundChurchBranch);
      Pastor savedPastor = pastorRepository.save(foundPastor);
      foundChurchBranch.setPastor(savedPastor);
+        System.out.println("other side<===========================>1");
      churchService.saveChurchWithPastorAccount(foundChurchBranch);
+        System.out.println(" other side<===========================>2");
      return "completed";
     }
 

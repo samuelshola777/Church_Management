@@ -29,7 +29,7 @@ public class Pastor {
     private String phoneNumber;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private DateZ dateOfBirth;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH, mappedBy = "pastor", orphanRemoval = true)
+    @OneToMany( cascade = CascadeType.DETACH, mappedBy = "pastor", orphanRemoval = true)
     private final List<PastorTokenZ> listOfToken = new ArrayList<>();
     private String churchName;
     private String emailAddress;
