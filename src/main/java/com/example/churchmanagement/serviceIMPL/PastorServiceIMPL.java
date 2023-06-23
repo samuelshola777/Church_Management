@@ -107,6 +107,16 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
    return tokenZ;
     }
 
+    @Override
+    public PastorResponse validatePastorAccount(String mail, String password, String token) {
+    Pastor foundPastor = findPastorByEmailAddress(mail);
+    if (!foundPastor.getPassword().equals(password)) throw new PasswordException("");
+    if (!foundPastor.getToken().equals(token)) throw new TokenException("invalid token");
+    foundPastor.setValidationState(ValidationState.VALIDATED);
+    return mapToPastorResponse(pastorRepository.save(foundPastor));
+
+    }
+
     public void registrationCheckIfEmailAlreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);
     if(existingPastor!=null) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");

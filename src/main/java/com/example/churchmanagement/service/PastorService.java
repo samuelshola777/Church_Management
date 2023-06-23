@@ -29,5 +29,5 @@ public interface PastorService {
 
     PastorTokenZ generatePastorToken(String mail);
 
-    String validatePastorAccount(String mail, String password, String token);
+    PastorResponse validatePastorAccount(String mail, String password, String token);
 }
