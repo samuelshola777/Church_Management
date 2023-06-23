@@ -82,7 +82,7 @@ return mapToPastorResponse(mappedPastor);
     if (!foundChurchBranch.getValidationState().equals(ValidationState.VALIDATED)) throw new ValidationException("the church account with the email => "+churchEmailAddress+" has not not been verified");
      foundPastor.setChurchBranch(foundChurchBranch);
      Pastor savedPastor = pastorRepository.save(foundPastor);
-     foundChurchBranch.setPastor(savedPastor);
+     foundChurchBranch.setPastor(foundPastor);
         System.out.println("other side<===========================>1");
      churchService.saveChurchWithPastorAccount(foundChurchBranch);
         System.out.println(" other side<===========================>2");
