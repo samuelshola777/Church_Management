@@ -85,7 +85,7 @@ return mapToPastorResponse(mappedPastor);
      foundChurchBranch.setPastor(foundPastor);
         System.out.println("other side<===========================>1");
      churchService.saveChurchWithPastorAccount(foundChurchBranch);
-        System.out.println(" other side<===========================>2");
+
      return "completed";
     }
 
