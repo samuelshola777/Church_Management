@@ -114,7 +114,6 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     if (!foundPastor.getToken().equals(token)) throw new TokenException("invalid token");
     foundPastor.setValidationState(ValidationState.VALIDATED);
     return mapToPastorResponse(pastorRepository.save(foundPastor));
-
     }
 
     public void registrationCheckIfEmailAlreadyExist(String email){
