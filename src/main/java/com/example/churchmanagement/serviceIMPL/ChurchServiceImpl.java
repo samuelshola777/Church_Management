@@ -266,7 +266,7 @@ return false;
     public void saveChurchWithPastorAccount(ChurchBranch churchBranch){
         System.out.println("<===========================>1");
         churchRepository.save(churchBranch);
-        System.out.println("<===========================>2");
+
     }
 
 }
