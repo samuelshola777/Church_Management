@@ -28,4 +28,6 @@ public interface PastorService {
     Pastor findPastorByEmailAddress(String mail);
 
     PastorTokenZ generatePastorToken(String mail);
+
+    String validatePastorAccount(String mail, String password, String token);
 }
