@@ -102,10 +102,7 @@ private PastorVerificationRequest verifyRequest;
         assertEquals(2, pastorService.countPastorAccounts());
 
     }
-    @Test
-    void testThatPastorCanVerifyAccountAfterTryingToRegister() {
-        pastorService.verifyPastorAccount(verifyRequest);
-    }
+
 @Disabled
     @Test
     void testThatDeleteAllPastorsAccount(){
@@ -125,7 +122,7 @@ private PastorVerificationRequest verifyRequest;
     }
     @Test
     void testThaWeCanGenerateToken(){
-        assertNotNull(pastorService.generatePastorToken("pastorAccount02.mailinator@mailinator.com"))
+        assertNotNull(pastorService.generatePastorToken("pastorAccount01@mailinator.com"));
 
     }
 

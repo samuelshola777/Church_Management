@@ -2,6 +2,7 @@ package com.example.churchmanagement.tokenZ.service;
 
 import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
+import com.example.churchmanagement.tokenZ.data.model.TokenState;
 import com.example.churchmanagement.tokenZ.data.repository.PastorTokenRepository;
 import jakarta.transaction.Transactional;
 import lombok.NonNull;
@@ -26,6 +27,7 @@ public PastorTokenZ createPastorToken(Pastor pastor){
     String lastFour = tokenString.substring(0,4);
     String completeToken = String.valueOf(tokenNumber)+ lastFour;
     PastorTokenZ token = new PastorTokenZ();
+    token.setTokenState(TokenState.VALID);
     token.setToken(completeToken);
     token.setCreateAt(LocalDateTime.now());
     token.setPastor(pastor);

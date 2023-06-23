@@ -18,6 +18,7 @@ import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import jakarta.validation.ValidationException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -100,7 +101,8 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
  PastorTokenZ tokenZ =  tokenService.createPastorToken(foundPastor);
    //emailService.sendEmail();
    foundPastor.setToken(tokenZ.getToken());
-   foundPastor.getListOfToken().add(tokenZ);
+
+  // foundPastor.getListOfToken().add(tokenZ);
    pastorRepository.save(foundPastor);
    return tokenZ;
     }
