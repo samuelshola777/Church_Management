@@ -9,6 +9,7 @@ import com.example.churchmanagement.exception.PasswordException;
 import com.example.churchmanagement.exception.PhoneNumberException;
 import com.example.churchmanagement.exception.RegistrationException;
 import com.example.churchmanagement.exception.RegistrationVerificationException;
+import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
 
 public interface PastorService {
 
@@ -26,4 +27,6 @@ public interface PastorService {
     String setPastorToLeadAChurch(String churchEmailAddress,String pastorEmailAddress, String token);
 
     Pastor findPastorByEmailAddress(String mail);
+
+    PastorTokenZ generatePastorToken(String mail);
 }

@@ -114,14 +114,18 @@ private PastorVerificationRequest verifyRequest;
     }
     @Test
     void testThatPastorCanSetToLeadAChurch(){
-        String token = churchService.tokenGenerator("pastorAccount02.mailinator@mailinator.com").getToken();
-        assertEquals("StrongTower",pastorService.setPastorToLeadAChurch("orework22@gmail.com","ebukachukwunenye@gmal.com",token));
+        String token = churchService.tokenGenerator("orework22@gmail.com").getToken();
+        assertEquals("StrongTower",pastorService.setPastorToLeadAChurch("orework22@gmail.com","pastorAccount02.mailinator@mailinator.com",token));
 
     }
     @Test
     void testThatWeCanFindPastorAccountByEmailAddress(){
-
         assertEquals("Echo", pastorService.findPastorByEmailAddress("pastorAccount02.mailinator@mailinator.com").getLastName());
+
+    }
+    @Test
+    void testThaWeCanGenerateToken(){
+        assertNotNull(pastorService.generatePastorToken("pastorAccount02.mailinator@mailinator.com"))
 
     }
 

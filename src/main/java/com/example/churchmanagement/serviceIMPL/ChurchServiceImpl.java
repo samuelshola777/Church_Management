@@ -195,7 +195,8 @@ return false;
         foundChurch.setToken(createdToken.getToken());
         GenerateTokenRequest generateTokenRequest = new GenerateTokenRequest(createdToken.getToken(),foundChurch.getEmailAddress());
     //  emailService.generateTokenRequest(generateTokenRequest);
-     churchTokenService.saveToken(createdToken);
+        foundChurch.addToken(createdToken);
+        churchTokenService.saveToken(createdToken);
         churchRepository.save(foundChurch);
         return createdToken;
     }
