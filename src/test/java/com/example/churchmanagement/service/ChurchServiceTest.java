@@ -171,5 +171,4 @@ class ChurchServiceTest {
     void testThatWeCanDeleteAllTokenByChurchEmail(){
         assertDoesNotThrow(()->{churchService.deleteAllTokenByChurchEmail("itsezebruce19@gmail.com");});
     }
-
 }

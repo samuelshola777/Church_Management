@@ -28,9 +28,9 @@ public PastorTokenZ createPastorToken(Pastor pastor){
     PastorTokenZ token = new PastorTokenZ();
     token.setToken(completeToken);
     token.setCreateAt(LocalDateTime.now());
-//    token.setPastor(pastor);
+    token.setPastor(pastor);
     token.setExpiredAt(token.getCreateAt().plusMinutes(30));
-return token;
+  return   pastorTokenRepository.save(token);
 }
 
 public PastorTokenZ saveToken(PastorTokenZ token) {

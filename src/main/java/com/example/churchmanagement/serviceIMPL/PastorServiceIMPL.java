@@ -47,7 +47,7 @@ public class PastorServiceIMPL implements PastorService {
         toolz.phoneNumberValidator(pastorRequest1.getPhoneNumber());
     Pastor mappedPastor = mapToPastorEntity(pastorRequest1);
     mappedPastor.setRegistrationDate(LocalDateTime.now());
-    mappedPastor.setAge(calculateAge(mappedPastor.getDateOfBirth()));
+    mappedPastor.setAge(toolz.calculateAge(mappedPastor.getDateOfBirth()));
     PastorTokenZ tokenZ = tokenService.createPastorToken(mappedPastor);
     mappedPastor.setToken(tokenZ.getToken());
     //emailService.sendEmail();
@@ -62,10 +62,6 @@ return mapToPastorResponse(mappedPastor);
         return pastorRepository.count();
     }
 
-    @Override
-    public PastorVerificationResponse verifyPastorAccount(PastorVerificationRequest verifyRequest) {
-        return null;
-    }
 
     @Override
     public void deleteAllPastorAccount() {
@@ -98,6 +94,17 @@ return mapToPastorResponse(mappedPastor);
         return foundPastor;
     }
 
+    @Override
+    public PastorTokenZ generatePastorToken(String mail) {
+Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
+ PastorTokenZ tokenZ =  tokenService.createPastorToken(foundPastor);
+   //emailService.sendEmail();
+   foundPastor.setToken(tokenZ.getToken());
+   foundPastor.getListOfToken().add(tokenZ);
+   pastorRepository.save(foundPastor);
+   return tokenZ;
+    }
+
     public void registrationCheckIfEmailAlreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);
     if(existingPastor!=null) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");
@@ -123,14 +130,7 @@ return mapToPastorResponse(mappedPastor);
 
 
 
-    public  int calculateAge(DateZ dateZ) {
-        int year = Integer.parseInt(dateZ.getYear());
-        int month = Integer.parseInt(dateZ.getMonth());
-        int day = Integer.parseInt(dateZ.getDate());
-        LocalDateTime currentDate = LocalDateTime.now();
-        LocalDateTime birthDate = LocalDateTime.of(year, month, day, 0, 0);
-     return Period.between(birthDate.toLocalDate(), currentDate.toLocalDate()).getYears();
-    }
+
     public PastorResponse mapToPastorResponse(Pastor pastor){
         return PastorResponse.builder()
               .firstName(pastor.getFirstName())
