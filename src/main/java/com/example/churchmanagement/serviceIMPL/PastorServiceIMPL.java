@@ -76,11 +76,13 @@ return mapToPastorResponse(mappedPastor);
 
     @Override
     public String setPastorToLeadAChurch(String churchEmailAddress, String pastorEmail,String token) {
-     Pastor foundPastor = pastorRepository.findByEmailAddress(pastorEmail);
+     Pastor foundPastor = findPastorByEmailAddress(pastorEmail);
+        System.out.println("*************1");
     if (foundPastor == null)throw new FindingExection("pastor's account "+pastorEmail+" does not exist");
      if (foundPastor.getValidationState() != ValidationState.VALIDATED) throw new ValidationException
          ("pastor's account has not been validated please ensure to validate your account");
      ChurchBranch foundChurchBranch = churchService.findChurchBranchByEmailAddress(churchEmailAddress);
+        System.out.println("*************2");
   if (foundChurchBranch == null) throw new FindingExection("church branch with email address => "+churchEmailAddress+" <= does not exist");
      if (! foundChurchBranch.getToken().equals(token))
          throw new TokenException("invalid token");
