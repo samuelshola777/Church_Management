@@ -112,7 +112,8 @@ private PastorVerificationRequest verifyRequest;
     @Test
     void testThatPastorCanSetToLeadAChurch(){
         String token = churchService.tokenGenerator("itsezebruce19@gmail.com").getToken();
-        assertEquals("completed",pastorService.setPastorToLeadAChurch("itsezebruce19@gmail.com","pastorAccount01@mailinator.com",token));
+assertEquals("completed",
+        pastorService.setPastorToLeadAChurch("itsezebruce19@gmail.com","pastorAccount01@mailinator.com",token));
 
     }
     @Test
@@ -132,8 +133,8 @@ private PastorVerificationRequest verifyRequest;
     }
     @Test
     void testThatWeCanDeletePastorAccount(){
-        String token = pastorService.generatePastorToken("pastorAccount02.mailinator@mailinator.com").getToken();
-assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount02.mailinator@mailinator.com",token);
+        String token = pastorService.generatePastorToken("pastorAccount01@mailinator.com").getToken();
+assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount01@mailinator.com",token);
 });
 //        assertEquals(1, pastorService.countPastorAccounts());
     }
