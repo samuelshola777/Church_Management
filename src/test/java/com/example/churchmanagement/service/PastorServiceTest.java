@@ -136,5 +136,9 @@ private PastorVerificationRequest verifyRequest;
         pastorService.deletePastorAccountByEmail("pastorAccount02.mailinator@mailinator.com",token);
         assertEquals(1, pastorService.countPastorAccounts());
     }
+    @Test
+    void testThatWeCanFindChurchByPastorEmail(){
+
+    }
 
 }
