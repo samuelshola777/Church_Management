@@ -111,9 +111,10 @@ private PastorVerificationRequest verifyRequest;
     }
     @Test
     void testThatPastorCanSetToLeadAChurch(){
+        System.out.println("************* testBody1");
         String token = churchService.tokenGenerator("itsezebruce19@gmail.com").getToken();
 
-        System.out.println("************* testBody");
+        System.out.println("************* testBody2");
         assertEquals("completed",
         pastorService.setPastorToLeadAChurch("itsezebruce19@gmail.com","pastorAccount01@mailinator.com",token));
 
