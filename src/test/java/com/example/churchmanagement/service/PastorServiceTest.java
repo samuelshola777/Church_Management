@@ -96,7 +96,7 @@ private PastorVerificationRequest verifyRequest;
     }
     @Test
     void testThatWeCanCreateANewPastorAccount()  {
-
+String name = "samuel shola";
         pastorService.RegisterNewPastorAccount( pastorRequest1);
         pastorService.RegisterNewPastorAccount( pastorRequest2);
         assertEquals(2, pastorService.countPastorAccounts());
@@ -129,6 +129,12 @@ private PastorVerificationRequest verifyRequest;
     void testThatWeCanVerifyPastorAccount(){
         String token = pastorService.generatePastorToken("pastorAccount02.mailinator@mailinator.com").getToken();
     assertDoesNotThrow(()->{pastorService.validatePastorAccount("pastorAccount02.mailinator@mailinator.com","boneshaker123",token);});
+    }
+    @Test
+    void testThatWeCanDeletePastorAccount(){
+        String token = pastorService.generatePastorToken("pastorAccount02.mailinator@mailinator.com").getToken();
+        pastorService.deletePastorAccountByEmail("pastorAccount02.mailinator@mailinator.com",token);
+        assertEquals(1, pastorService.countPastorAccounts());
     }
 
 }

@@ -30,4 +30,6 @@ public interface PastorService {
     PastorTokenZ generatePastorToken(String mail);
 
     PastorResponse validatePastorAccount(String mail, String password, String token);
+
+   void deletePastorAccountByEmail(String mail, String token);
 }

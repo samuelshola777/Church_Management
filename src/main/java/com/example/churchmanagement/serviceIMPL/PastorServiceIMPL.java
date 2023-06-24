@@ -52,9 +52,14 @@ public class PastorServiceIMPL implements PastorService {
     PastorTokenZ tokenZ = tokenService.createPastorToken(mappedPastor);
     mappedPastor.setToken(tokenZ.getToken());
     //emailService.sendEmail();
-PastorTokenZ savedToken =  tokenService.saveToken(tokenZ);
-mappedPastor.getListOfToken().add(tokenZ);
-Pastor savedPastor = pastorRepository.save(mappedPastor);
+        mappedPastor.getListOfToken().add(tokenZ);
+        Pastor savedPastor = pastorRepository.save(mappedPastor);
+        tokenZ.setPastor(savedPastor);
+        PastorTokenZ savedToken =  tokenService.saveToken(tokenZ);
+
+
+
+
 return mapToPastorResponse(mappedPastor);
     }
 
@@ -115,6 +120,13 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     if (!foundPastor.getToken().equals(token)) throw new TokenException("invalid token");
     foundPastor.setValidationState(ValidationState.VALIDATED);
     return mapToPastorResponse(pastorRepository.save(foundPastor));
+    }
+
+    @Override
+    public void deletePastorAccountByEmail(String mail, String token) {
+        Pastor foundPastor = findPastorByEmailAddress(mail);
+    if (!token.equals(foundPastor.getToken())) throw new TokenException("invalid token");
+      foundPastor.setValidationState(ValidationState.INVALID);
     }
 
     public void registrationCheckIfEmailAlreadyExist(String email){
