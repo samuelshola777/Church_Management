@@ -145,7 +145,7 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     if (!token.equals(foundPastor.getToken())) throw new TokenException("invalid token");
       foundPastor.setValidationState(ValidationState.INVALID);
    if (foundPastor.getValidationState() != ValidationState.VALIDATED) {
-foundPastor.getChurchBranch().getEmailAddress()
+
        foundPastor.setChurchBranch(null);
        foundPastor.setChurchName(null);
 
