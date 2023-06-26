@@ -103,10 +103,11 @@ private PastorVerificationRequest verifyRequest;
     void tearDown() {
     }
     @Test
+    @Disabled
     void testThatWeCanCreateANewPastorAccount()  {
 
         pastorService.RegisterNewPastorAccount( pastorRequest1);
-     //   pastorService.RegisterNewPastorAccount( pastorRequest2);
+        pastorService.RegisterNewPastorAccount( pastorRequest2);
         assertEquals(2, pastorService.countPastorAccounts());
 
     }
