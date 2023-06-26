@@ -146,6 +146,7 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
       foundPastor.setValidationState(ValidationState.INVALID);
    if (foundPastor.getValidationState() != ValidationState.VALIDATED) {
 ChurchBranch foundChurchBranch = churchService.findChurchBranchByEmailAddress(foundPastor.getChurchBranch().getEmailAddress());
+     foundChurchBranch.setPastor(null);
        foundPastor.setChurchBranch(null);
        foundPastor.setChurchName(null);
 
