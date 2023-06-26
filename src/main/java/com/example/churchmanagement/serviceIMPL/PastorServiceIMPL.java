@@ -57,7 +57,7 @@ public class PastorServiceIMPL implements PastorService {
          System.out.println("where i resave the pastopr account AFTER UPDATE  *****************");
 
          token.setPastor(upDatedPastor);
-        tokenService.saveToken(token);
+//        tokenService.saveToken(token);
         return mapToPastorResponse(upDatedPastor);
      }
     if (pastorRepository.findByEmailAddress(pastorRequest1.getEmailAddress() )!= null)
