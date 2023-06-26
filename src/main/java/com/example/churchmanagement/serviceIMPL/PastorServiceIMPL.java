@@ -51,8 +51,6 @@ public class PastorServiceIMPL implements PastorService {
         PastorTokenZ token = tokenService.createPastorToken(upDatedPastor);
         upDatedPastor.setToken(token.getToken());
         upDatedPastor.getListOfToken().add(token);
-         System.out.println("where i resave the pastopr account AFTER UPDATE  *****************");
-
          token.setPastor(upDatedPastor);
 //        tokenService.saveToken(token);
         return mapToPastorResponse(upDatedPastor);
