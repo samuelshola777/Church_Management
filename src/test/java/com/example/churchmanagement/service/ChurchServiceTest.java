@@ -92,8 +92,8 @@ class ChurchServiceTest {
     @Test
     void testThatWeCanRegisterANewChurchCenter()  {
   churchService.registerANewChurchBranch(churchRequest1);
-  //churchService.registerANewChurchBranch(churchRequest2);
- // churchService.registerANewChurchBranch(churchRequest3);
+//  churchService.registerANewChurchBranch(churchRequest2);
+//  churchService.registerANewChurchBranch(churchRequest3);
     assertEquals(3,churchService.countAllChurchBranch());
 
     }
@@ -101,6 +101,8 @@ class ChurchServiceTest {
     void testThatWeCanVerifyAccount() throws PasswordException, FindingExection {
     String token = churchService.tokenGenerator("itsezebruce19@gmail.com").getToken();
         assertEquals(ValidationState.VALIDATED, churchService.verifyChurchAccount("itsezebruce19@gmail.com","cloudinary127",token).getValidationState());
+     String token2 = churchService.tokenGenerator("orework22@gmail.com").getToken();
+        assertEquals(ValidationState.VALIDATED, churchService.verifyChurchAccount("orework22@gmail.com","goatojjbujbu123",token2).getValidationState());
     }
     @Disabled
     @Test

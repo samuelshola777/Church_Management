@@ -42,6 +42,27 @@ public class PastorServiceIMPL implements PastorService {
 
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
+        System.out.println("before if email exist  *****************");
+     if (registrationCheckIfEmailAlreadyExist(pastorRequest1.getEmailAddress())){
+         System.out.println("After if email exist  *****************");
+         Pastor upDatedPastor = completeUpdateForPastorAccount(pastorRequest1);
+         upDatedPastor.setId(pastorRequest1.getId());
+         System.out.println("--->>   " + upDatedPastor.getId() + "  <<---");
+         System.out.println("where i set the id   *****************");
+        toolz.phoneNumberValidator(upDatedPastor.getPhoneNumber());
+        toolz.passwordValidator(upDatedPastor.getPassword());
+        PastorTokenZ token = tokenService.createPastorToken(upDatedPastor);
+        upDatedPastor.setToken(token.getToken());
+        upDatedPastor.getListOfToken().add(token);
+         System.out.println("where i resave the pastopr account AFTER UPDATE  *****************");
+
+         token.setPastor(upDatedPastor);
+        tokenService.saveToken(token);
+        return mapToPastorResponse(upDatedPastor);
+     }
+    if (pastorRepository.findByEmailAddress(pastorRequest1.getEmailAddress() )!= null)
+        throw new FindingExection("pastor account with email address -> "+pastorRequest1.getEmailAddress()+" <-  already exists");
+        System.out.println("normal registrasion side of the method  *****************");
         emailAlreadyInUse.pastorEmailAlreadyInUse(pastorRequest1.getEmailAddress());
         registrationCheckIfEmailAlreadyExist(pastorRequest1.getEmailAddress());
         toolz.passwordValidator(pastorRequest1.getPassword());
@@ -55,11 +76,7 @@ public class PastorServiceIMPL implements PastorService {
         mappedPastor.getListOfToken().add(tokenZ);
         Pastor savedPastor = pastorRepository.save(mappedPastor);
         tokenZ.setPastor(savedPastor);
-        PastorTokenZ savedToken =  tokenService.saveToken(tokenZ);
-
-
-
-
+        tokenService.saveToken(tokenZ);
 return mapToPastorResponse(mappedPastor);
     }
 
@@ -128,17 +145,22 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     if (!token.equals(foundPastor.getToken())) throw new TokenException("invalid token");
       foundPastor.setValidationState(ValidationState.INVALID);
    if (foundPastor.getValidationState() != ValidationState.VALIDATED) {
+    //   ChurchBranch foundChurchBranch = churchService.findChurchByName(foundPastor.getChurchName());
        foundPastor.setChurchBranch(null);
        foundPastor.setChurchName(null);
+
        pastorRepository.save(foundPastor);
    }
     }
 
 
-    public void registrationCheckIfEmailAlreadyExist(String email){
+    public boolean registrationCheckIfEmailAlreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);
-    if(existingPastor!=null) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");
+    if(existingPastor!=null && existingPastor.getValidationState() == ValidationState.INVALID) return true;
+    // (existingPastor != null && existingPastor.getValidationState() != ValidationState.INVALID) throw new FindingExection("pastor account with email address -> "+email+" <-  already exists");
+    return false;
     }
+
 
     public Pastor mapToPastorEntity(PastorRequest pastorRequest){
         return Pastor.builder()
@@ -174,5 +196,29 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
               .registrationDate(pastor.getRegistrationDate())
               .build();
     }
+
+    public Pastor completeUpdateForPastorAccount(PastorRequest pastorRequest){
+        Pastor foundPastor  = pastorRepository.findByEmailAddress(pastorRequest.getEmailAddress());
+    foundPastor    = Pastor.builder()
+            .id(foundPastor.getId())
+                .role(pastorRequest.getRole())
+                 .emailAddress(pastorRequest.getEmailAddress())
+                .dateOfBirth(pastorRequest.getDateOfBirth())
+                .age(toolz.calculateAge(pastorRequest.getDateOfBirth()))
+                .validationState(pastorRequest.getValidationState())
+                .address(pastorRequest.getAddress())
+                .lastName(pastorRequest.getLastName())
+                .churchName(pastorRequest.getChurchName())
+                .firstName(pastorRequest.getFirstName())
+                .phoneNumber(pastorRequest.getPhoneNumber())
+                .gender(pastorRequest.getGender())
+                .Profile_picture(pastorRequest.getProfile_picture())
+                .password(pastorRequest.getPassword())
+                .registrationDate(LocalDateTime.now())
+                .build();
+pastorRepository.save(foundPastor);
+return foundPastor;
+    }
+
 }
 

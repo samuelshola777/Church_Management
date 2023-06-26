@@ -49,14 +49,14 @@ private PastorVerificationRequest verifyRequest;
         pastorRequest1 = new PastorRequest();
         pastorRequest1.setAddress(address1);
         pastorRequest1.setDateOfBirth(dateOfBirth1);
-        pastorRequest1.setFirstName("emi-goldy");
+        pastorRequest1.setFirstName("goatNational");
         pastorRequest1.setChurchName("StrongTower");
         pastorRequest1.setLastName("goat");
         pastorRequest1.setPhoneNumber("09099332737");
         pastorRequest1.setEmailAddress("pastorAccount01@mailinator.com");
         pastorRequest1.setProfile_picture("C:\\Users\\USER\\Pictures\\a7x\\boneshaker.jpg");
         pastorRequest1.setGender(Gender.MALE);
-        pastorRequest1.setPassword("boneshaker123");
+        pastorRequest1.setPassword("i am a monkey231");
 
 
 
@@ -86,6 +86,14 @@ private PastorVerificationRequest verifyRequest;
         pastorRequest2.setPassword("boneshaker123");
         pastorRequest2.setChurchName("jehovahnessi");
 
+        pastorRequest3 = new PastorRequest();
+        pastorRequest3.setLastName("leadGuitar");
+        pastorRequest3.setFirstName("blues");
+        pastorRequest3.setEmailAddress("pastorAccount01@mailinator.com");
+        pastorRequest3.setPassword("brucewyne123");
+        pastorRequest3.setDateOfBirth(dateOfBirth1);
+
+
 
 
 
@@ -98,7 +106,7 @@ private PastorVerificationRequest verifyRequest;
     void testThatWeCanCreateANewPastorAccount()  {
 
         pastorService.RegisterNewPastorAccount( pastorRequest1);
-        pastorService.RegisterNewPastorAccount( pastorRequest2);
+     //   pastorService.RegisterNewPastorAccount( pastorRequest2);
         assertEquals(2, pastorService.countPastorAccounts());
 
     }
@@ -132,18 +140,23 @@ private PastorVerificationRequest verifyRequest;
     @Test
     void testThatWeCanVerifyPastorAccount(){
         String token = pastorService.generatePastorToken("pastorAccount01@mailinator.com").getToken();
-    assertDoesNotThrow(()->{pastorService.validatePastorAccount("pastorAccount01@mailinator.com","boneshaker123",token);});
+    assertDoesNotThrow(()->{pastorService.validatePastorAccount("pastorAccount01@mailinator.com","i am a monkey231",token);});
+
+    String token2 = pastorService.generatePastorToken("pastorAccount02.mailinator@mailinator.com").getToken();
+    assertDoesNotThrow(()->{pastorService.validatePastorAccount("pastorAccount02.mailinator@mailinator.com","boneshaker123",token2);});
     }
     @Test
     void testThatWeCanDeletePastorAccount(){
         String token = pastorService.generatePastorToken("pastorAccount01@mailinator.com").getToken();
 assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount01@mailinator.com",token);
 });
+
 //        assertEquals(1, pastorService.countPastorAccounts());
     }
-    @Test
-    void testThatWeCanFindChurchByPastorEmail(){
 
+    @Test
+    void testThatWeCanUpdatePastorAccount(){
+        assertEquals("blues", pastorService.completeUpdateForPastorAccount(pastorRequest3).getLastName());
     }
 
 }

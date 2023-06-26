@@ -31,5 +31,6 @@ public interface PastorService {
 
     PastorResponse validatePastorAccount(String mail, String password, String token);
 
+     Pastor completeUpdateForPastorAccount(PastorRequest pastorRequest);
    void deletePastorAccountByEmail(String mail, String token);
 }

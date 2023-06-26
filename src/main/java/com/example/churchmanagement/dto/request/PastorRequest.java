@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Data
 public class PastorRequest {
     private  String firstName , lastName;
-
+    private long id;
     private String phoneNumber;
     private String churchName;
     private String emailAddress;
