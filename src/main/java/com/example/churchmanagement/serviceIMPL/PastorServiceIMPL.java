@@ -44,11 +44,8 @@ public class PastorServiceIMPL implements PastorService {
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
 
      if (registrationCheckIfEmailAlreadyExist(pastorRequest1.getEmailAddress())){
-         System.out.println("After if email exist  *****************");
          Pastor upDatedPastor = completeUpdateForPastorAccount(pastorRequest1);
          upDatedPastor.setId(pastorRequest1.getId());
-         System.out.println("--->>   " + upDatedPastor.getId() + "  <<---");
-         System.out.println("where i set the id   *****************");
         toolz.phoneNumberValidator(upDatedPastor.getPhoneNumber());
         toolz.passwordValidator(upDatedPastor.getPassword());
         PastorTokenZ token = tokenService.createPastorToken(upDatedPastor);
