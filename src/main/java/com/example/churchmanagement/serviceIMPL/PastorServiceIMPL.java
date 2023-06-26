@@ -149,7 +149,7 @@ ChurchBranch foundChurchBranch = churchService.findChurchBranchByEmailAddress(fo
      foundChurchBranch.setPastor(null);
        foundPastor.setChurchBranch(null);
        foundPastor.setChurchName(null);
-
+        churchService.saveChurchWithPastorAccount(foundChurchBranch);
        pastorRepository.save(foundPastor);
    }
     }
