@@ -57,7 +57,6 @@ public class PastorServiceIMPL implements PastorService {
      }
     if (pastorRepository.findByEmailAddress(pastorRequest1.getEmailAddress() )!= null)
         throw new FindingExection("pastor account with email address -> "+pastorRequest1.getEmailAddress()+" <-  already exists");
-        System.out.println("normal registrasion side of the method  *****************");
         emailAlreadyInUse.pastorEmailAlreadyInUse(pastorRequest1.getEmailAddress());
         registrationCheckIfEmailAlreadyExist(pastorRequest1.getEmailAddress());
         toolz.passwordValidator(pastorRequest1.getPassword());
