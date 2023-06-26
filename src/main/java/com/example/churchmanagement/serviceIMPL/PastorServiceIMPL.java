@@ -42,7 +42,7 @@ public class PastorServiceIMPL implements PastorService {
 
     @Override
     public PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1){
-        System.out.println("before if email exist  *****************");
+
      if (registrationCheckIfEmailAlreadyExist(pastorRequest1.getEmailAddress())){
          System.out.println("After if email exist  *****************");
          Pastor upDatedPastor = completeUpdateForPastorAccount(pastorRequest1);
