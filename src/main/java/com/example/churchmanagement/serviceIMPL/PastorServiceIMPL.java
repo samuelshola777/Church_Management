@@ -144,14 +144,14 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
         Pastor foundPastor = findPastorByEmailAddress(mail);
     if (!token.equals(foundPastor.getToken())) throw new TokenException("invalid token");
       foundPastor.setValidationState(ValidationState.INVALID);
-   if (foundPastor.getValidationState() != ValidationState.VALIDATED) {
+  // if (foundPastor.getValidationState() != ValidationState.VALIDATED) {
 //ChurchBranch foundChurchBranch = churchService.findChurchBranchByEmailAddress(foundPastor.getChurchBranch().getEmailAddress());
 //     foundChurchBranch.setPastor(null);
 //       foundPastor.setChurchBranch(null);
 //       foundPastor.setChurchName(null);
 //        churchService.saveChurchWithPastorAccount(foundChurchBranch);
        pastorRepository.save(foundPastor);
-   }
+  // }
     }
 
 
