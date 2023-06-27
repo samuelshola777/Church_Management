@@ -157,10 +157,9 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     public List<PastorResponse> getAllPastors(int page , int pageSize ) {
         Pageable pageable = PageRequest.of(page, pageSize);
         Page<Pastor> pastorPage = pastorRepository.findAll(pageable);
-        List<PastorResponse> pastorResponseList = pastorPage.getContent().stream()
+        return pastorPage.getContent().stream()
                 .map(this::mapToPastorResponse)
                 .toList();
-return pastorResponseList;
     }
 
 
