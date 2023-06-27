@@ -160,7 +160,7 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
         List<PastorResponse> pastorResponseList = pastorPage.getContent().stream()
                 .map(this::mapToPastorResponse)
                 .toList();
-
+        return new PastorResponse(pastorResponseList, pastorPage.getTotalElements(), pastorPage.getTotalPages());
     }
 
 
