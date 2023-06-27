@@ -36,5 +36,5 @@ public interface PastorService {
    void deletePastorAccountByEmail(String mail, String token);
 
 
-    Page<PastorResponse> getAllPastors();
+    Page<PastorResponse> getAllPastors(int page, int pageSize);
 }
