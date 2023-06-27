@@ -60,4 +60,14 @@ public class Pastor {
 
     @OneToOne( cascade = CascadeType.DETACH, orphanRemoval = true)
     private ChurchBranch churchBranch;
+
+//    public void removeBook(Book book) {
+//        book.setAuthor(null);
+//        this.books.remove(book);
+//    }
+
+//    public void removeChurch(ChurchBranch church){
+//        church.setPastor(null);
+//        this.churchBranch.re
+//    }
 }

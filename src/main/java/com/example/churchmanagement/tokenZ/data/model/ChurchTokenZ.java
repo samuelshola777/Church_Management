@@ -15,7 +15,7 @@ public class ChurchTokenZ  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private ChurchBranch churchBranch;
 
     private LocalDateTime createAt;

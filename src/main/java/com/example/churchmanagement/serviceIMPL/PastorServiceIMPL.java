@@ -127,7 +127,7 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     @Override
     public PastorResponse validatePastorAccount(String mail, String password, String token) {
     Pastor foundPastor = findPastorByEmailAddress(mail);
-    if (!foundPastor.getPassword().equals(password)) throw new PasswordException("");
+    if (!foundPastor.getPassword().equals(password)) throw new PasswordException("wrong password");
     if (!foundPastor.getToken().equals(token)) throw new TokenException("invalid token");
     foundPastor.setValidationState(ValidationState.VALIDATED);
     return mapToPastorResponse(pastorRepository.save(foundPastor));

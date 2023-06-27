@@ -12,7 +12,7 @@ public class PastorTokenZ {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Pastor pastor;
     private LocalDateTime createAt;
     private LocalDateTime expiredAt;

@@ -19,8 +19,6 @@ import java.time.LocalDateTime;
 @Service
 @Transactional
 public class ChurchTokenService {
-
-
     private final ChurchTokenRepository churchTokenRepository;
 
     public ChurchTokenZ createTokenForChurchBranch(String name) throws TokenException {
