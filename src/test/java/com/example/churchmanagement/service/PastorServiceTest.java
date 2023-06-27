@@ -3,8 +3,10 @@ package com.example.churchmanagement.service;
 import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.data.model.DateZ;
 import com.example.churchmanagement.data.model.Gender;
+import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.dto.request.PastorRequest;
 import com.example.churchmanagement.dto.request.PastorVerificationRequest;
+import com.example.churchmanagement.dto.response.PastorResponse;
 import com.example.churchmanagement.exception.PasswordException;
 import com.example.churchmanagement.exception.PhoneNumberException;
 import com.example.churchmanagement.exception.RegistrationException;
@@ -15,6 +17,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+
+import java.awt.print.Pageable;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -158,6 +163,13 @@ assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount
     @Test
     void testThatWeCanUpdatePastorAccount(){
         assertEquals("blues", pastorService.completeUpdateForPastorAccount(pastorRequest3).getLastName());
+    }
+    @Test
+    void testThatWeCanGetAllPastor(){
+
+        Page<PastorResponse> listOfPastor = pastorService.getAllPastors();
+        assertotNull();
+
     }
 
 }

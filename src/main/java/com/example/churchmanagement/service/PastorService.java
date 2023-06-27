@@ -10,6 +10,7 @@ import com.example.churchmanagement.exception.PhoneNumberException;
 import com.example.churchmanagement.exception.RegistrationException;
 import com.example.churchmanagement.exception.RegistrationVerificationException;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
+import org.springframework.data.domain.Page;
 
 public interface PastorService {
 
@@ -33,4 +34,7 @@ public interface PastorService {
 
      Pastor completeUpdateForPastorAccount(PastorRequest pastorRequest);
    void deletePastorAccountByEmail(String mail, String token);
+
+
+    Page<PastorResponse> getAllPastors();
 }
