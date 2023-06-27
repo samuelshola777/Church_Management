@@ -168,7 +168,7 @@ assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount
     void testThatWeCanGetAllPastor(){
 
         Page<PastorResponse> listOfPastor = pastorService.getAllPastors(1,2);
-        assertotNull();
+        assertNotNull(listOfPastor);
 
     }
 

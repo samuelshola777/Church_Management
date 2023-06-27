@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -155,6 +156,9 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     public Page<PastorResponse> getAllPastors(int page , int pageSize ) {
         Pageable pageable = PageRequest.of(page, pageSize);
         Page<Pastor> pastorPage = pastorRepository.findAll(pageable);
+        List<PastorResponse> pastorResponseList = pastorPage.getContent().stream()
+                .map(this::mapToPastorResponse)
+                .collect(Collectors.toList());
 
     }
 
