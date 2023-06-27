@@ -154,13 +154,13 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     }
 
     @Override
-    public Page<PastorResponse> getAllPastors(int page , int pageSize ) {
+    public List<PastorResponse> getAllPastors(int page , int pageSize ) {
         Pageable pageable = PageRequest.of(page, pageSize);
         Page<Pastor> pastorPage = pastorRepository.findAll(pageable);
         List<PastorResponse> pastorResponseList = pastorPage.getContent().stream()
                 .map(this::mapToPastorResponse)
                 .toList();
-
+return pastorResponseList;
     }
 
 

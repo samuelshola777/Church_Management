@@ -20,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 
 import java.awt.print.Pageable;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -167,7 +168,7 @@ assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount
     @Test
     void testThatWeCanGetAllPastor(){
 
-        Page<PastorResponse> listOfPastor = pastorService.getAllPastors(1,2);
+        List<PastorResponse> listOfPastor = pastorService.getAllPastors(1,2);
         assertNotNull(listOfPastor);
 
     }

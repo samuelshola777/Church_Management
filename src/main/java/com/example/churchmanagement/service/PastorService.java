@@ -12,6 +12,8 @@ import com.example.churchmanagement.exception.RegistrationVerificationException;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 public interface PastorService {
 
     PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1);
@@ -36,5 +38,5 @@ public interface PastorService {
    void deletePastorAccountByEmail(String mail, String token);
 
 
-    Page<PastorResponse> getAllPastors(int page, int pageSize);
+   List<PastorResponse> getAllPastors(int page, int pageSize);
 }
