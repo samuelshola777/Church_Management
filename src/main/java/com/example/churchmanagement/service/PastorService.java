@@ -18,11 +18,7 @@ public interface PastorService {
 
     PastorResponse RegisterNewPastorAccount(PastorRequest pastorRequest1);
 
-
-
-
     long countPastorAccounts();
-
 
     void deleteAllPastorAccount();
 
@@ -39,4 +35,6 @@ public interface PastorService {
 
 
    List<PastorResponse> getAllPastors(int page, int pageSize);
+
+    String changePassword(String mail,String oldPassword, String meAsAGoat564, String token);
 }

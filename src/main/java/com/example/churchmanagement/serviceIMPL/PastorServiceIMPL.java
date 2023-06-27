@@ -162,6 +162,16 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
                 .toList();
     }
 
+    @Override
+    public String changePassword(String mail,String oldPassword, String password, String token) {
+        Pastor foundPastor = findPastorByEmailAddress(mail);
+    if (!foundPastor.getPassword().equals(oldPassword)) throw new PasswordException("incorrect password");
+        if (!token.equals(foundPastor.getToken())) throw new TokenException("invalid token");
+        foundPastor.setPassword(password);
+        pastorRepository.save(foundPastor);
+        return "success";
+    }
+
 
     public boolean registrationCheckIfEmailAlreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);

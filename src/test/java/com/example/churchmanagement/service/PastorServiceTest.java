@@ -167,9 +167,13 @@ assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount
     }
     @Test
     void testThatWeCanGetAllPastor(){
-
-        List<PastorResponse> listOfPastor = pastorService.getAllPastors(1,2);
+        List<PastorResponse> listOfPastor = pastorService.getAllPastors(5,7);
         assertTrue(listOfPastor.isEmpty());
+    }
+    @Test
+    void testThatPastorCanChangePassword(){
+        String token = pastorService.generatePastorToken("pastorAccount01@mailinator.com").getToken();
+        assertEquals("success", pastorService.changePassword("pastorAccount01@mailinator.com","i am a monkey231","meAsAGoat564",token));
 
     }
 
