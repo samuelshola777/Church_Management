@@ -19,6 +19,7 @@ import jakarta.validation.ValidationException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -146,6 +147,11 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
 //        churchService.saveChurchWithPastorAccount(foundChurchBranch);
        pastorRepository.save(foundPastor);
   // }
+    }
+
+    @Override
+    public Page<PastorResponse> getAllPastors() {
+        return null;
     }
 
 
