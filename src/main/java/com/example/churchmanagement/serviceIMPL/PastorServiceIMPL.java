@@ -20,6 +20,8 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -150,8 +152,10 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     }
 
     @Override
-    public Page<PastorResponse> getAllPastors() {
-        return null;
+    public Page<PastorResponse> getAllPastors(int page , int pageSize ) {
+        Pageable pageable = PageRequest.of(page, pageSize);
+        Page<Pastor> pastorPage = pastorRepository.findAll(pageable);
+
     }
 
 
