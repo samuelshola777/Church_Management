@@ -37,4 +37,6 @@ public interface PastorService {
    List<PastorResponse> getAllPastors(int page, int pageSize);
 
     String changePassword(String mail,String oldPassword, String meAsAGoat564, String token);
+
+    String forgotPassword(String mail, String token);
 }

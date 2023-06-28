@@ -179,6 +179,7 @@ assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount
     @Test
     void testThatPastorCanLostPassword(){
     String token = pastorService.generatePastorToken("pastorAccount01@mailinator.com").getToken();
+   assertEquals("success", pastorService.forgotPassword("pastorAccount01@mailinator.com",token));
     }
 
 }
