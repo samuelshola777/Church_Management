@@ -177,6 +177,7 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
         Pastor foundPastor = findPastorByEmailAddress(mail);
     if (foundPastor.getToken().equals(token)) throw new TokenException("Token does not match");
     if (foundPastor.getValidationState() != ValidationState.VALIDATED) throw new ValidationException("church account have not been validated, please ensure to validate account");
+        foundPastor.setPassword(toolz.passwordGeneratorForPastor(foundPastor));
 
     }
 

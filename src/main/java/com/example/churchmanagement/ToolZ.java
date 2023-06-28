@@ -3,6 +3,7 @@ package com.example.churchmanagement;
 import com.example.churchmanagement.data.model.ChurchBranch;
 import com.example.churchmanagement.data.model.ChurchType;
 import com.example.churchmanagement.data.model.DateZ;
+import com.example.churchmanagement.data.model.Pastor;
 import com.example.churchmanagement.dto.request.ChurchRequest;
 import com.example.churchmanagement.exception.PasswordException;
 import com.example.churchmanagement.exception.PhoneNumberException;
@@ -54,6 +55,15 @@ public class ToolZ {
     }
 
 
+    public  String passwordGeneratorForPastor(Pastor pastor){
+        String [] weiredWord = {"ULSOW@","TOYRE&","WQUEST#","HNGEW%","OREAN$","goat%%%"};
+        SecureRandom secureRandom = new SecureRandom();
+        int random = secureRandom.nextInt(weiredWord.length);
+        String addAlphabetic = weiredWord[random];
+        StringBuilder builder = new StringBuilder(pastor.getPassword());
+        String newPassword = builder.substring(4,pastor.getPassword().length()-1 );
+        return addAlphabetic + newPassword;
+    }
 
     }
 
