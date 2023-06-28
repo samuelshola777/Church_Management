@@ -172,6 +172,12 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
         return "success";
     }
 
+    @Override
+    public String forgotPassword(String mail, String token) {
+        Pastor foundPastor = findPastorByEmailAddress(mail);
+
+    }
+
 
     public boolean registrationCheckIfEmailAlreadyExist(String email){
     Pastor existingPastor = pastorRepository.findByEmailAddress(email);

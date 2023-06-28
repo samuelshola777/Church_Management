@@ -108,8 +108,8 @@ return false;
     public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
         ChurchBranch foundChurch = churchRepository.findByEmailAddress(emailAddress);
         if (foundChurch != null &&
-        foundChurch.getValidationState() == ValidationState
-        .INVALID) throw new FindingExection("church branch does not exist");
+        foundChurch.getValidationState() != ValidationState
+                .VALIDATED) throw new FindingExection("church branch does not exist");
         return foundChurch;
     }
 
