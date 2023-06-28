@@ -176,5 +176,9 @@ assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount
         assertEquals("success", pastorService.changePassword("pastorAccount01@mailinator.com","i am a monkey231","meAsAGoat564",token));
 
     }
+    @Test
+    void testThatPastorCanLostPassword(){
+
+    }
 
 }

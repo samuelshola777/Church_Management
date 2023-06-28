@@ -266,7 +266,6 @@ return false;
     }
 
     public void saveChurchWithPastorAccount(ChurchBranch churchBranch){
-
         churchRepository.save(churchBranch);
 
     }
