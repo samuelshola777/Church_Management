@@ -18,6 +18,7 @@ import com.example.churchmanagement.tokenZ.data.model.ChurchTokenZ;
 import com.example.churchmanagement.tokenZ.service.ChurchTokenService;
 import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import jakarta.transaction.Transactional;
+import jakarta.validation.ValidationException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -108,8 +109,8 @@ return false;
     public ChurchBranch findChurchBranchByEmailAddress(String emailAddress) {
         ChurchBranch foundChurch = churchRepository.findByEmailAddress(emailAddress);
         if (foundChurch != null &&
-        foundChurch.getValidationState() != ValidationState
-                .VALIDATED) throw new FindingExection("church branch does not exist");
+        foundChurch.getValidationState() == ValidationState
+        .INVALID) throw new FindingExection("church branch does not exist");
         return foundChurch;
     }
 
@@ -251,6 +252,7 @@ return false;
     public ChurchResponse forgotPassword(String mail, String token) {
         ChurchBranch churchBranch = findChurchBranchByEmailAddress(mail);
         if (! churchBranch.getToken().equals(token)) throw new TokenException("Token does not match");
+        if (churchBranch.getValidationState() != ValidationState.VALIDATED) throw new ValidationException("church account have not been validated, please ensure to validate account");
         String newPassword = tool.passwordGenerator(churchBranch);
         churchBranch.setPassword(newPassword);
         churchRepository.save(churchBranch);
