@@ -172,6 +172,8 @@ return false;
 
      }
 
+
+
     @Override
     public ChurchResponse changeChurchPassword(String emailAddress, String newPassword) {
         ChurchBranch foundChurch = findChurchBranchByEmailAddress(emailAddress);
