@@ -32,7 +32,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class PastorServiceIMPL implements PastorService {
-
     @NonNull
    private final ChurchService churchService;
     @NonNull
