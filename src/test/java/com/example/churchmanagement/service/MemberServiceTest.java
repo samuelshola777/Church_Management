@@ -40,7 +40,10 @@ address1.setStreetName("ilaje");
 address1.setHouseNumber("103");
     memberRequest1.setAddress(address1);
     memberRequest1.setOccupation("student");
-    memberRequest1.setEmailAddress("");
+    memberRequest1.setEmailAddress("temilorun01@mailinator.com");
+    memberRequest1.setChurchName("strong tower");
+    memberRequest1.setPhoneNumber("09089764534");
+
 
 
     }

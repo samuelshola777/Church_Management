@@ -22,5 +22,6 @@ public class MemberRequest {
 
     private Role role = Role.MEMBER;
     private String occupation;
+    private String churchName;
     private ChurchBranch churchBranch;
 }
