@@ -17,6 +17,7 @@ class MemberServiceTest {
 private MemberRequest memberRequest1;
 private Address address1;
 private MemberRequest memberRequest2;
+private Address address2;
 private MemberRequest memberRequest3;
 private MemberRequest memberRequest4;
 private MemberRequest memberRequest5;
@@ -44,6 +45,19 @@ address1.setHouseNumber("103");
     memberRequest1.setChurchName("strong tower");
     memberRequest1.setPhoneNumber("09089764534");
 
+    memberRequest2 = new MemberRequest();
+    memberRequest2.setFirstName("segun");
+    memberRequest2.setLastName("samuel");
+    memberRequest2.setChurchName("PICC");
+    memberRequest2.setOccupation("business");
+address2 = new Address();
+address2.setHouseNumber("20");
+address2.setState("lagos");
+address2.setStreetName("kajola");
+address2.setLocalGovernment("shomolu");
+    memberRequest2.setAddress(address2);
+    memberRequest2.setEmailAddress("samuelsegun02mailinator.com");
+    memberRequest2.setPhoneNumber("09041830804");
 
 
     }
