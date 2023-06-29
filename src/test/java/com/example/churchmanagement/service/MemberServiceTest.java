@@ -1,5 +1,6 @@
 package com.example.churchmanagement.service;
 
+import com.example.churchmanagement.data.model.Address;
 import com.example.churchmanagement.dto.request.MemberRequest;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ class MemberServiceTest {
     @NonNull
     private MemberService memberService;
 private MemberRequest memberRequest1;
+private Address address1;
 private MemberRequest memberRequest2;
 private MemberRequest memberRequest3;
 private MemberRequest memberRequest4;
@@ -27,6 +29,15 @@ private MemberRequest memberRequest10;
 
     @BeforeEach
     void setUp() {
+
+    memberRequest1 = new MemberRequest();
+    memberRequest1.setFirstName("temilorun");
+    memberRequest1.setLastName("ekoLagos");
+
+
+    memberRequest1.setAddress();
+
+
     }
 
     @AfterEach
