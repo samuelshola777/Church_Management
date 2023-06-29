@@ -32,6 +32,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class PastorServiceIMPL implements PastorService {
+    Facebook facebook;
     @NonNull
    private final ChurchService churchService;
     @NonNull
@@ -176,9 +177,9 @@ Pastor foundPastor = pastorRepository.findByEmailAddress(mail);
     public String forgotPassword(String mail, String token) {
         Pastor foundPastor = findPastorByEmailAddress(mail);
     if (!foundPastor.getToken().equals(token)) throw new TokenException("Token does not match");
-    if (foundPastor.getValidationState() != ValidationState.VALIDATED) throw new ValidationException("church account have not been validated, please ensure to validate account");
+    if (foundPastor.getValidationState() != ValidationState.VALIDATED) throw new ValidationException(" account have not been validated, please ensure to validate account");
         foundPastor.setPassword(toolz.passwordGeneratorForPastor(foundPastor));
-       emailService.sendEmail();
+      // emailService.sendEmail();
         pastorRepository.save(foundPastor);
         return "success";
     }

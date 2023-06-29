@@ -147,7 +147,7 @@ private PastorVerificationRequest verifyRequest;
     @Test
     void testThatWeCanVerifyPastorAccount(){
         String token = pastorService.generatePastorToken("pastorAccount01@mailinator.com").getToken();
-    assertDoesNotThrow(()->{pastorService.validatePastorAccount("pastorAccount01@mailinator.com","i am a monkey231",token);});
+    assertDoesNotThrow(()->{pastorService.validatePastorAccount("pastorAccount01@mailinator.com","meAsAGoat564",token);});
 
     String token2 = pastorService.generatePastorToken("pastorAccount02.mailinator@mailinator.com").getToken();
     assertDoesNotThrow(()->{pastorService.validatePastorAccount("pastorAccount02.mailinator@mailinator.com","boneshaker123",token2);});
@@ -173,7 +173,7 @@ assertDoesNotThrow(()->{ pastorService.deletePastorAccountByEmail("pastorAccount
     @Test
     void testThatPastorCanChangePassword(){
         String token = pastorService.generatePastorToken("pastorAccount01@mailinator.com").getToken();
-        assertEquals("success", pastorService.changePassword("pastorAccount01@mailinator.com","i am a monkey231","meAsAGoat564",token));
+        assertEquals("success", pastorService.changePassword("pastorAccount01@mailinator.com","OREAN$AGoat56","meAsAGoat564",token));
 
     }
     @Test

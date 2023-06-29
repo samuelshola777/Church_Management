@@ -1,4 +1,4 @@
-package com.example.churchmanagement.app;
+package com.example.churchmanagement.appConfig;
 
 import com.example.churchmanagement.sendingBlue.MailConfig;
 import org.springframework.beans.factory.annotation.Value;
