@@ -33,9 +33,14 @@ private MemberRequest memberRequest10;
     memberRequest1 = new MemberRequest();
     memberRequest1.setFirstName("temilorun");
     memberRequest1.setLastName("ekoLagos");
-
-
-    memberRequest1.setAddress();
+address1 = new Address();
+address1.setLocalGovernment("ilaje");
+address1.setState("lagos state");
+address1.setStreetName("ilaje");
+address1.setHouseNumber("103");
+    memberRequest1.setAddress(address1);
+    memberRequest1.setOccupation("student");
+    memberRequest1.setEmailAddress("");
 
 
     }
