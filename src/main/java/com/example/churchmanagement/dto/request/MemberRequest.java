@@ -1,6 +1,7 @@
 package com.example.churchmanagement.dto.request;
 
 import com.example.churchmanagement.data.model.Address;
+import com.example.churchmanagement.data.model.ChurchBranch;
 import com.example.churchmanagement.data.model.Role;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToOne;
@@ -21,4 +22,5 @@ public class MemberRequest {
 
     private Role role = Role.MEMBER;
     private String occupation;
+    private ChurchBranch churchBranch;
 }

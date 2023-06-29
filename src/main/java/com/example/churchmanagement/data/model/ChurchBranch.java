@@ -49,7 +49,8 @@ private String emailAddress;
     private Pastor pastor;
 
     private String phoneNumber;
-
+    @OneToMany( cascade = CascadeType.DETACH, mappedBy = "churchBranch", orphanRemoval = true)
+private List<Member> listOfMembers = new ArrayList<>();
     private String token;
 //    @Bean
 //    @PostConstruct

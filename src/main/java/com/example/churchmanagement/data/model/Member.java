@@ -25,5 +25,7 @@ public class Member {
 
     private Role role = Role.MEMBER;
     private String occupation;
+    @ManyToOne
+    private ChurchBranch churchBranch;
 
 }
