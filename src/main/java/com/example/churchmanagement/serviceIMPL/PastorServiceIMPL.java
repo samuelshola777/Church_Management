@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class PastorServiceIMPL implements PastorService {
-    Facebook facebook;
+
     @NonNull
    private final ChurchService churchService;
     @NonNull
