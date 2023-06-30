@@ -122,7 +122,9 @@ dateOfBirth4.setDate("5");
 
     memberRequest4.setDateOfBirth(dateOfBirth4);
     memberRequest4.setAddress(address4);
-    memberRequest4.
+    memberRequest4.setEmailAddress("adewunmi04@mailinator.com");
+    memberRequest4.setChurchName("jehovahnessi");
+    memberRequest4.setOccupation("software engineer");
 
     }
 
