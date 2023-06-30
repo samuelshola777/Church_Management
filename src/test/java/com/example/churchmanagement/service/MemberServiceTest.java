@@ -109,6 +109,8 @@ dateOfBirth3.setYear("1999");
     memberRequest4.setPassword("specialBride156");
     memberRequest4.setPassword("09078906523");
 
+address4 = new Address();
+
 
     }
 
