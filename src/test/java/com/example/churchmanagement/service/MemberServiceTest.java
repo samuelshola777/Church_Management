@@ -126,6 +126,11 @@ dateOfBirth4.setDate("5");
     memberRequest4.setChurchName("jehovahnessi");
     memberRequest4.setOccupation("software engineer");
 
+    memberRequest5 = new MemberRequest();
+    memberRequest5.setFirstName("samuel");
+    memberRequest5.setLastName("shola");
+    memberRequest5.set
+
     }
 
     @AfterEach
