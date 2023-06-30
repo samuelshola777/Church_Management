@@ -102,7 +102,11 @@ dateOfBirth3.setYear("1999");
     memberRequest3.setEmailAddress("favourMbata03@mailinator.com");
 
     memberRequest4 = new MemberRequest();
-    memberRequest4.setFirstName();
+    memberRequest4.setFirstName("adewunmi");
+    memberRequest4.setLastName("adegunwa");
+    memberRequest4.setPassword("specialBride156");
+    memberRequest4.setPassword("09078906523");
+
 
     }
 
