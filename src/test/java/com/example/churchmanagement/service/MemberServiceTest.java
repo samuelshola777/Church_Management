@@ -129,7 +129,7 @@ dateOfBirth4.setDate("5");
     memberRequest5 = new MemberRequest();
     memberRequest5.setFirstName("samuel");
     memberRequest5.setLastName("shola");
-    memberRequest5.set
+//    memberRequest5.set
 
     }
 
