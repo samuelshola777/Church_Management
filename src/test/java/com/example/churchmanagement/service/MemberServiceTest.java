@@ -110,7 +110,19 @@ dateOfBirth3.setYear("1999");
     memberRequest4.setPassword("09078906523");
 
 address4 = new Address();
+address4.setLocalGovernment("palmGroove");
+address4.setStreetName("churchStreet");
+address4.setHouseNumber("20");
+address4.setState("lagos");
 
+dateOfBirth4 = new DateZ();
+dateOfBirth4.setMonth("2");
+dateOfBirth4.setYear("1996");
+dateOfBirth4.setDate("5");
+
+    memberRequest4.setDateOfBirth(dateOfBirth4);
+    memberRequest4.setAddress(address4);
+    memberRequest4.
 
     }
 
