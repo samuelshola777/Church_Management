@@ -10,8 +10,9 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
+    @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
+    private DateZ dateOfBirth;
+    private String password;
     private  String firstName , lastName;
 
     private String phoneNumber;
