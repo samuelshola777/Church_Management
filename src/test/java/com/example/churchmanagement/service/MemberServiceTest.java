@@ -25,6 +25,8 @@ private MemberRequest memberRequest3;
 private  Address address3;
 private DateZ dateOfBirth3;
 private MemberRequest memberRequest4;
+private Address address4;
+private DateZ dateOfBirth4;
 private MemberRequest memberRequest5;
 private MemberRequest memberRequest6;
 private MemberRequest memberRequest7;
