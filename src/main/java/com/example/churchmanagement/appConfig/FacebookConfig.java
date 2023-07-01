@@ -10,11 +10,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class FacebookConfig {
-    @Value("${facebook.appId}")
-    private String appId;
-
-    @Value("${facebook.appSecret}")
-    private String appSecret;
+//    @Value("${facebook.appId}")
+//    private String appId;
+//
+//    @Value("${facebook.appSecret}")
+//    private String appSecret;
 
     @Bean
     public FacebookClient facebookClient() {

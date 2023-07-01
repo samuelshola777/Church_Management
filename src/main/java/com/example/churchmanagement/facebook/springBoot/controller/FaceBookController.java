@@ -23,4 +23,10 @@ public class FaceBookController {
 
     }
 
+@GetMapping("auth")
+    public String testController(){
+
+        return "my name is samuel shola";
+    }
+
 }
