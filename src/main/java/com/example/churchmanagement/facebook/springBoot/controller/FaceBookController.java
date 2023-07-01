@@ -33,8 +33,9 @@ public class FaceBookController {
             .getUserAuthentication()
             .getDetails();
     Object key;
+    String userName = (String) authDetails.get("name");
 
-        return "my name is samuel shola";
+        return "my name is samuel  => "+userName;
     }
 
 }
