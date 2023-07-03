@@ -206,6 +206,11 @@ dateOfBirth7.setYear("1995");
     memberRequest7.setGender(Gender.MALE);
 
     memberRequest8 = new MemberRequest();
+    memberRequest8.setFirstName("sheymiloray");
+    memberRequest8.setLastName("badmous");
+    memberRequest8.setOccupation("Buisness");
+    memberRequest8.setChurchName("Discovery center");
+    memberRequest8.setPhoneNumber("09094799290");
 
 
     }
