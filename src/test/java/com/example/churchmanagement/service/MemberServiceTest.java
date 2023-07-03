@@ -147,7 +147,9 @@ address5.setStreetName("kajola");
     memberRequest5.setAddress(address5);
     memberRequest5.setDateOfBirth(dateOfBirth5);
     memberRequest5.setChurchName("strong tower");
-    memberRequest5.setEmailAddress("");
+    memberRequest5.setEmailAddress("samuelshola05@mailinator.com");
+    memberRequest5.setPhoneNumber("09099332737");
+
 
     }
 
