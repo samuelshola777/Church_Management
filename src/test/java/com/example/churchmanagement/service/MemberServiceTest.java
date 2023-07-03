@@ -8,6 +8,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -284,6 +285,22 @@ dateOfBirth10.setMonth("03");
 
     @AfterEach
     void tearDown() {
+    }
+
+    @Test
+    void testThatMemberRegisterAndCreateAccount(){
+     assertNotNull(   memberService.memberRegistration(memberRequest1));
+     assertNotNull(   memberService.memberRegistration(memberRequest2));
+     assertNotNull(   memberService.memberRegistration(memberRequest3));
+     assertNotNull(   memberService.memberRegistration(memberRequest4));
+     assertNotNull(   memberService.memberRegistration(memberRequest5));
+     assertNotNull(   memberService.memberRegistration(memberRequest6));
+     assertNotNull(   memberService.memberRegistration(memberRequest7));
+     assertNotNull(   memberService.memberRegistration(memberRequest8));
+     assertNotNull(   memberService.memberRegistration(memberRequest9));
+     assertNotNull(   memberService.memberRegistration(memberRequest10));
+
+  assertEquals(10, memberService.countMembers());
     }
 
 
