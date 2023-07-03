@@ -38,6 +38,8 @@ private MemberRequest memberRequest7;
 private Address address7;
 private DateZ dateOfBirth7;
 private MemberRequest memberRequest8;
+private Address address8;
+private DateZ dateOfBirth8;
 private MemberRequest memberRequest9;
 private MemberRequest memberRequest10;
 
@@ -212,6 +214,22 @@ dateOfBirth7.setYear("1995");
     memberRequest8.setChurchName("Discovery center");
     memberRequest8.setPhoneNumber("09094799290");
 
+address8 = new Address();
+address8.setLocalGovernment("akoka");
+address8.setHouseNumber("190");
+address8.setStreetName("jolaosho");
+address8.setState("lagos");
+
+dateOfBirth8 = new DateZ();
+dateOfBirth8.setMonth("1");
+dateOfBirth8.setYear("1995");
+dateOfBirth8.setDate("13");
+
+    memberRequest8.setAddress(address8);
+    memberRequest8.setDateOfBirth(dateOfBirth8);
+    memberRequest8.setEmailAddress("shaymiloray08@mailinator.com");
+    memberRequest8.setGender(Gender.FEMALE);
+    memberRequest8.setPassword("ArtandLife326");
 
     }
 
