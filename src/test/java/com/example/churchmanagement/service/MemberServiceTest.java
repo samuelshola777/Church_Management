@@ -28,6 +28,8 @@ private MemberRequest memberRequest4;
 private Address address4;
 private DateZ dateOfBirth4;
 private MemberRequest memberRequest5;
+private Address address5;
+DateZ dateOfBirth5;
 private MemberRequest memberRequest6;
 private MemberRequest memberRequest7;
 private MemberRequest memberRequest8;
@@ -129,7 +131,23 @@ dateOfBirth4.setDate("5");
     memberRequest5 = new MemberRequest();
     memberRequest5.setFirstName("samuel");
     memberRequest5.setLastName("shola");
-//    memberRequest5.set
+    memberRequest5.setOccupation("software Engineer");
+    memberRequest5.setPassword("coconut^673");
+
+dateOfBirth5 = new DateZ();
+dateOfBirth5.setDate("14");
+dateOfBirth5.setMonth("06");
+dateOfBirth5.setYear("1996");
+
+address5 = new Address();
+address5.setState("lagos");
+address5.setHouseNumber("20");
+address5.setLocalGovernment("bariga");
+address5.setStreetName("kajola");
+    memberRequest5.setAddress(address5);
+    memberRequest5.setDateOfBirth(dateOfBirth5);
+    memberRequest5.setChurchName("strong tower");
+    memberRequest5.setEmailAddress("");
 
     }
 
