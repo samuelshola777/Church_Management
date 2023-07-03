@@ -34,6 +34,8 @@ private MemberRequest memberRequest6;
 private Address address6;
 private DateZ dateOfBirth6;
 private MemberRequest memberRequest7;
+private Address address7;
+private DateZ getDateOfBirth7;
 private MemberRequest memberRequest8;
 private MemberRequest memberRequest9;
 private MemberRequest memberRequest10;
@@ -172,6 +174,12 @@ dateOfBirth6.setDate("22");
     memberRequest6.setPhoneNumber("090947938290");
     memberRequest6.setChurchName("Strong tower");
 
+    memberRequest7 = new MemberRequest();
+    memberRequest7.setFirstName("ajaye");
+    memberRequest7.setLastName("alfred");
+    memberRequest7.setOccupation("driver");
+    memberRequest7.setChurchName("PICC");
+    memberRequest7.setAddress();
     }
 
     @AfterEach
