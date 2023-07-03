@@ -197,6 +197,8 @@ dateOfBirth7.setYear("1995");
     memberRequest7.setEmailAddress("alfredAjaye07@mailinator.com");
     memberRequest7.setPhoneNumber("090947938290");
 
+    memberRequest8 = new MemberRequest();
+
 
     }
 

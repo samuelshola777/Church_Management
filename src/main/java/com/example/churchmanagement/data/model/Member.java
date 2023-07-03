@@ -18,12 +18,13 @@ public class Member {
     private String phoneNumber;
 
     private String emailAddress;
-
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
     private String profile_picture;
 
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;
-
+    @Enumerated(EnumType.STRING)
     private Role role = Role.MEMBER;
     private String occupation;
     private String churchName;
