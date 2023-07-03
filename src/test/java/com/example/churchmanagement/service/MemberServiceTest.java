@@ -269,7 +269,17 @@ dateOfBirth9.setDate("24");
 
 address10 = new Address();
 address10.setLocalGovernment("akoka");
-address10.setState("");
+address10.setState("lagos");
+address10.setHouseNumber("B67");
+address10.setLocalGovernment("bajulaye");
+
+dateOfBirth10 = new DateZ();
+dateOfBirth10.setDate("7");
+dateOfBirth10.setYear("2000");
+dateOfBirth10.setMonth("03");
+
+        memberRequest10.setAddress(address10);
+        memberRequest10.setDateOfBirth(dateOfBirth10);
     }
 
     @AfterEach
