@@ -29,8 +29,10 @@ private Address address4;
 private DateZ dateOfBirth4;
 private MemberRequest memberRequest5;
 private Address address5;
-DateZ dateOfBirth5;
+private DateZ dateOfBirth5;
 private MemberRequest memberRequest6;
+private Address address6;
+private DateZ dateOfBirth6;
 private MemberRequest memberRequest7;
 private MemberRequest memberRequest8;
 private MemberRequest memberRequest9;
@@ -150,6 +152,25 @@ address5.setStreetName("kajola");
     memberRequest5.setEmailAddress("samuelshola05@mailinator.com");
     memberRequest5.setPhoneNumber("09099332737");
 
+    memberRequest6 = new MemberRequest();
+    memberRequest6.setFirstName("bruce");
+    memberRequest6.setLastName("chirock");
+    memberRequest6.setPassword("drumStick436");
+    memberRequest6.setOccupation("creativity");
+address6 = new Address();
+address6.setStreetName("shobande");
+address6.setHouseNumber("27");
+address6.setState("lagos state");
+address6.setLocalGovernment("akoka");
+dateOfBirth6 = new DateZ();
+dateOfBirth6.setYear("2000");
+dateOfBirth6.setMonth("5");
+dateOfBirth6.setDate("22");
+    memberRequest6.setAddress(address6);
+    memberRequest6.setDateOfBirth(dateOfBirth6);
+    memberRequest6.setEmailAddress("chirockBruce@06@mailinator.com");
+    memberRequest6.setPhoneNumber("090947938290");
+    memberRequest6.setChurchName("Strong tower");
 
     }
 
