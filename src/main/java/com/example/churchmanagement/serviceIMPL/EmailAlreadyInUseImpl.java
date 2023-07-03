@@ -3,6 +3,7 @@ package com.example.churchmanagement.serviceIMPL;
 import com.example.churchmanagement.exception.EmailAlreadyInUseException;
 import com.example.churchmanagement.service.ChurchService;
 import com.example.churchmanagement.service.EmailAlreadyInUse;
+import com.example.churchmanagement.service.MemberService;
 import com.example.churchmanagement.service.PastorService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +13,8 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class EmailAlreadyInUseImpl implements EmailAlreadyInUse {
 
-    private ChurchService churchService;
-
+    private final ChurchService churchService;
+    public final MemberService memberService;
 
     @Override
     public void pastorEmailAlreadyInUse(String email) {
