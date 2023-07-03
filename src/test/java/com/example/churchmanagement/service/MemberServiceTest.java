@@ -35,7 +35,7 @@ private Address address6;
 private DateZ dateOfBirth6;
 private MemberRequest memberRequest7;
 private Address address7;
-private DateZ getDateOfBirth7;
+private DateZ dateOfBirth7;
 private MemberRequest memberRequest8;
 private MemberRequest memberRequest9;
 private MemberRequest memberRequest10;
@@ -179,7 +179,25 @@ dateOfBirth6.setDate("22");
     memberRequest7.setLastName("alfred");
     memberRequest7.setOccupation("driver");
     memberRequest7.setChurchName("PICC");
-    memberRequest7.setAddress();
+
+address7 = new Address();
+address7.setLocalGovernment("akoka");
+address7.setHouseNumber("12");
+address7.setState("lagos");
+address7.setStreetName("downCommunityRoad");
+
+dateOfBirth7 = new DateZ();
+dateOfBirth7.setDate("15");
+dateOfBirth7.setMonth("02");
+dateOfBirth7.setYear("1995");
+
+    memberRequest7.setAddress(address7);
+    memberRequest7.setDateOfBirth(dateOfBirth7);
+    memberRequest7.setPassword("StickTogether5647");
+    memberRequest7.setEmailAddress("alfredAjaye07@mailinator.com");
+    memberRequest7.setPhoneNumber("090947938290");
+
+
     }
 
     @AfterEach
