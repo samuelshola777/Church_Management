@@ -41,7 +41,11 @@ private MemberRequest memberRequest8;
 private Address address8;
 private DateZ dateOfBirth8;
 private MemberRequest memberRequest9;
+private Address address9;
+private DateZ dateOfBirth9;
 private MemberRequest memberRequest10;
+private Address address10;
+private DateZ dateOfBirth10;
 
 
     @BeforeEach
@@ -231,6 +235,28 @@ dateOfBirth8.setDate("13");
     memberRequest8.setGender(Gender.FEMALE);
     memberRequest8.setPassword("ArtandLife326");
 
+    memberRequest9 = new MemberRequest();
+    memberRequest9.setFirstName("bukola");
+    memberRequest9.setLastName("gloryOfGod");
+    memberRequest9.setGender(Gender.FEMALE);
+    memberRequest9.setOccupation("student");
+    memberRequest9.setPassword("ChristOurKing759");
+
+address9 = new Address();
+address9.setState("lagost");
+address9.setHouseNumber("B67");
+address9.setStreetName("FCE");
+address9.setLocalGovernment("akoka");
+
+dateOfBirth9 = new DateZ();
+dateOfBirth9.setYear("2001");
+dateOfBirth9.setMonth("03");
+dateOfBirth9.setDate("24");
+
+    memberRequest9.setAddress(address9);
+    memberRequest9.setDateOfBirth(dateOfBirth9);
+    memberRequest9.setPhoneNumber("07089428843");
+    memberRequest9.setEmailAddress("bukolaGloryOfGod09@mailinator.com");
     }
 
     @AfterEach
