@@ -257,6 +257,19 @@ dateOfBirth9.setDate("24");
     memberRequest9.setDateOfBirth(dateOfBirth9);
     memberRequest9.setPhoneNumber("07089428843");
     memberRequest9.setEmailAddress("bukolaGloryOfGod09@mailinator.com");
+
+    memberRequest10 = new MemberRequest();
+    memberRequest10.setFirstName("john");
+    memberRequest10.setLastName("only01");
+    memberRequest10.setPhoneNumber("07080702920");
+    memberRequest10.setGender(Gender.MALE);
+    memberRequest10.setPassword("letTheGuitarLead090");
+    memberRequest10.setOccupation("student");
+    memberRequest10.setChurchName("StrongTower");
+
+address10 = new Address();
+address10.setLocalGovernment("akoka");
+address10.setState("");
     }
 
     @AfterEach
