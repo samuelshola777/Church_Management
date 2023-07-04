@@ -25,7 +25,7 @@ public class ChurchBranch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(unique = true, nullable = false)
-    private long id;
+    private Long id;
     @Enumerated(EnumType.STRING)
    private ValidationState validationState = ValidationState.PENDING;
 
@@ -41,11 +41,11 @@ private String emailAddress;
     @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
      private Address address;
 
-    @OneToMany( cascade = CascadeType.DETACH, mappedBy = "churchBranch", orphanRemoval = true)
+    @OneToMany( cascade = CascadeType.ALL, mappedBy = "churchBranch", orphanRemoval = true)
     private final List<ChurchTokenZ> listOfToken  = new ArrayList<>();
 
     private String password;
-    @OneToOne( cascade = CascadeType.DETACH, orphanRemoval = true)
+    @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private Pastor pastor;
 
     private String phoneNumber;

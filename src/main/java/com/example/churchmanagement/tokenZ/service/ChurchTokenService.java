@@ -9,6 +9,7 @@ import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Service
 @Transactional
+@Slf4j
 public class ChurchTokenService {
     private final ChurchTokenRepository churchTokenRepository;
 
@@ -28,15 +30,17 @@ public class ChurchTokenService {
     String first2 = build.substring(0,3);
     String token = String.valueOf(intToken)+first2;
        ChurchTokenZ tokenZ = new ChurchTokenZ();
-
+        log.info("token->{}",tokenZ);
        tokenZ.setToken(token);
        tokenZ.setCreateAt(LocalDateTime.now());
         tokenZ.setTokenState(TokenState.VALID);
         tokenZ.setExpiredAt(tokenZ.getCreateAt().plusMinutes(5));
+
         return tokenZ;
     }
     public ChurchTokenZ saveToken(ChurchTokenZ churchTokenZ){
-       return churchTokenRepository.save(churchTokenZ);
+
+        return churchTokenRepository.save(churchTokenZ);
     }
 
 

@@ -58,7 +58,7 @@ public class Pastor {
 
     private int age;
 
-    @OneToOne( cascade = CascadeType.DETACH, orphanRemoval = true)
+    @OneToOne( cascade = CascadeType.ALL, orphanRemoval = true)
     private ChurchBranch churchBranch;
 
 //    public void removeBook(Book book) {

@@ -59,9 +59,9 @@ public class ChurchServiceImpl implements ChurchService {
       churchBranch.setValidationState(ValidationState.PENDING);
       churchBranch.setToken(token.getToken());
       token.setChurchBranch(churchBranch);
-        ChurchTokenZ savedToken = churchTokenService.saveToken(token);
-        churchBranch.addToken(savedToken);
+        churchBranch.addToken(token);
         ChurchBranch savedChurchBranch = churchRepository.save(churchBranch);
+//        churchTokenService.saveToken(savedChurchBranch);
         return mapToResponse(savedChurchBranch);
     }
 

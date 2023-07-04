@@ -14,8 +14,7 @@ import org.springframework.stereotype.Service;
 public class EmailAlreadyInUseImpl implements EmailAlreadyInUse {
 
     private final ChurchService churchService;
-    public final MemberService memberService;
-    private final PastorService pastorService;
+
 
     @Override
     public void pastorEmailAlreadyInUse(String email) {
