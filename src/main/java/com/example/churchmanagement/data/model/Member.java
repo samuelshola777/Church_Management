@@ -47,5 +47,6 @@ public class Member {
     private String churchName;
     @ManyToOne
     private ChurchBranch churchBranch;
+    private String age;
 
 }
