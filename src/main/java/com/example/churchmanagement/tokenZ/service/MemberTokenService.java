@@ -4,10 +4,11 @@ import com.example.churchmanagement.data.model.Member;
 import com.example.churchmanagement.tokenZ.data.model.MemberToken;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
 import com.example.churchmanagement.tokenZ.data.model.TokenState;
+import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
-
+@Service
 public class MemberTokenService {
 
     public MemberToken memberTokenGenerator(Member member){
