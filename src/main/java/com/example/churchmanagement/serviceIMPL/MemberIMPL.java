@@ -32,9 +32,8 @@ private final MemberTokenService tokenService;
         mappedMember.setRegistrationDate(LocalDateTime.now());
         mappedMember.setAge(String.valueOf(tool.calculateAge(mappedMember.getDateOfBirth())));
         MemberToken token = tokenService.memberTokenGenerator(mappedMember);
-
-
-        return null ;
+        mappedMember.getListOfToken().add(tokenService.returnSavedToken(token));
+        memberRepository.save(mappedMember);
     }
 
 

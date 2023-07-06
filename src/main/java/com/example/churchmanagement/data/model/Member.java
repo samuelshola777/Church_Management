@@ -31,7 +31,7 @@ public class Member {
 
     private String phoneNumber;
     @OneToMany( cascade = CascadeType.DETACH, mappedBy = "member", orphanRemoval = true)
-    private List<MemberToken > listOfToken= new ArrayList<>();
+    private final List<MemberToken > listOfToken= new ArrayList<>();
 
     private String emailAddress;
     @Enumerated(EnumType.STRING)
