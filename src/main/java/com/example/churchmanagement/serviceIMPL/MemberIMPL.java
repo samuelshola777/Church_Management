@@ -33,7 +33,7 @@ private final MemberTokenService tokenService;
         mappedMember.setAge(String.valueOf(tool.calculateAge(mappedMember.getDateOfBirth())));
         MemberToken token = tokenService.memberTokenGenerator(mappedMember);
         mappedMember.getListOfToken().add(tokenService.returnSavedToken(token));
-        memberRepository.save(mappedMember);
+     memberRepository.save(mappedMember);
     }
 
 
@@ -42,7 +42,9 @@ private final MemberTokenService tokenService;
       if (foundMember != null ) throw new RegistrationException
       ("Account with email address " + emailAddress+" already exists");
     }
+private MemberResponse mapToMemberResponse(Member member){
 
+}
     @Override
     public long countMembers() {
         return memberRepository.count();
@@ -52,7 +54,6 @@ private final MemberTokenService tokenService;
                 .registrationDate(memberRequest.getRegistrationDate())
                 .username(memberRequest.getUsername())
                 .token(memberRequest.getToken())
-                .listOfToken(memberRequest.getListOfToken())
                 .address(memberRequest.getAddress())
                 .gender(memberRequest.getGender())
                 .churchBranch(memberRequest.getChurchBranch())

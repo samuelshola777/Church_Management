@@ -17,6 +17,7 @@ public class MemberResponse {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    private String age;
     private String occupation;
     private String churchName;
 }
