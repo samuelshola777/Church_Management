@@ -4,12 +4,15 @@ import com.example.churchmanagement.data.model.Member;
 import com.example.churchmanagement.tokenZ.data.model.MemberToken;
 import com.example.churchmanagement.tokenZ.data.model.PastorTokenZ;
 import com.example.churchmanagement.tokenZ.data.model.TokenState;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 @Service
+@RequiredArgsConstructor
 public class MemberTokenService {
+    private final MemberToken tokenRepository;
 
     public MemberToken memberTokenGenerator(Member member){
         SecureRandom secureRandom = new SecureRandom();
@@ -24,5 +27,6 @@ public class MemberTokenService {
         token.setExpiredAt(token.getCreateAt().plusMinutes(30));
         return  token;
     }
+    public MemberToken
 
 }
