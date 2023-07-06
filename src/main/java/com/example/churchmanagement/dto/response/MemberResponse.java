@@ -7,6 +7,13 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class MemberResponse {
     private  String firstName , lastName;

@@ -43,7 +43,15 @@ private final MemberTokenService tokenService;
       ("Account with email address " + emailAddress+" already exists");
     }
 private MemberResponse mapToMemberResponse(Member member){
+return MemberResponse.builder()
+        .age(member.getAge())
+        .occupation(member.getOccupation())
+        .phoneNumber(member.getPhoneNumber())
+        .lastName(member.getLastName())
+        .firstName(member.getFirstName())
+        .churchName(member.getLastName())
 
+        .build();
 }
     @Override
     public long countMembers() {
