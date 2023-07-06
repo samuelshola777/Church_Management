@@ -32,9 +32,7 @@ private final ToolZ tool;
 
         return null ;
     }
-//    public String setUserName(String userName){
-//
-//    }
+
 
     private void registrationIfAccountWithEmailAllReadyExist(String emailAddress) {
       Member foundMember = memberRepository.findByEmailAddress( emailAddress);
