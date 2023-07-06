@@ -27,6 +27,7 @@ private final ToolZ tool;
         tool.phoneNumberValidator(memberRequest1.getPhoneNumber());
         Member mappedMember = mapRequestToMember(memberRequest1);
         mappedMember.setRegistrationDate(LocalDateTime.now());
+        mappedMember.setAge(String.valueOf(tool.calculateAge(mappedMember.getDateOfBirth())));
 
 
 
