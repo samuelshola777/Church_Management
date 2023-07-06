@@ -7,6 +7,7 @@ import com.example.churchmanagement.dto.request.MemberRequest;
 import com.example.churchmanagement.dto.response.MemberResponse;
 import com.example.churchmanagement.exception.RegistrationException;
 import com.example.churchmanagement.service.MemberService;
+import com.example.churchmanagement.tokenZ.data.model.MemberToken;
 import com.example.churchmanagement.tokenZ.service.MemberTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ private final MemberTokenService tokenService;
         Member mappedMember = mapRequestToMember(memberRequest1);
         mappedMember.setRegistrationDate(LocalDateTime.now());
         mappedMember.setAge(String.valueOf(tool.calculateAge(mappedMember.getDateOfBirth())));
-
+        MemberToken token = tokenService.memberTokenGenerator(mappedMember);
 
 
         return null ;
