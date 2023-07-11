@@ -25,6 +25,5 @@ public class ChurchTokenZ  {
     private String token;
 
     @Enumerated(EnumType.STRING)
-
     private TokenState tokenState;
 }

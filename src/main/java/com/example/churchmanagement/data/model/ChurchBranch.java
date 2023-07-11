@@ -50,7 +50,7 @@ private String emailAddress;
 
     private String phoneNumber;
     @OneToMany( cascade = CascadeType.DETACH, mappedBy = "churchBranch", orphanRemoval = true)
-private List<Member> listOfMembers = new ArrayList<>();
+private final List<Member> listOfMembers = new ArrayList<>();
     private String token;
 //    @Bean
 //    @PostConstruct

@@ -1,11 +1,13 @@
 package com.example.churchmanagement.serviceIMPL;
 
 import com.example.churchmanagement.ToolZ;
+import com.example.churchmanagement.data.model.ChurchBranch;
 import com.example.churchmanagement.data.model.Member;
 import com.example.churchmanagement.data.repository.MemberRepository;
 import com.example.churchmanagement.dto.request.MemberRequest;
 import com.example.churchmanagement.dto.response.MemberResponse;
 import com.example.churchmanagement.exception.RegistrationException;
+import com.example.churchmanagement.service.ChurchService;
 import com.example.churchmanagement.service.MemberService;
 import com.example.churchmanagement.tokenZ.data.model.MemberToken;
 import com.example.churchmanagement.tokenZ.service.MemberTokenService;
@@ -20,6 +22,7 @@ public class MemberIMPL implements MemberService {
 private final MemberRepository memberRepository;
 private final ToolZ tool;
 private final MemberTokenService tokenService;
+private final ChurchService churchService;
 
 
 
@@ -29,11 +32,16 @@ private final MemberTokenService tokenService;
         tool.passwordValidator(memberRequest1.getPassword());
         tool.phoneNumberValidator(memberRequest1.getPhoneNumber());
         Member mappedMember = mapRequestToMember(memberRequest1);
+
         mappedMember.setRegistrationDate(LocalDateTime.now());
+        ChurchBranch foundBranch = churchService.findChurchBranchByEmailAddress(mappedMember.getChurchName());
+      mappedMember.setChurchBranch(foundBranch);
+      foundBranch.getListOfMembers().add(mappedMember);
         mappedMember.setAge(String.valueOf(tool.calculateAge(mappedMember.getDateOfBirth())));
         MemberToken token = tokenService.memberTokenGenerator(mappedMember);
         mappedMember.getListOfToken().add(tokenService.returnSavedToken(token));
      memberRepository.save(mappedMember);
+     return null;
     }
 
 

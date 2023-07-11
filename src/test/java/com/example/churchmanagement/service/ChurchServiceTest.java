@@ -92,8 +92,8 @@ class ChurchServiceTest {
     @Test
     void testThatWeCanRegisterANewChurchCenter()  {
   churchService.registerANewChurchBranch(churchRequest1);
-//  churchService.registerANewChurchBranch(churchRequest2);
-//  churchService.registerANewChurchBranch(churchRequest3);
+  churchService.registerANewChurchBranch(churchRequest2);
+  churchService.registerANewChurchBranch(churchRequest3);
     assertEquals(3,churchService.countAllChurchBranch());
 
     }

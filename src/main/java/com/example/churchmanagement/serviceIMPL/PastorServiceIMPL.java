@@ -1,14 +1,16 @@
 package com.example.churchmanagement.serviceIMPL;
 
 import com.example.churchmanagement.ToolZ;
-import com.example.churchmanagement.data.model.*;
+import com.example.churchmanagement.data.model.ChurchBranch;
+import com.example.churchmanagement.data.model.Pastor;
+import com.example.churchmanagement.data.model.Role;
+import com.example.churchmanagement.data.model.ValidationState;
 import com.example.churchmanagement.data.repository.PastorRepository;
 import com.example.churchmanagement.dto.request.PastorRequest;
-import com.example.churchmanagement.dto.request.PastorVerificationRequest;
 import com.example.churchmanagement.dto.response.PastorResponse;
-import com.example.churchmanagement.dto.response.PastorVerificationResponse;
 import com.example.churchmanagement.emailEngine.service.EmailService;
-import com.example.churchmanagement.exception.*;
+import com.example.churchmanagement.exception.FindingExection;
+import com.example.churchmanagement.exception.PasswordException;
 import com.example.churchmanagement.service.ChurchService;
 import com.example.churchmanagement.service.EmailAlreadyInUse;
 import com.example.churchmanagement.service.PastorService;
@@ -18,16 +20,13 @@ import com.example.churchmanagement.tokenZ.tokenException.TokenException;
 import jakarta.validation.ValidationException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
