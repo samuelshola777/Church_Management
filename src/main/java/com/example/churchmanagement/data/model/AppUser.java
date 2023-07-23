@@ -7,6 +7,7 @@ import org.w3c.dom.UserDataHandler;
 import java.util.Collection;
 
 public class AppUser implements UserDetails {
+    private String emailAddress;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -19,7 +20,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return true;
+        return ;
     }
 
     @Override
