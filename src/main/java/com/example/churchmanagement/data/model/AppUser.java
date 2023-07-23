@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public class AppUser implements UserDetails {
     private String emailAddress;
-    private String password
+    private String password;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -16,7 +16,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
